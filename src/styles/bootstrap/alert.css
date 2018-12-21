@@ -1,0 +1,10 @@
+.alert
+{
+    font-weight:500;
+    margin-bottom:0px;
+}
+
+.alert-danger
+{
+    color:#9c454d;
+}

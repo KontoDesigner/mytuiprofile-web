@@ -1,0 +1,166 @@
+.table th
+{
+    font-weight:500;
+}
+
+.table th, .table td, .table thead tr th
+{
+    text-align: left;
+    padding: 10px 13px;
+}
+
+.table thead tr th
+{
+    font-weight:500;
+    border-bottom:0px;
+}
+
+.table th
+{
+    font-weight: 400;    
+}
+
+.tableContextMenu tr td
+{
+    padding:0px;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #e2f3fe;
+}
+
+.ReactVirtualized__Grid
+{
+    outline:none;
+}
+
+.even
+{
+    background-color: #e2f3fe;
+}
+
+.ReactVirtualized__Table__rowColumn
+{
+    border-top: 1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Table__row > .ReactVirtualized__Table__rowColumn:not(:last-child),
+.ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn:not(:last-child)
+{
+    border-right: 1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__rowColumn
+{
+    border-top:0px;
+}
+
+.ReactVirtualized__Table__row > .ReactVirtualized__Table__rowColumn
+{
+    padding: 10px 13px;
+}
+
+.ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn
+{
+    padding: 9px 13px 9px 13px;
+    outline:none;
+    height: 41px;
+}
+
+.ReactVirtualized__Table__headerRow
+{
+    text-transform:none;
+    text-decoration: underline;
+    cursor:pointer;
+    overflow-y: scroll!important;
+    padding-right:0px!important;
+}
+
+.ReactVirtualized__Table__headerColumn
+{
+    border-bottom: 1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar-track
+{
+	opacity:0;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar
+{
+	opacity:0;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar-thumb
+{
+	opacity:0;
+}
+
+.card-body-table
+{
+    max-height:351px;
+    padding:0px;
+}
+
+.ReactVirtualized__Table__headerTruncatedText
+{
+    font-weight:500;
+}
+
+.ReactVirtualized__Table__headerColumn:first-of-type, .ReactVirtualized__Table__rowColumn:first-of-type
+{
+    margin-left:0px;
+}
+
+.ReactVirtualized__Table__headerColumn, .ReactVirtualized__Table__rowColumn
+{
+    margin-right:0px;
+}
+
+.ReactVirtualized__Table__headerTruncatedText
+{
+    display:inline-block;
+}
+
+.ReactVirtualized__Table__sortableHeaderIcon
+{
+    height:20px;
+}
+
+.ReactVirtualized__Table__headerColumn > input[type="checkbox"], .ReactVirtualized__Table__rowColumn > input[type="checkbox"]
+{
+    vertical-align: middle;
+    cursor:pointer;
+    outline:none;
+}
+
+.ReactVirtualized__Table__rowColumn > input[type="checkbox"]
+{
+    margin-top: -2px;
+}
+
+.ReactVirtualized__Table__row>.ReactVirtualized__Table__rowColumn
+{
+    min-height:42px;
+}
+
+.table-checkbox .ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn:first-child,
+.table-checkbox .ReactVirtualized__Table__row > .ReactVirtualized__Table__rowColumn:first-child
+{
+    flex:none!important;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar-track
+{
+  border-bottom:1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar
+{
+  border-bottom:1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar-thumb
+{
+  border-bottom:1px solid #c2e6fa;
+}

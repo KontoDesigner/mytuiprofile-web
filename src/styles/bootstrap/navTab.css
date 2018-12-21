@@ -1,0 +1,77 @@
+.nav-tab > .nav-item
+{
+    margin-bottom:-1px;
+}
+
+.nav-tab > .nav-item > a
+{
+    border-radius:0px;
+}
+
+.nav-tab > .nav-item > a:hover, .nav-tab > .nav-item > a:focus, .nav-tab > .nav-item > a:active
+{
+    background-color:initial;
+}
+
+.nav-tab
+{
+    background-color: #fafbfc;
+    padding: 15px 15px 0px 15px;
+}
+
+.nav-tab > .nav-item > a
+{
+    margin:0px;
+}
+
+.nav-tab > .nav-item > a:not(.active)
+{
+    cursor:pointer;
+    border: 1px solid #ddd;
+}
+
+.nav-tab-edit > .nav-item > a:not(.active)
+{
+    background: #fafbfc;
+}
+
+.nav-tab > .nav-item:not(:last-child) > a {
+    border-left: 1px solid #ddd!important;
+    border-top: 1px solid #ddd!important;
+    border-right: 0px!important;
+}
+
+.nav-tab > .nav-item:last-child > a {
+    border-left: 1px solid #ddd!important;
+    border-top: 1px solid #ddd!important;
+    border-right: 1px solid #ddd!important;
+}
+
+.nav-tab > li > .nav-link.active, .nav-tab > li > .nav-link.active:hover, .nav-tab > li > .nav-link.active:focus {
+    color: #3082c7;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.nav > .nav-item > a
+{
+    padding: 10px 20px;
+}
+
+@media only screen and (max-width : 767px) {
+    .nav-tab > .nav-item
+    {
+        width:100%;
+    }
+
+    .nav-tab>.nav-item:not(:last-child)>a
+    {
+        border-right: 1px solid #ddd!important;
+    }
+
+    .nav > .nav-item > a{
+        padding: 10px 15px;
+    }
+}

@@ -1,0 +1,46 @@
+.card-header .dropdown
+{
+    display:inline-block;
+    float:right;
+}
+
+.dropdown-item
+{
+    font-size:14px;
+    cursor:pointer;
+    padding: 3px 15px;
+    font-weight: 500;
+    font-size: 13px;
+    color:#fff;
+    outline:none!important;
+}
+
+.dropdown-item:hover
+{
+    color: #fff;
+    background-color: #158CBA;
+    border-color: #127ba3;
+}
+
+.dropdown-item:active, .dropdown-item:focus
+{
+    background-color: #323232;
+    border: 0px solid #000;
+    color: #fff;
+}
+
+.dropdown-menu.show
+{
+    padding: 3px 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #000;
+    border-radius: 2px;
+}
+
+.dropdown-menu > div
+{
+    padding: 5px 15px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #dc3545;
+}

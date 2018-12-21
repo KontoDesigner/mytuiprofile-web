@@ -1,0 +1,53 @@
+.input-group > .form-group
+{
+    margin-bottom:0px;
+}
+
+.input-group
+{
+    padding-bottom: 1rem;
+}
+
+.form-control
+{
+    border-radius:0px;
+    border-color:#ddd;
+    font-size:13px;
+    padding:.48rem .75rem;
+}
+
+.input-group .input-group-append .btn
+{
+    border-radius: 0px;
+    margin: 0px 0px 0px 5px!important;
+    padding: 7px 14px 5px 14px!important;
+    border-width: 0px 1px 4px 1px!important;
+}
+
+.input-group .input-group-append .btn-warning
+{
+    border:1px solid #ff7702!important;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+}
+
+.form-group.form-group-select .form-control
+{
+    padding:0px;
+    border:0px;
+position:static;
+
+}
+
+label
+{
+    font-weight:500;
+    margin-bottom:5px;
+}
+
+.form-control:disabled, .form-control[readonly]
+{
+    background-color: #fbfbfb;
+}

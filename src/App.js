@@ -1,28 +1,69 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Routes from './infrastructure/routes'
+import Loader from './components/loader'
+import { BrowserRouter } from 'react-router-dom'
+import ReduxToastr from 'react-redux-toastr'
+import * as geographyActions from './actions/geographyActions'
+import * as userActions from './actions/userActions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import './styles/site.css'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor() {
+        super()
+
+        this.state = {
+            loaded: false
+        }
+    }
+
+    async componentWillMount() {
+        const _this = this
+
+        return Promise.all([this.props.userActions.getUser(), this.props.geographyActions.getDestinations()]).then(function() {
+            _this.setState({ loaded: true })
+        })
+    }
+
+    render() {
+        return (
+            <BrowserRouter>
+                <div className="App">
+                    <Loader />
+
+                    <ReduxToastr
+                        timeOut={3000}
+                        newestOnTop={false}
+                        preventDuplicates={false}
+                        position="bottom-right"
+                        transitionIn="fadeIn"
+                        transitionOut="fadeOut"
+                        progressBar
+                    />
+
+                    {this.state.loaded === true && <Routes user={this.props.user} />}
+                </div>
+            </BrowserRouter>
+        )
+    }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+        user: state.user,
+        destinations: state.geography.destinations
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        geographyActions: bindActionCreators(geographyActions, dispatch),
+        userActions: bindActionCreators(userActions, dispatch)
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App)

@@ -1,0 +1,16 @@
+.btn-action
+{
+    margin-top:0px;
+}
+
+@media (min-width: 767.99px) {
+    .col-menu
+    {
+      padding-right:0px!important;
+    }
+
+    .btn-action
+    {
+        margin-top:25px!important;
+    }
+}
