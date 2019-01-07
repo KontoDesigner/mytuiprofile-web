@@ -14,173 +14,141 @@
 @import './react-contextmenu.css';
 @import './react-select.css';
 @import './react-datetime.css';
+@import './title.css';
 
-html
-{
-  position: relative;
-  min-height: 100%;  
-  background:#fff;
+html {
+    position: relative;
+    min-height: 100%;
+    background: #708ba1;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color:#fff;
-  font-size:11px;
-  font-weight:400;
-  color:#333;
-  margin: 0 0 45px;
-  overflow-y: scroll; 
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #708ba1;
+    font-size: 13px;
+    font-weight: 400;
+    color: #333;
+    margin: 0 0 45px;
+    overflow-y: scroll;
 }
 
 @media (min-width: 767.99px) {
-  .logo-container
-  {
-    padding-right:0px;
-  }
+    .logo-container {
+        padding-right: 0px;
+    }
 }
 
-.logo-container > svg
-{
-  height: 29px;
-  margin-top: 14px;
+.logo-container > svg {
+    height: 29px;
+    margin-top: 14px;
 }
 
 @media (max-width: 767.98px) {
-  .logo-container > svg
-  {
-    margin-top: 20px;
-  }
+    .logo-container > svg {
+        margin-top: 20px;
+    }
 }
 
 .logo-fill {
-  fill: #d40e14;
+    fill: #d40e14;
 }
 
-.logo-container
-{
-  text-align:center;
+.logo-container {
+    text-align: center;
 }
 
-.text-align-right
-{
-  text-align: right;
+.text-align-right {
+    text-align: right;
 }
 
-.inline-block
-{
-  display:inline-block;
+.inline-block {
+    display: inline-block;
 }
 
-.cursor-pointer
-{
-  cursor:pointer;
+.cursor-pointer {
+    cursor: pointer;
 }
 
-a{
-  color: #3a6d98!important;
+a {
+    color: #3a6d98 !important;
 }
 
-.App > .container
+/* .App > .container
 {
   max-width:100%;
   margin-top:15px!important;
+} */
+
+b,
+strong {
+    font-weight: 500;
 }
 
-b, strong
-{
-  font-weight:500;
+.no-padding {
+    padding: 0px;
 }
 
-.no-padding
-{
-  padding:0px;
+.no-padding-top {
+    padding-top: 0px;
 }
 
-.no-padding-top
-{
-  padding-top:0px;
+.no-padding-bottom {
+    padding-bottom: 0px;
 }
 
-.no-padding-bottom
-{
-  padding-bottom:0px;
+.no-padding-right {
+    padding-right: 0px;
 }
 
-.no-padding-right
-{
-  padding-right:0px;
+.no-padding-left {
+    padding-left: 0px;
 }
 
-.no-padding-left
-{
-  padding-left:0px;
+.hidden-scroll {
+    overflow-y: scroll;
 }
 
-.hidden-scroll
-{
-  overflow-y:scroll;
+.ReactVirtualized__Table__row::-webkit-scrollbar-track {
+    border-top: 1px solid #c2e6fa;
 }
 
-.ReactVirtualized__Table__row::-webkit-scrollbar-track
-{
-  border-top:1px solid #c2e6fa;
+.ReactVirtualized__Table__row::-webkit-scrollbar {
+    border-top: 1px solid #c2e6fa;
 }
 
-.ReactVirtualized__Table__row::-webkit-scrollbar
-{
-  border-top:1px solid #c2e6fa;
+.ReactVirtualized__Table__row::-webkit-scrollbar-thumb {
+    border-top: 1px solid #c2e6fa;
 }
 
-.ReactVirtualized__Table__row::-webkit-scrollbar-thumb
-{
-  border-top:1px solid #c2e6fa;
+.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-track {
+    border-top: 0px;
 }
 
-.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-track
-{
-  border-top:0px;
+.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar {
+    border-top: 0px;
 }
 
-.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar
-{
-  border-top:0px;
+.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-thumb {
+    border-top: 0px;
 }
 
-.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-thumb
-{
-  border-top:0px;
+.custom-datepicker.rdtOpen {
+    position: static;
 }
 
-
-
-.custom-datepicker.rdtOpen
-{
-position:static;
+.Select-placeholder,
+.Select--single > .Select-control .Select-value {
+    font-size: 11px;
 }
-
-
-
-
-
-.Select-placeholder, .Select--single > .Select-control .Select-value {
- 
-  font-size: 11px;
-
-}
-
 
 .form-control {
-
-
-  font-size: 11px;
-
+    font-size: 11px;
 }
 
-
-.form-row>.col, .form-row>[class*=col-] {
-  padding-right: 5px;
-  padding-left: 10px;
+.form-row > .col,
+.form-row > [class*='col-'] {
+    padding-right: 5px;
+    padding-left: 10px;
 }
-

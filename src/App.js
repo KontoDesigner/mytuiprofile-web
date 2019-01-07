@@ -7,6 +7,7 @@ import * as geographyActions from './actions/geographyActions'
 import * as userActions from './actions/userActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Container } from 'reactstrap'
 import './styles/site.css'
 
 class App extends Component {
@@ -42,7 +43,13 @@ class App extends Component {
                         progressBar
                     />
 
-                    {this.state.loaded === true && <Routes user={this.props.user} />}
+                    {this.state.loaded === true && (
+                        <Container>
+                            <h1>My TUI Profile</h1>
+
+                            <Routes user={this.props.user} />
+                        </Container>
+                    )}
                 </div>
             </BrowserRouter>
         )

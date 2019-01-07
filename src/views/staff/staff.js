@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
-import RestClient from '../../infrastructure/restClient'
 import { UserRoles as userRoles } from '../../constants/userConstants'
 
 class Staff extends Component {

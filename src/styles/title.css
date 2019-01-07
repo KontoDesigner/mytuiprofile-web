@@ -1,0 +1,26 @@
+h1
+{
+    color:#fff;
+    margin:0;
+    text-align: center;
+    font-size: 2rem;
+    padding-top:45px;
+}
+
+div.hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: center;
+    height: 0px;
+    line-height: 0px;
+}
+
+.hr-title {
+    background-color: #708ba1;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.4em;
+    padding: 0 15px;
+}

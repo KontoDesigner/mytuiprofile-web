@@ -10,7 +10,7 @@ function actionTypeEndsInSuccess(type) {
 export default function ajaxStatusReducer(state = defaultState, action) {
     if (action.type === types.BEGIN_AJAX_CALL) {
         if (state === 0) {
-            $('.loader').fadeIn(500)
+            $('.loader').show()
         }
 
         return state + 1
@@ -18,7 +18,7 @@ export default function ajaxStatusReducer(state = defaultState, action) {
         const val = state - 1
 
         if (val === 0) {
-            $('.loader').fadeOut(500)
+            $('.loader').hide()
         }
 
         return val
@@ -26,7 +26,7 @@ export default function ajaxStatusReducer(state = defaultState, action) {
         const val = state - 1
 
         if (val === 0) {
-            $('.loader').fadeOut(500)
+            $('.loader').hide()
         }
 
         return val
