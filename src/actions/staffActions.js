@@ -1,22 +1,16 @@
-import { ActionTypes as types } from '../constants/managerConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import restClient from '../infrastructure/restClient'
 
-export function getStaffsSuccess(staffs) {
-    return {
-        type: types.GET_STAFFS_SUCCESS,
-        data: { staffs }
-    }
-}
-
-export function getStaffs() {
+export function getStaff() {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const staffs = await restClient.get('staff/getstaffs')
+            const staff = await restClient.get('staff/getstaff')
 
-            dispatch(getStaffsSuccess(staffs))
+            dispatch(endAjaxCall())
+
+            return staff
         } catch (error) {
             dispatch(ajaxCallError(error))
 
@@ -25,12 +19,12 @@ export function getStaffs() {
     }
 }
 
-export function getStaff() {
+export function getStaffFromEmail(email) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const staff = await restClient.get('staff/getstaff')
+            const staff = await restClient.get(`staff/getstaff/${email}`)
 
             dispatch(endAjaxCall())
 

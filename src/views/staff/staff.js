@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import { UserRoles as userRoles } from '../../constants/userConstants'
-import { Row, Col } from 'reactstrap'
+import MyProfile from './myProfile'
+import * as staffActions from '../../actions/staffActions'
 
 class Staff extends Component {
     constructor(props) {
@@ -25,24 +26,15 @@ class Staff extends Component {
     async componentWillMount() {
         const manager = this.props.user.roles.includes(userRoles.Manager)
 
-        if (manager === true && this.state.email) {
-            this.getStaff(this.state.email)
+        if (manager === false && this.state.email) {
+            const staff = await this.props.staffActions.getStaffFromEmail(this.state.email)
+
+            this.setState({ staff: staff, loaded: true })
         } else {
-            this.getStaff(this.props.user.email)
+            const staff = await this.props.staffActions.getStaff()
+
+            this.setState({ staff: staff, loaded: true })
         }
-    }
-
-    getStaff = async email => {
-        //todo - fix api
-        // // // // this.props.ajaxStatusActions.beginAjaxCall()
-
-        // // // // const staff = await RestClient.get(`staff/${email}`)
-
-        // // // // this.props.ajaxStatusActions.endAjaxCall()
-
-        // // // // this.setState({ staff, loaded: true })
-
-        this.setState({ staff: {}, loaded: true, email })
     }
 
     render() {
@@ -50,20 +42,9 @@ class Staff extends Component {
             return null
         }
 
-        if (this.state.staff === null) {
-            return <div>Could not find staff</div>
-        }
-
         return (
             <div>
-                <Row>
-                    <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ marginTop: '15px' }}>
-                        <div className="hr">
-                            <span className="hr-title">My Profile</span>
-                        </div>
-                    </Col>
-                </Row>
-                Hello staff ({this.state.email})!
+                <MyProfile staff={this.state.staff} />
             </div>
         )
     }
@@ -77,7 +58,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch)
+        ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch),
+        staffActions: bindActionCreators(staffActions, dispatch)
     }
 }
 

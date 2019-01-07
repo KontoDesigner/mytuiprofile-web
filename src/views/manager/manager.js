@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as managerActions from '../../actions/managerActions'
 import ManageStaff from './manageStaff'
-import MyProfile from './myProfile'
+import MyProfile from '../staff/myProfile'
 
 class Manager extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            staff: null,
             loaded: false,
             selectedDestination: null,
             selectedStaff: null
@@ -17,9 +18,11 @@ class Manager extends Component {
     }
 
     async componentWillMount() {
-        await this.props.managerActions.getStaffs(null)
+        const _this = this
 
-        this.setState({ loaded: true })
+        return Promise.all([this.props.managerActions.getStaff(), this.props.managerActions.getStaffs()]).then(function(res) {
+            _this.setState({ staff: res[0], loaded: true })
+        })
     }
 
     destinationOnChange = async destination => {
@@ -59,7 +62,7 @@ class Manager extends Component {
                     selectedStaff={this.state.selectedStaff}
                 />
 
-                <MyProfile />
+                <MyProfile staff={this.state.staff} />
             </div>
         )
     }

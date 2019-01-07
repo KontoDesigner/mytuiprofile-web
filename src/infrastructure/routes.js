@@ -16,7 +16,7 @@ const Routes = props => {
                 <Switch>
                     <Route path="/" exact component={() => <Redirect to="/manager" />} />
                     <Route path="/manager" component={Manager} />
-                    <Route path="/staff" component={Staff} />
+                    <Route exact path="/staff" component={Staff} />
                     <Route exact path="/staff/:email" render={props => <Staff {...props} ignoreThis={true} />} />
                     <Route component={NotFound} />
                 </Switch>
