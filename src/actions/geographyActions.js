@@ -5,7 +5,7 @@ import restClient from '../infrastructure/restClient'
 export function getDestinationsSuccess(destinations) {
     return {
         type: types.GET_DESTINATIONS_SUCCESS,
-        data: { destinations: destinations }
+        data: { destinations }
     }
 }
 

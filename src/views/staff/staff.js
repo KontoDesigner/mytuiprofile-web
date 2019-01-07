@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import { UserRoles as userRoles } from '../../constants/userConstants'
+import { Row, Col } from 'reactstrap'
 
 class Staff extends Component {
     constructor(props) {
@@ -47,11 +48,24 @@ class Staff extends Component {
     render() {
         if (this.state.loaded === false) {
             return null
-        } else if (this.state.staff === null) {
-            return <div>Could not find staff</div>
-        } else {
-            return <div>Hello staff ({this.state.email})!</div>
         }
+
+        if (this.state.staff === null) {
+            return <div>Could not find staff</div>
+        }
+
+        return (
+            <div>
+                <Row>
+                    <Col xl="12" lg="12" md="12" sm="12" xs="12" style={{ marginTop: '15px' }}>
+                        <div className="hr">
+                            <span className="hr-title">My Profile</span>
+                        </div>
+                    </Col>
+                </Row>
+                Hello staff ({this.state.email})!
+            </div>
+        )
     }
 }
 

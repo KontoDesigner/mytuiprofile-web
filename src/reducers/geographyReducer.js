@@ -4,7 +4,7 @@ var defaultState = {
     destinations: []
 }
 
-export default function filterReducer(state = defaultState, action) {
+export default function geographyReducer(state = defaultState, action) {
     switch (action.type) {
         case types.GET_DESTINATIONS_SUCCESS:
             return {
