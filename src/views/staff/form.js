@@ -1,26 +1,36 @@
 import React from 'react'
-import { Row, Col } from 'reactstrap'
+import ContactInformation from './contactInformation'
+import EmployeeInformation from './employeeInformation'
+import Placement from './placement'
+import Education from './education'
+import Languages from './languages'
+import Profiling from './profiling'
+import Resignation from './resignation'
 
 const Form = props => {
     if (!props.staff) {
         return (
             <div>
-                <Row>
-                    <Col sm="12" md="12" lg="12" xl="12" style={{ textAlign: 'center' }}>
-                        <p style={{ color: '#fff' }}>Could not find staff</p>
-                    </Col>
-                </Row>
+                <p style={{ color: '#fff' }}>Could not find staff</p>
             </div>
         )
     }
 
     return (
         <div>
-            <Row>
-                <Col sm="12" md="12" lg="12" xl="12" style={{ textAlign: 'center' }}>
-                    form here
-                </Col>
-            </Row>
+            <ContactInformation staff={props.staff} />
+
+            <EmployeeInformation staff={props.staff} />
+
+            <Placement />
+
+            <Education staff={props.staff} />
+
+            <Languages staff={props.staff} />
+
+            <Profiling staff={props.staff} />
+
+            {/* <Resignation staff={props.staff} /> */}
         </div>
     )
 }
