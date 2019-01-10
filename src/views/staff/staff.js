@@ -5,6 +5,7 @@ import * as ajaxStatusActions from '../../actions/ajaxStatusActions'
 import { UserRoles as userRoles } from '../../constants/userConstants'
 import MyProfile from './myProfile'
 import * as staffActions from '../../actions/staffActions'
+import * as handleStaff from '../../components/handleStaff'
 
 class Staff extends Component {
     constructor(props) {
@@ -44,7 +45,12 @@ class Staff extends Component {
 
         return (
             <div>
-                <MyProfile staff={this.state.staff} />
+                <MyProfile
+                    staff={this.state.staff}
+                    handleStaffField={(e, _this) => handleStaff.handleStaffField(e, this)}
+                    handleStaffSelect={(field, val, selector, _this) => handleStaff.handleStaffSelect(field, val, selector, this)}
+                    handleStaffDatePicker={(field, date, _this) => handleStaff.handleStaffDatePicker(field, date, this)}
+                />
             </div>
         )
     }

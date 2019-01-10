@@ -18,17 +18,26 @@ const Form = props => {
 
     return (
         <div>
-            <ContactInformation staff={props.staff} />
+            <ContactInformation staff={props.staff} handleStaffField={props.handleStaffField} />
 
-            <EmployeeInformation staff={props.staff} />
+            <EmployeeInformation
+                staff={props.staff}
+                handleStaffField={props.handleStaffField}
+                handleStaffSelect={props.handleStaffSelect}
+                handleStaffDatePicker={props.handleStaffDatePicker}
+            />
 
-            <Placement />
+            <Placement
+                handleStaffField={props.handleStaffField}
+                handleStaffSelect={props.handleStaffSelect}
+                handleStaffDatePicker={props.handleStaffDatePicker}
+            />
 
-            <Education staff={props.staff} />
+            <Education staff={props.staff} handleStaffField={props.handleStaffField} handleStaffSelect={props.handleStaffSelect} />
 
-            <Languages staff={props.staff} />
+            <Languages staff={props.staff} handleStaffField={props.handleStaffField} handleStaffSelect={props.handleStaffSelect} />
 
-            <Profiling staff={props.staff} />
+            <Profiling staff={props.staff} handleStaffSelect={props.handleStaffSelect} />
 
             {/* <Resignation staff={props.staff} /> */}
         </div>

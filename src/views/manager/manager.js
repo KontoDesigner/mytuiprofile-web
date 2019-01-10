@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as managerActions from '../../actions/managerActions'
 import ManageStaff from './manageStaff'
 import MyProfile from '../staff/myProfile'
+import * as handleStaff from '../../components/handleStaff'
 
 class Manager extends Component {
     constructor(props) {
@@ -41,6 +42,10 @@ class Manager extends Component {
         win.focus()
     }
 
+    test = () => {
+        console.log(1)
+    }
+
     render() {
         if (this.state.loaded === false) {
             return null
@@ -62,7 +67,12 @@ class Manager extends Component {
                     selectedStaff={this.state.selectedStaff}
                 />
 
-                <MyProfile staff={this.state.staff} />
+                <MyProfile
+                    staff={this.state.staff}
+                    handleStaffField={(e, _this) => handleStaff.handleStaffField(e, this)}
+                    handleStaffSelect={(field, val, selector, _this) => handleStaff.handleStaffSelect(field, val, selector, this)}
+                    handleStaffDatePicker={(field, date, _this) => handleStaff.handleStaffDatePicker(field, date, this)}
+                />
             </div>
         )
     }

@@ -13,7 +13,12 @@ const MyProfile = props => {
                 </Col>
             </Row>
 
-            <Form staff={props.staff} />
+            <Form
+                staff={props.staff}
+                handleStaffField={props.handleStaffField}
+                handleStaffSelect={props.handleStaffSelect}
+                handleStaffDatePicker={props.handleStaffDatePicker}
+            />
         </div>
     )
 }
