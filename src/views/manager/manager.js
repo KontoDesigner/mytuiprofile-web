@@ -11,6 +11,7 @@ class Manager extends Component {
         super(props)
 
         this.state = {
+            staffs: null,
             staff: null,
             loaded: false,
             selectedDestination: null,
@@ -19,17 +20,21 @@ class Manager extends Component {
     }
 
     async componentWillMount() {
-        const _this = this
+        const staff = await this.props.managerActions.getStaff()
 
-        return Promise.all([this.props.managerActions.getStaff(), this.props.managerActions.getStaffs()]).then(function(res) {
-            _this.setState({ staff: res[0], loaded: true })
-        })
+        this.setState({ staff, loaded: true })
     }
 
     destinationOnChange = async destination => {
         const selectedDestination = destination != null ? destination.value : null
 
-        this.setState({ selectedDestination, selectedStaff: null })
+        let staffs = null
+
+        if (selectedDestination !== null) {
+            staffs = await this.props.managerActions.getStaffs(selectedDestination)
+        }
+
+        this.setState({ selectedDestination, selectedStaff: null, staffs })
     }
 
     staffOnChange = staff => {
@@ -42,24 +47,15 @@ class Manager extends Component {
         win.focus()
     }
 
-    test = () => {
-        console.log(1)
-    }
-
     render() {
         if (this.state.loaded === false) {
             return null
         }
 
-        const staffs =
-            this.state.selectedDestination !== null
-                ? this.props.staffs.filter(s => s.destination === this.state.selectedDestination)
-                : this.props.staffs
-
         return (
             <div>
                 <ManageStaff
-                    staffs={staffs}
+                    staffs={this.state.staffs}
                     destinations={this.props.destinations}
                     destinationOnChange={this.destinationOnChange}
                     staffOnChange={this.staffOnChange}

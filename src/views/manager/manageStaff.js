@@ -45,6 +45,7 @@ const ManageStaff = props => {
                             id="staff"
                             valueKey="value"
                             labelKey="label"
+                            disabled={props.selectedDestination === null}
                             className="form-control"
                             options={props.staffs}
                             onChange={props.staffOnChange}
