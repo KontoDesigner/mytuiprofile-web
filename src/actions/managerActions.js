@@ -11,24 +11,6 @@ export function getStaffsSuccess(staffs) {
     }
 }
 
-export function getResignHistory() {
-    return async function(dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const resignHistory = await restClient.get(`${BASE}/getresignhistory`)
-
-            dispatch(endAjaxCall())
-
-            return resignHistory ? resignHistory : {}
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-}
-
 export function getStaffs(destination) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -39,24 +21,6 @@ export function getStaffs(destination) {
             dispatch(endAjaxCall())
 
             return staffs
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-}
-
-export function getStaff() {
-    return async function(dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const staff = await restClient.get(`${BASE}/getstaff`)
-
-            dispatch(endAjaxCall())
-
-            return staff
         } catch (error) {
             dispatch(ajaxCallError(error))
 

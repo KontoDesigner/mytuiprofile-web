@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as managerActions from '../../actions/managerActions'
+import * as staffActions from '../../actions/staffActions'
 import ManageStaff from './manageStaff'
 import MyProfile from '../staff/myProfile'
 import * as handleStaff from '../../components/handleStaff'
@@ -20,8 +21,8 @@ class Manager extends Component {
     }
 
     async componentWillMount() {
-        const staff = await this.props.managerActions.getStaff()
-        const resignHistory = await this.props.managerActions.getResignHistory()
+        const staff = await this.props.staffActions.getStaff()
+        const resignHistory = await this.props.staffActions.getResignHistory()
 
         this.setState({ staff, resignHistory, loaded: true })
     }
@@ -65,6 +66,7 @@ class Manager extends Component {
                 />
 
                 <MyProfile
+                    updateStaff={this.props.staffActions.updateStaff}
                     disabled={false}
                     staff={this.state.staff}
                     resignHistory={this.state.resignHistory}
@@ -93,7 +95,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        managerActions: bindActionCreators(managerActions, dispatch)
+        managerActions: bindActionCreators(managerActions, dispatch),
+        staffActions: bindActionCreators(staffActions, dispatch)
     }
 }
 

@@ -21,7 +21,8 @@ class Staff extends Component {
             loaded: false,
             email: email,
             staff: null,
-            disabled: false
+            disabled: false,
+            manager: false
         }
     }
 
@@ -32,12 +33,20 @@ class Staff extends Component {
             const staff = await this.props.staffActions.getStaffFromEmail(this.state.email)
             const resignHistory = await this.props.staffActions.getStaffFromEmail(this.state.email)
 
-            this.setState({ staff, resignHistory, disabled: true, loaded: true })
+            this.setState({ staff, resignHistory, disabled: true, manager, loaded: true })
         } else {
             const staff = await this.props.staffActions.getStaff()
             const resignHistory = await this.props.staffActions.getResignHistory()
 
             this.setState({ staff, resignHistory, loaded: true })
+        }
+    }
+
+    updateStaff = async () => {
+        if (this.state.manager === true && this.state.email) {
+            await this.props.staffActions.updateStaffFromEmail(this.state.email, this.state.staff)
+        } else {
+            await this.props.staffActions.updateStaff(this.state.staff)
         }
     }
 
@@ -49,6 +58,7 @@ class Staff extends Component {
         return (
             <div>
                 <MyProfile
+                    updateStaff={this.updateStaff}
                     disabled={this.state.disabled}
                     staff={this.state.staff}
                     resignHistory={this.state.resignHistory}
