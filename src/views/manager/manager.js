@@ -21,8 +21,9 @@ class Manager extends Component {
 
     async componentWillMount() {
         const staff = await this.props.managerActions.getStaff()
+        const resignHistory = await this.props.managerActions.getResignHistory()
 
-        this.setState({ staff, loaded: true })
+        this.setState({ staff, resignHistory, loaded: true })
     }
 
     destinationOnChange = async destination => {
@@ -65,9 +66,15 @@ class Manager extends Component {
 
                 <MyProfile
                     staff={this.state.staff}
+                    resignHistory={this.state.resignHistory}
+                    jobTitles={this.props.jobTitles}
+                    sourceMarkets={this.props.sourceMarkets}
                     handleStaffField={(e, _this) => handleStaff.handleStaffField(e, this)}
                     handleStaffSelect={(field, val, selector, _this) => handleStaff.handleStaffSelect(field, val, selector, this)}
                     handleStaffDatePicker={(field, date, _this) => handleStaff.handleStaffDatePicker(field, date, this)}
+                    handleResignHistoryField={(e, _this) => handleStaff.handleResignHistoryField(e, this)}
+                    handleResignHistorySelect={(field, val, selector, _this) => handleStaff.handleResignHistorySelect(field, val, selector, this)}
+                    handleResignHistoryDatePicker={(field, date, _this) => handleStaff.handleResignHistoryDatePicker(field, date, this)}
                 />
             </div>
         )
@@ -77,6 +84,8 @@ class Manager extends Component {
 function mapStateToProps(state) {
     return {
         destinations: state.geography.destinations,
+        sourceMarkets: state.geography.sourceMarkets,
+        jobTitles: state.geography.jobTitles,
         staffs: state.manager.staffs
     }
 }

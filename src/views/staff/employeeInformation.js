@@ -4,6 +4,25 @@ import TextInput from '../../components/textInput'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
 
+const positionTypes = [
+    {
+        id: 'Posted',
+        name: 'Posted'
+    },
+    {
+        id: 'Local',
+        name: 'Local'
+    },
+    {
+        id: 'Freelance',
+        name: 'Freelance'
+    },
+    {
+        id: 'Flexible',
+        name: 'Flexible'
+    }
+]
+
 const EmployeeInformation = props => {
     return (
         <Card>
@@ -40,7 +59,7 @@ const EmployeeInformation = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.positionTypes}
+                            options={positionTypes}
                             onChange={v => {
                                 props.handleStaffSelect('positionType', v, 'id')
                             }}

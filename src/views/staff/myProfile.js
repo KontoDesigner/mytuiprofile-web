@@ -15,9 +15,15 @@ const MyProfile = props => {
 
             <Form
                 staff={props.staff}
+                resignHistory={props.resignHistory}
+                jobTitles={props.jobTitles}
+                sourceMarkets={props.sourceMarkets}
                 handleStaffField={props.handleStaffField}
                 handleStaffSelect={props.handleStaffSelect}
                 handleStaffDatePicker={props.handleStaffDatePicker}
+                handleResignHistoryField={props.handleResignHistoryField}
+                handleResignHistorySelect={props.handleResignHistorySelect}
+                handleResignHistoryDatePicker={props.handleResignHistoryDatePicker}
             />
         </div>
     )

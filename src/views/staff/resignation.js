@@ -5,6 +5,60 @@ import Select from 'react-select'
 import Datetime from 'react-datetime'
 import { Row, Col, Label, Input, Button } from 'reactstrap'
 
+const managerReasons = [
+    {
+        id: 'Dismissed',
+        name: 'Dismissed'
+    },
+    {
+        id: 'Resigned',
+        name: 'Resigned'
+    },
+    {
+        id: 'Other (Please Specify)',
+        name: 'Other (Please Specify)'
+    }
+]
+
+const resignmentReasons = [
+    {
+        id: 'Expectations of Job',
+        name: 'Expectations of Job'
+    },
+    {
+        id: 'Management',
+        name: 'Management'
+    },
+    {
+        id: 'Training',
+        name: 'Training'
+    },
+    {
+        id: 'Pay & Reward',
+        name: 'Pay & Reward'
+    },
+    {
+        id: 'Working Hours',
+        name: 'Working Hours'
+    },
+    {
+        id: 'Personal/Family Reasons',
+        name: 'Personal/Family Reasons'
+    },
+    {
+        id: 'Destination',
+        name: 'Destination'
+    },
+    {
+        id: 'Returned to School/University',
+        name: 'Returned to School/University'
+    },
+    {
+        id: 'Found a new job',
+        name: 'Found a new job'
+    }
+]
+
 const Resignation = props => {
     const enableResignBtn = (
         <Button
@@ -34,7 +88,7 @@ const Resignation = props => {
                         <Datetime
                             value={props.resignHistory.appDate}
                             onChange={v => {
-                                props.handleResignDatePicker('appDate', v)
+                                props.handleResignHistoryDatePicker('appDate', v)
                             }}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
@@ -51,9 +105,9 @@ const Resignation = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.managerReasons}
+                            options={managerReasons}
                             onChange={v => {
-                                props.handleSelectTypes('managerReason', v, 'id')
+                                props.handleResignHistorySelect('managerReason', v, 'id')
                             }}
                             value={props.resignHistory.managerReason === '' ? null : props.resignHistory.managerReason}
                             placeholder="Select"
@@ -68,9 +122,9 @@ const Resignation = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.resignmentReasons}
+                            options={resignmentReasons}
                             onChange={v => {
-                                props.handleSelectTypes('reasonForResignment', v, 'id')
+                                props.handleResignHistorySelect('reasonForResignment', v, 'id')
                             }}
                             value={props.resignHistory.reasonForResignment === '' ? null : props.resignHistory.reasonForResignment}
                             placeholder="Select"
@@ -85,9 +139,9 @@ const Resignation = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.allJobTitles}
+                            options={props.jobTitles}
                             onChange={v => {
-                                props.handleSelectTypes('jobTitleWhenResigned', v, 'id')
+                                props.handleResignHistorySelect('jobTitleWhenResigned', v, 'id')
                             }}
                             value={props.resignHistory.jobTitleWhenResigned === '' ? null : props.resignHistory.jobTitleWhenResigned}
                             placeholder="JobTitleWhenResigned"

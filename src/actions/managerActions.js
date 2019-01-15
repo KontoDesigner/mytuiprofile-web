@@ -2,12 +2,30 @@ import { ActionTypes as types } from '../constants/managerConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import restClient from '../infrastructure/restClient'
 
-const BASE = 'STAFF'
+const BASE = 'staff'
 
 export function getStaffsSuccess(staffs) {
     return {
         type: types.GET_STAFFS_SUCCESS,
         data: { staffs }
+    }
+}
+
+export function getResignHistory() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const resignHistory = await restClient.get(`${BASE}/getresignhistory`)
+
+            dispatch(endAjaxCall())
+
+            return resignHistory ? resignHistory : {}
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
     }
 }
 

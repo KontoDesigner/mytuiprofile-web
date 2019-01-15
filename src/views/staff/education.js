@@ -4,6 +4,25 @@ import TextInput from '../../components/textInput'
 import Select from 'react-select'
 import { Col, Label, Input } from 'reactstrap'
 
+const childCareLevels = [
+    {
+        id: 'Level 3 or above',
+        name: 'Level 3 or above'
+    },
+    {
+        id: 'Level 2 or equivalent',
+        name: 'Level 2 or equivalent'
+    },
+    {
+        id: 'Other',
+        name: 'Other'
+    },
+    {
+        id: 'None',
+        name: 'None'
+    }
+]
+
 const Education = props => {
     return (
         <div>
@@ -24,7 +43,7 @@ const Education = props => {
                                 valueKey="id"
                                 labelKey="name"
                                 className="form-control"
-                                options={props.childCareLevels}
+                                options={childCareLevels}
                                 onChange={v => {
                                     props.handleStaffSelect('childCare', v, 'id')
                                 }}

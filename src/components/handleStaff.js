@@ -1,3 +1,41 @@
+const handleResignHistoryField = (event, _this) => {
+    const field = event.target.name
+    const val = event.target.value
+
+    let resignHistory = Object.assign({}, _this.state.resignHistory)
+    resignHistory[field] = val
+
+    _this.setState({ resignHistory })
+}
+
+const handleResignHistorySelect = (field, val, selector, _this) => {
+    const id = val != null ? val[selector] : undefined
+
+    let resignHistory = Object.assign({}, _this.state.resignHistory)
+    resignHistory[field] = id
+
+    _this.setState({ resignHistory })
+}
+
+const handleResignHistoryDatePicker = (field, date, _this) => {
+    let val = ''
+
+    //Picker
+    if (date._d) {
+        val = date._d
+    }
+
+    //Manual
+    if (!date._d) {
+        val = date
+    }
+
+    let resignHistory = Object.assign({}, _this.state.resignHistory)
+    resignHistory[field] = val
+
+    _this.setState({ resignHistory })
+}
+
 const handleStaffField = (event, _this) => {
     const field = event.target.name
     const val = event.target.value
@@ -37,6 +75,9 @@ const handleStaffDatePicker = (field, date, _this) => {
 }
 
 module.exports = {
+    handleResignHistoryField,
+    handleResignHistorySelect,
+    handleResignHistoryDatePicker,
     handleStaffField,
     handleStaffSelect,
     handleStaffDatePicker

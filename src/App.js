@@ -22,7 +22,12 @@ class App extends Component {
     async componentWillMount() {
         const _this = this
 
-        return Promise.all([this.props.userActions.getUser(), this.props.geographyActions.getDestinations()]).then(function() {
+        return Promise.all([
+            this.props.userActions.getUser(),
+            this.props.geographyActions.getDestinations(),
+            this.props.geographyActions.getJobTitles(),
+            this.props.geographyActions.getSourceMarkets()
+        ]).then(function() {
             _this.setState({ loaded: true })
         })
     }

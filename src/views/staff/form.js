@@ -25,6 +25,7 @@ const Form = props => {
                 handleStaffField={props.handleStaffField}
                 handleStaffSelect={props.handleStaffSelect}
                 handleStaffDatePicker={props.handleStaffDatePicker}
+                sourceMarkets={props.sourceMarkets}
             />
 
             <Placement
@@ -39,7 +40,15 @@ const Form = props => {
 
             <Profiling staff={props.staff} handleStaffSelect={props.handleStaffSelect} />
 
-            {/* <Resignation staff={props.staff} /> */}
+            <Resignation
+                staff={props.staff}
+                resignHistory={props.resignHistory}
+                handleResignHistoryField={props.handleResignHistoryField}
+                handleResignHistorySelect={props.handleResignHistorySelect}
+                handleResignHistoryDatePicker={props.handleResignHistoryDatePicker}
+                handleStaffField={props.handleStaffField}
+                jobTitles={props.jobTitles}
+            />
         </div>
     )
 }

@@ -24,3 +24,49 @@ export function getDestinations() {
         }
     }
 }
+
+export function getJobTitlesSuccess(jobTitles) {
+    return {
+        type: types.GET_JOBTITLES_SUCCESS,
+        data: { jobTitles }
+    }
+}
+
+export function getJobTitles() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const jobTitles = await restClient.get(`geography/getjobtitles`)
+
+            dispatch(getJobTitlesSuccess(jobTitles))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function getSourceMarketsSuccess(sourceMarkets) {
+    return {
+        type: types.GET_SOURCEMARKETS_SUCCESS,
+        data: { sourceMarkets: sourceMarkets }
+    }
+}
+
+export function getSourceMarkets() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const sourceMarkets = await restClient.get(`geography/getsourcemarkets`)
+
+            dispatch(getSourceMarketsSuccess(sourceMarkets))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}

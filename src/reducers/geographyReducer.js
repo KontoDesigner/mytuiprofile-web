@@ -1,7 +1,9 @@
 import { ActionTypes as types } from '../constants/geographyConstants'
 
 var defaultState = {
-    destinations: []
+    destinations: [],
+    jobTitles: [],
+    sourceMarkets: []
 }
 
 export default function geographyReducer(state = defaultState, action) {
@@ -10,6 +12,16 @@ export default function geographyReducer(state = defaultState, action) {
             return {
                 ...state,
                 destinations: action.data.destinations
+            }
+        case types.GET_JOBTITLES_SUCCESS:
+            return {
+                ...state,
+                jobTitles: action.data.jobTitles
+            }
+        case types.GET_SOURCEMARKETS_SUCCESS:
+            return {
+                ...state,
+                sourceMarkets: action.data.sourceMarkets
             }
         default:
             return state
