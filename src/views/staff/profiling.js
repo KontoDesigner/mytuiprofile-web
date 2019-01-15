@@ -2,6 +2,94 @@ import React from 'react'
 import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import Select from 'react-select'
 
+const suitable = [
+    //not in use  delete
+    {
+        id: 'Adults/Couples',
+        name: 'Adults/Couples'
+    },
+    {
+        id: 'Families',
+        name: 'Families'
+    },
+    {
+        id: 'Scene 18-25 years old',
+        name: 'Scene 18-25 years old'
+    },
+    {
+        id: '5*hotels',
+        name: '5*hotels'
+    },
+    {
+        id: '2-3*hotels',
+        name: '2-3*hotels'
+    },
+    {
+        id: 'Prefer to work in a team',
+        name: 'Prefer to work in a team'
+    },
+    {
+        id: 'Prefer to not work in a team',
+        name: 'Prefer to not work in a team'
+    },
+    {
+        id: 'Willing to work in a resort on your own',
+        name: 'Willing to work in a resort on your own'
+    }
+]
+
+const international = [
+    //not in use  delete
+    {
+        id: 'Family life',
+        name: 'Family life'
+    },
+    {
+        id: 'Scene',
+        name: 'Scene'
+    },
+    {
+        id: 'Sensatori',
+        name: 'Sensatori'
+    },
+    {
+        id: 'Sensimar',
+        name: 'Sensimar'
+    },
+    {
+        id: 'Suneo club',
+        name: 'Suneo club'
+    }
+]
+
+const national = [
+    //not in use  delete
+    {
+        id: '1-2 Fun club (Germany)',
+        name: '1-2 Fun club (Germany)'
+    },
+    {
+        id: 'Best Family (Germany)',
+        name: 'Best Family (Germany)'
+    },
+    {
+        id: 'Blue Star (Nordic)',
+        name: 'Blue Star (Nordic)'
+    },
+    {
+        id: 'Holiday Village (UK)',
+        name: 'Holiday Village (UK)'
+    },
+    {
+        id: 'Thomson Gold (UK)',
+        name: 'Thomson Gold (UK)'
+    },
+    {
+        id: 'Time To Smile (Netherlands)',
+        name: 'Time To Smile (Netherlands)'
+    }
+]
+
 const Profiling = props => {
     return (
         <Card>
@@ -17,7 +105,7 @@ const Profiling = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.suitable}
+                            options={suitable}
                             onChange={v => {
                                 props.handleStaffSelect('suitable', v, 'id')
                             }}
@@ -34,7 +122,7 @@ const Profiling = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.international}
+                            options={international}
                             onChange={v => {
                                 props.handleStaffSelect('international', v, 'id')
                             }}
@@ -51,7 +139,7 @@ const Profiling = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.national}
+                            options={national}
                             onChange={v => {
                                 props.handleStaffSelect('national', v, 'id')
                             }}

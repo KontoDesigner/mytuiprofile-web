@@ -3,6 +3,22 @@ import { Card, CardBody, Col, CardHeader } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import Select from 'react-select'
 
+const languages = [
+    //not in use  delete
+    {
+        id: 'Not at all',
+        name: 'Not at all'
+    },
+    {
+        id: 'Conversational',
+        name: 'Conversational'
+    },
+    {
+        id: 'Fluent',
+        name: 'Fluent'
+    }
+]
+
 const Languages = props => {
     return (
         <Card>
@@ -27,7 +43,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('arabic', v, 'id')
                             }}
@@ -44,7 +60,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('danish', v, 'id')
                             }}
@@ -61,7 +77,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('dutch', v, 'id')
                             }}
@@ -78,7 +94,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('english', v, 'id')
                             }}
@@ -95,7 +111,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('finnish', v, 'id')
                             }}
@@ -112,7 +128,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('french', v, 'id')
                             }}
@@ -129,7 +145,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('german', v, 'id')
                             }}
@@ -146,7 +162,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('greek', v, 'id')
                             }}
@@ -163,7 +179,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('norwegian', v, 'id')
                             }}
@@ -180,7 +196,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('italian', v, 'id')
                             }}
@@ -197,7 +213,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('polish', v, 'id')
                             }}
@@ -214,7 +230,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('portuguese', v, 'id')
                             }}
@@ -231,7 +247,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('russia', v, 'id')
                             }}
@@ -248,7 +264,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('spanish', v, 'id')
                             }}
@@ -265,7 +281,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('turkish', v, 'id')
                             }}
@@ -282,7 +298,7 @@ const Languages = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.languages}
+                            options={languages}
                             onChange={v => {
                                 props.handleStaffSelect('swedish', v, 'id')
                             }}
