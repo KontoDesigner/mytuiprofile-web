@@ -18,7 +18,7 @@ const Form = props => {
 
     return (
         <div>
-            <ContactInformation staff={props.staff} handleStaffField={props.handleStaffField} />
+            <ContactInformation staff={props.staff} handleStaffField={props.handleStaffField} disabled={props.disabled} />
 
             <EmployeeInformation
                 staff={props.staff}
@@ -26,19 +26,31 @@ const Form = props => {
                 handleStaffSelect={props.handleStaffSelect}
                 handleStaffDatePicker={props.handleStaffDatePicker}
                 sourceMarkets={props.sourceMarkets}
+                disabled={props.disabled}
             />
 
             <Placement
                 handleStaffField={props.handleStaffField}
                 handleStaffSelect={props.handleStaffSelect}
                 handleStaffDatePicker={props.handleStaffDatePicker}
+                disabled={props.disabled}
             />
 
-            <Education staff={props.staff} handleStaffField={props.handleStaffField} handleStaffSelect={props.handleStaffSelect} />
+            <Education
+                staff={props.staff}
+                handleStaffField={props.handleStaffField}
+                handleStaffSelect={props.handleStaffSelect}
+                disabled={props.disabled}
+            />
 
-            <Languages staff={props.staff} handleStaffField={props.handleStaffField} handleStaffSelect={props.handleStaffSelect} />
+            <Languages
+                staff={props.staff}
+                handleStaffField={props.handleStaffField}
+                handleStaffSelect={props.handleStaffSelect}
+                disabled={props.disabled}
+            />
 
-            <Profiling staff={props.staff} handleStaffSelect={props.handleStaffSelect} />
+            <Profiling staff={props.staff} handleStaffSelect={props.handleStaffSelect} disabled={props.disabled} />
 
             <Resignation
                 staff={props.staff}
@@ -48,6 +60,7 @@ const Form = props => {
                 handleResignHistoryDatePicker={props.handleResignHistoryDatePicker}
                 handleStaffField={props.handleStaffField}
                 jobTitles={props.jobTitles}
+                disabled={props.disabled}
             />
         </div>
     )

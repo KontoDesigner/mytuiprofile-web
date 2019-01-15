@@ -65,6 +65,7 @@ class Manager extends Component {
                 />
 
                 <MyProfile
+                    disabled={false}
                     staff={this.state.staff}
                     resignHistory={this.state.resignHistory}
                     jobTitles={this.props.jobTitles}

@@ -32,6 +32,7 @@ const Languages = props => {
                             label="Language(s) (not in list below)"
                             value={props.staff.language}
                             onChange={props.handleStaffField}
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -49,6 +50,7 @@ const Languages = props => {
                             }}
                             value={props.staff.arabic === '' ? null : props.staff.arabic}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -66,6 +68,7 @@ const Languages = props => {
                             }}
                             value={props.staff.danish === '' ? null : props.staff.danish}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -83,6 +86,7 @@ const Languages = props => {
                             }}
                             value={props.staff.dutch === '' ? null : props.staff.dutch}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -100,6 +104,7 @@ const Languages = props => {
                             }}
                             value={props.staff.english === '' ? null : props.staff.english}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -117,6 +122,7 @@ const Languages = props => {
                             }}
                             value={props.staff.finnish === '' ? null : props.staff.finnish}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -134,6 +140,7 @@ const Languages = props => {
                             }}
                             value={props.staff.french === '' ? null : props.staff.french}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -151,6 +158,7 @@ const Languages = props => {
                             }}
                             value={props.staff.german === '' ? null : props.staff.german}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -168,6 +176,7 @@ const Languages = props => {
                             }}
                             value={props.staff.greek === '' ? null : props.staff.greek}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -185,6 +194,7 @@ const Languages = props => {
                             }}
                             value={props.staff.norwegian === '' ? null : props.staff.norwegian}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -202,6 +212,7 @@ const Languages = props => {
                             }}
                             value={props.staff.italian === '' ? null : props.staff.italian}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -219,6 +230,7 @@ const Languages = props => {
                             }}
                             value={props.staff.polish === '' ? null : props.staff.polish}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -236,6 +248,7 @@ const Languages = props => {
                             }}
                             value={props.staff.portuguese === '' ? null : props.staff.portuguese}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -253,6 +266,7 @@ const Languages = props => {
                             }}
                             value={props.staff.russia === '' ? null : props.staff.russia}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -270,6 +284,7 @@ const Languages = props => {
                             }}
                             value={props.staff.spanish === '' ? null : props.staff.spanish}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -287,6 +302,7 @@ const Languages = props => {
                             }}
                             value={props.staff.turkish === '' ? null : props.staff.turkish}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -304,6 +320,7 @@ const Languages = props => {
                             }}
                             value={props.staff.swedish === '' ? null : props.staff.swedish}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
                 </div>

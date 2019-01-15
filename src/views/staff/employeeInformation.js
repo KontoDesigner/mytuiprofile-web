@@ -31,7 +31,13 @@ const EmployeeInformation = props => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="nat" label="Nationality" value={props.staff.nat} onChange={props.handleStaffField} />
+                        <TextInput
+                            disabled={props.disabled}
+                            name="nat"
+                            label="Nationality"
+                            value={props.staff.nat}
+                            onChange={props.handleStaffField}
+                        />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -48,6 +54,7 @@ const EmployeeInformation = props => {
                             }}
                             value={props.staff.sourceMarket === '' ? null : props.staff.sourceMarket}
                             placeholder="Source Market"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -65,11 +72,18 @@ const EmployeeInformation = props => {
                             }}
                             value={props.staff.positionType === '' ? null : props.staff.positionType}
                             placeholder="Position Type"
+                            disabled={props.disabled}
                         />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="costCenter" label="Cost Center" value={props.staff.costCenter} onChange={props.handleStaffField} />
+                        <TextInput
+                            disabled={props.disabled}
+                            name="costCenter"
+                            label="Cost Center"
+                            value={props.staff.costCenter}
+                            onChange={props.handleStaffField}
+                        />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -84,7 +98,7 @@ const EmployeeInformation = props => {
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
                             utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
                         />
                     </Col>
 
@@ -100,16 +114,28 @@ const EmployeeInformation = props => {
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
                             utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
                         />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="driver" label="Driver" value={props.staff.driver} onChange={props.handleStaffField} />
+                        <TextInput
+                            disabled={props.disabled}
+                            name="driver"
+                            label="Driver"
+                            value={props.staff.driver}
+                            onChange={props.handleStaffField}
+                        />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.handleStaffField} />
+                        <TextInput
+                            disabled={props.disabled}
+                            name="drivingYear"
+                            label="Driving Year"
+                            value={props.staff.drivingYear}
+                            onChange={props.handleStaffField}
+                        />
                     </Col>
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
                         <Label for="empcontent">Remarks</Label>
@@ -123,6 +149,7 @@ const EmployeeInformation = props => {
                             value={props.staff.empcontent}
                             onChange={props.handleStaffField}
                             aria-multiline="true"
+                            disabled={props.disabled}
                         />
                     </Col>
                 </div>

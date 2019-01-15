@@ -60,7 +60,7 @@ const Placement = props => {
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
                                 utc={true}
-                                inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
                             />
                         </Col>
 
@@ -73,7 +73,7 @@ const Placement = props => {
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
                                 utc={true}
-                                inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
                             />
                         </Col>
                     </div>

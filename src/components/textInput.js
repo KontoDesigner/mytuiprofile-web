@@ -1,10 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 const TextInput = ({ name, label, onChange, placeholder, value, disabled }) => {
-    return ([
-        <label
-            key={0}
-            htmlFor={name}>
+    return [
+        <label key={0} htmlFor={name}>
             {label}
         </label>,
 
@@ -16,9 +14,9 @@ const TextInput = ({ name, label, onChange, placeholder, value, disabled }) => {
             placeholder={placeholder}
             value={value !== null ? value : ''}
             onChange={onChange}
-            disabled={disabled === true ? true : false} />
+            disabled={disabled === true ? true : false}
+        />
     ]
-    );
-};
+}
 
-export default TextInput;
+export default TextInput

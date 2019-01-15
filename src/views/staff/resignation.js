@@ -94,7 +94,7 @@ const Resignation = props => {
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
                             utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
                         />
                     </Col>
 
@@ -111,6 +111,7 @@ const Resignation = props => {
                             }}
                             value={props.resignHistory.managerReason === '' ? null : props.resignHistory.managerReason}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -128,6 +129,7 @@ const Resignation = props => {
                             }}
                             value={props.resignHistory.reasonForResignment === '' ? null : props.resignHistory.reasonForResignment}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -145,6 +147,7 @@ const Resignation = props => {
                             }}
                             value={props.resignHistory.jobTitleWhenResigned === '' ? null : props.resignHistory.jobTitleWhenResigned}
                             placeholder="JobTitleWhenResigned"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -160,11 +163,18 @@ const Resignation = props => {
                             onChange={props.handleStaffField}
                             rows={6}
                             aria-multiline="true"
+                            disabled={props.disabled}
                         />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="signature" label="Signature" value={props.staff.signature} onChange={props.handleStaffField} />
+                        <TextInput
+                            disabled={props.disabled}
+                            name="signature"
+                            label="Signature"
+                            value={props.staff.signature}
+                            onChange={props.handleStaffField}
+                        />
                     </Col>
                 </div>
             </CardBody>

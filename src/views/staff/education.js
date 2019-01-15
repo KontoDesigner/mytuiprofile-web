@@ -32,7 +32,13 @@ const Education = props => {
                 <CardBody className="no-padding-bottom">
                     <div className="form-row">
                         <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                            <TextInput name="education" label="Education" value={props.staff.education} onChange={props.handleStaffField} />
+                            <TextInput
+                                disabled={props.disabled}
+                                name="education"
+                                label="Education"
+                                value={props.staff.education}
+                                onChange={props.handleStaffField}
+                            />
                         </Col>
 
                         <Col sm="12" md="6" lg="6" xl="6" className="form-group form-group-select">
@@ -47,6 +53,7 @@ const Education = props => {
                                 onChange={v => {
                                     props.handleStaffSelect('childCare', v, 'id')
                                 }}
+                                disabled={props.disabled}
                                 value={props.staff.childCare === '' ? null : props.staff.childCare}
                                 placeholder="Select"
 
@@ -66,6 +73,7 @@ const Education = props => {
                             {/* <TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> */}
                             <Label for="comment">childCareRemarks</Label>
                             <Input
+                                disabled={props.disabled}
                                 required
                                 type="textarea"
                                 className="form-control"

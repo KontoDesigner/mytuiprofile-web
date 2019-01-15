@@ -15,6 +15,7 @@ const MyProfile = props => {
 
             <Form
                 staff={props.staff}
+                disabled={props.disabled}
                 resignHistory={props.resignHistory}
                 jobTitles={props.jobTitles}
                 sourceMarkets={props.sourceMarkets}

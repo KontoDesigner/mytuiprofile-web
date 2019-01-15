@@ -111,6 +111,7 @@ const Profiling = props => {
                             }}
                             value={props.staff.suitable === '' ? null : props.staff.suitable}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -128,6 +129,7 @@ const Profiling = props => {
                             }}
                             value={props.staff.international === '' ? null : props.staff.international}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
 
@@ -145,6 +147,7 @@ const Profiling = props => {
                             }}
                             value={props.staff.national === '' ? null : props.staff.national}
                             placeholder="Select"
+                            disabled={props.disabled}
                         />
                     </Col>
                 </div>

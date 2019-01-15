@@ -20,21 +20,22 @@ class Staff extends Component {
         this.state = {
             loaded: false,
             email: email,
-            staff: null
+            staff: null,
+            disabled: false
         }
     }
 
     async componentWillMount() {
         const manager = this.props.user.roles.includes(userRoles.Manager)
 
-        if (manager === false && this.state.email) {
+        if (manager === true && this.state.email) {
             const staff = await this.props.staffActions.getStaffFromEmail(this.state.email)
-            const resignHistory = await this.props.staffActions.getResignHistory(this.state.email)
+            const resignHistory = await this.props.staffActions.getStaffFromEmail(this.state.email)
 
-            this.setState({ staff, resignHistory, loaded: true })
+            this.setState({ staff, resignHistory, disabled: true, loaded: true })
         } else {
             const staff = await this.props.staffActions.getStaff()
-            const resignHistory = await this.props.staffActions.getResignHistory(this.state.email)
+            const resignHistory = await this.props.staffActions.getResignHistory()
 
             this.setState({ staff, resignHistory, loaded: true })
         }
@@ -48,6 +49,7 @@ class Staff extends Component {
         return (
             <div>
                 <MyProfile
+                    disabled={this.state.disabled}
                     staff={this.state.staff}
                     resignHistory={this.state.resignHistory}
                     jobTitles={this.props.jobTitles}
