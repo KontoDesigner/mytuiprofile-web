@@ -66,6 +66,9 @@ class Manager extends Component {
                 />
 
                 <MyProfile
+                    hideResignation={true}
+                    manager={true}
+                    handleSave={(staff, resignHistory) => handleStaff.handleSave(staff, resignHistory)}
                     updateStaff={this.props.staffActions.updateStaff}
                     disabled={false}
                     staff={this.state.staff}

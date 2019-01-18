@@ -6,6 +6,7 @@ import Education from './education'
 import Languages from './languages'
 import Profiling from './profiling'
 import Resignation from './resignation'
+import { Button } from 'reactstrap'
 
 const Form = props => {
     if (!props.staff) {
@@ -18,6 +19,19 @@ const Form = props => {
 
     return (
         <div>
+            {props.manager === true && props.hideResignation !== true && (
+                <Resignation
+                    staff={props.staff}
+                    resignHistory={props.resignHistory}
+                    handleResignHistoryField={props.handleResignHistoryField}
+                    handleResignHistorySelect={props.handleResignHistorySelect}
+                    handleResignHistoryDatePicker={props.handleResignHistoryDatePicker}
+                    handleStaffField={props.handleStaffField}
+                    jobTitles={props.jobTitles}
+                    disabled={props.disabled}
+                />
+            )}
+
             <ContactInformation staff={props.staff} handleStaffField={props.handleStaffField} disabled={props.disabled} />
 
             <EmployeeInformation
@@ -52,16 +66,16 @@ const Form = props => {
 
             <Profiling staff={props.staff} handleStaffSelect={props.handleStaffSelect} disabled={props.disabled} />
 
-            <Resignation
-                staff={props.staff}
-                resignHistory={props.resignHistory}
-                handleResignHistoryField={props.handleResignHistoryField}
-                handleResignHistorySelect={props.handleResignHistorySelect}
-                handleResignHistoryDatePicker={props.handleResignHistoryDatePicker}
-                handleStaffField={props.handleStaffField}
-                jobTitles={props.jobTitles}
-                disabled={props.disabled}
-            />
+            {props.disabled !== true && (
+                <Button
+                    size="lg"
+                    onClick={() => {
+                        props.handleSave(props.staff, props.resignHistory)
+                    }}
+                    color="success">
+                    Save
+                </Button>
+            )}
         </div>
     )
 }

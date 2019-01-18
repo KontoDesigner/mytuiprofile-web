@@ -54,4 +54,6 @@
 .card-footer
 {
     padding: 10px 15px; 
+    background-color:#F5F2EA;
+    border-color:rgba(0,0,0,.125);
 }
