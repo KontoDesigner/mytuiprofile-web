@@ -1,11 +1,3 @@
-const saveStaff = staff => {
-    alert(1)
-}
-
-const saveResignHistory = resignHistory => {
-    alert(1)
-}
-
 const handleResignHistoryField = (event, _this) => {
     const field = event.target.name
     const val = event.target.value
@@ -83,8 +75,6 @@ const handleStaffDatePicker = (field, date, _this) => {
 }
 
 module.exports = {
-    saveStaff,
-    saveResignHistory,
     handleResignHistoryField,
     handleResignHistorySelect,
     handleResignHistoryDatePicker,

@@ -14,8 +14,8 @@ const MyProfile = props => {
             </Row>
 
             <Form
-                saveStaff={props.saveStaff}
-                saveResignHistory={props.saveResignHistory}
+                updateStaff={props.updateStaff}
+                updateResignHistory={props.updateResignHistory}
                 handleResignation={props.handleResignation}
                 hideResignation={props.hideResignation}
                 manager={props.manager}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as managerActions from '../../actions/managerActions'
 import * as staffActions from '../../actions/staffActions'
 import ManageStaff from './manageStaff'
 import MyProfile from '../staff/myProfile'
@@ -33,7 +32,7 @@ class Manager extends Component {
         let staffs = null
 
         if (selectedDestination !== null) {
-            staffs = await this.props.managerActions.getStaffs(selectedDestination)
+            staffs = await this.props.staffActions.getStaffs(selectedDestination)
         }
 
         this.setState({ selectedDestination, selectedStaff: null, staffs })
@@ -68,9 +67,7 @@ class Manager extends Component {
                 <MyProfile
                     hideResignation={true}
                     manager={true}
-                    saveStaff={handleStaff.saveStaff}
-                    saveResignHistory={handleStaff.saveResignHistory}
-                    updateStaff={this.props.staffActions.updateStaff}
+                    updateStaff={() => this.props.staffActions.updateStaff(this.state.staff)}
                     disabled={false}
                     staff={this.state.staff}
                     resignHistory={this.state.resignHistory}
@@ -92,14 +89,12 @@ function mapStateToProps(state) {
     return {
         destinations: state.geography.destinations,
         sourceMarkets: state.geography.sourceMarkets,
-        jobTitles: state.geography.jobTitles,
-        staffs: state.manager.staffs
+        jobTitles: state.geography.jobTitles
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        managerActions: bindActionCreators(managerActions, dispatch),
         staffActions: bindActionCreators(staffActions, dispatch)
     }
 }

@@ -32,24 +32,17 @@ class Staff extends Component {
 
         if (manager === true && this.state.email) {
             const staff = await this.props.staffActions.getStaffFromEmail(this.state.email)
-            const resignHistory = await this.props.staffActions.getStaffFromEmail(this.state.email)
+            let resignHistory = await this.props.staffActions.getResignHistory(this.state.email)
+            resignHistory.staffId = staff.staffId
 
             const hideResignation = this.state.email === this.props.user.email
+            const disabled = this.state.email !== this.props.user.email
 
-            this.setState({ staff, resignHistory, disabled: true, manager, hideResignation, loaded: true })
+            this.setState({ staff, resignHistory, disabled, manager, hideResignation, loaded: true })
         } else {
             const staff = await this.props.staffActions.getStaff()
-            const resignHistory = await this.props.staffActions.getResignHistory()
 
-            this.setState({ staff, resignHistory, loaded: true })
-        }
-    }
-
-    updateStaff = async () => {
-        if (this.state.manager === true && this.state.email) {
-            await this.props.staffActions.updateStaffFromEmail(this.state.email, this.state.staff)
-        } else {
-            await this.props.staffActions.updateStaff(this.state.staff)
+            this.setState({ staff, loaded: true })
         }
     }
 
@@ -63,9 +56,8 @@ class Staff extends Component {
                 <MyProfile
                     hideResignation={this.state.hideResignation}
                     manager={this.state.manager}
-                    saveStaff={handleStaff.saveStaff}
-                    saveResignHistory={handleStaff.saveResignHistory}
-                    updateStaff={this.updateStaff}
+                    updateResignHistory={() => this.props.staffActions.updateResignHistory(this.state.resignHistory)}
+                    updateStaff={() => this.props.staffActions.updateStaff(this.state.staff)}
                     disabled={this.state.disabled}
                     staff={this.state.staff}
                     resignHistory={this.state.resignHistory}
