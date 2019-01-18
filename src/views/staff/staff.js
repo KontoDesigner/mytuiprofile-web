@@ -63,7 +63,8 @@ class Staff extends Component {
                 <MyProfile
                     hideResignation={this.state.hideResignation}
                     manager={this.state.manager}
-                    handleSave={(staff, resignHistory) => handleStaff.handleSave(staff, resignHistory)}
+                    saveStaff={handleStaff.saveStaff}
+                    saveResignHistory={handleStaff.saveResignHistory}
                     updateStaff={this.updateStaff}
                     disabled={this.state.disabled}
                     staff={this.state.staff}

@@ -1,4 +1,8 @@
-const handleSave = (staff, resignHistory) => {
+const saveStaff = staff => {
+    alert(1)
+}
+
+const saveResignHistory = resignHistory => {
     alert(1)
 }
 
@@ -79,7 +83,8 @@ const handleStaffDatePicker = (field, date, _this) => {
 }
 
 module.exports = {
-    handleSave,
+    saveStaff,
+    saveResignHistory,
     handleResignHistoryField,
     handleResignHistorySelect,
     handleResignHistoryDatePicker,

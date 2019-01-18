@@ -62,16 +62,12 @@ const resignmentReasons = [
 const Resignation = props => {
     const enableResignBtn = (
         <Button
-            // disabled={this.props.abscense === undefined && this.props.abscense === null}
             size="sm"
             className="pull-right"
             onClick={() => {
-                debugger
-                props.handleSaveResign()
+                props.saveResignHistory()
             }}
-            color="warning"
-            // style={{ marginRight: '2px', marginBottom: '2px' }}
-        >
+            color="warning">
             Enable
         </Button>
     )

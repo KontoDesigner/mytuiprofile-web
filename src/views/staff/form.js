@@ -21,6 +21,7 @@ const Form = props => {
         <div>
             {props.manager === true && props.hideResignation !== true && (
                 <Resignation
+                    saveResignHistory={props.saveResignHistory}
                     staff={props.staff}
                     resignHistory={props.resignHistory}
                     handleResignHistoryField={props.handleResignHistoryField}
@@ -70,7 +71,7 @@ const Form = props => {
                 <Button
                     size="lg"
                     onClick={() => {
-                        props.handleSave(props.staff, props.resignHistory)
+                        props.saveStaff(props.staff)
                     }}
                     color="success">
                     Save
