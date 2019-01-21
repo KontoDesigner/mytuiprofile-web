@@ -22,14 +22,11 @@ const Form = props => {
             {props.manager === true && props.hideResignation !== true && (
                 <Resignation
                     resignStaff={props.resignStaff}
-                    staff={props.staff}
                     resignHistory={props.resignHistory}
                     handleResignHistoryField={props.handleResignHistoryField}
                     handleResignHistorySelect={props.handleResignHistorySelect}
                     handleResignHistoryDatePicker={props.handleResignHistoryDatePicker}
-                    handleStaffField={props.handleStaffField}
                     jobTitles={props.jobTitles}
-                    disabled={props.disabled}
                 />
             )}
 

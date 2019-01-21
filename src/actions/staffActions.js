@@ -128,9 +128,9 @@ export function resignStaff(resignHistory) {
             dispatch(endAjaxCall())
 
             if (res && res.ok === true) {
-                toastr.success('Success', 'Staff updated')
+                toastr.success('Success', 'Staff resigned')
             } else {
-                toastr.error('Error', 'Could not update staff')
+                toastr.error('Error', 'Could not resign staff')
             }
 
             return res

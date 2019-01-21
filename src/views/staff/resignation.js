@@ -156,10 +156,11 @@ const Resignation = props => {
                             maxLength="1000"
                             name="resignComm"
                             id="resignComm"
-                            onChange={props.handleStaffField}
+                            onChange={props.handleResignHistoryField}
                             rows={6}
                             aria-multiline="true"
                             disabled={props.disabled}
+                            value={props.resignHistory.resignComm}
                         />
                     </Col>
 
@@ -168,8 +169,8 @@ const Resignation = props => {
                             disabled={props.disabled}
                             name="signature"
                             label="Signature"
-                            value={props.staff.signature}
-                            onChange={props.handleStaffField}
+                            value={props.resignHistory.signature}
+                            onChange={props.handleResignHistoryField}
                         />
                     </Col>
                 </div>
