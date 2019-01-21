@@ -45,7 +45,7 @@ class Staff extends Component {
             const staff = await this.props.staffActions.getStaff()
             const positionAssigns = await this.props.staffActions.getPositionAssigns()
 
-            this.setState({ staff, positionAssigns, loaded: true })
+            this.setState({ staff, positionAssigns, hideResignation: true, loaded: true })
         }
     }
 
