@@ -38,13 +38,7 @@ const ContactInformation = props => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput
-                            disabled={props.disabled}
-                            name="email"
-                            label="E-Mail"
-                            value={props.staff.email}
-                            onChange={props.handleStaffField}
-                        />
+                        <TextInput disabled={true} name="email" label="E-Mail" value={props.staff.email} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">

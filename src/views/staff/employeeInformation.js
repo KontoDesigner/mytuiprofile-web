@@ -98,7 +98,7 @@ const EmployeeInformation = props => {
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
                             utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
+                            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: true }}
                         />
                     </Col>
 
