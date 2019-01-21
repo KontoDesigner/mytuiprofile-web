@@ -65,7 +65,7 @@ const Resignation = props => {
             size="sm"
             className="pull-right"
             onClick={() => {
-                props.updateResignHistory()
+                props.resignStaff()
             }}
             color="warning">
             Enable

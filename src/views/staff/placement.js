@@ -30,7 +30,7 @@ const Placement = props => {
                                 name="regionHeadOf"
                                 label="Region/Head Of"
                                 disabled={true}
-                                value={props.positionAssign.Region + ' ' + props.positionAssign.HeadOf}
+                                value={props.positionAssign.region + ' ' + props.positionAssign.headOf}
                             />
                         </Col>
 
@@ -39,23 +39,23 @@ const Placement = props => {
                                 name="location"
                                 label="Location"
                                 disabled={true}
-                                value={props.positionAssign.SDD_DM + ' ' + props.positionAssign.Destination + ' ' + props.positionAssign.ConceptHotel}
+                                value={props.positionAssign.sddDm + ' ' + props.positionAssign.destination + ' ' + props.positionAssign.conceptHotel}
                             />
                         </Col>
 
                         <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                            <TextInput name="jobFamily" label="Job Family" disabled={true} value={props.positionAssign.JobFamily} />
+                            <TextInput name="jobFamily" label="Job Family" disabled={true} value={props.positionAssign.jobFamily} />
                         </Col>
 
                         <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                            <TextInput name="jobTitle" label="Job Title" disabled={true} value={props.positionAssign.JobTitle} />
+                            <TextInput name="jobTitle" label="Job Title" disabled={true} value={props.positionAssign.jobTitle} />
                         </Col>
 
                         <Col sm="12" md="6" lg="6" xl="6" className="form-group">
                             <label htmlFor="StaffStartDate">Start Date</label>
 
                             <Datetime
-                                value={props.positionAssign !== null ? props.positionAssign.StaffStartDate : ''}
+                                value={props.positionAssign !== null ? props.positionAssign.positionStartDate : ''}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
@@ -68,7 +68,7 @@ const Placement = props => {
                             <label htmlFor="StaffEndDate">End Date</label>
 
                             <Datetime
-                                value={props.positionAssign !== null ? props.positionAssign.StaffEndDate : ''}
+                                value={props.positionAssign !== null ? props.positionAssign.positionEndDate : ''}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect

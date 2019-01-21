@@ -15,15 +15,17 @@ class Manager extends Component {
             staff: null,
             loaded: false,
             selectedDestination: null,
-            selectedStaff: null
+            selectedStaff: null,
+            positionAssigns: null
         }
     }
 
     async componentWillMount() {
         const staff = await this.props.staffActions.getStaff()
         const resignHistory = await this.props.staffActions.getResignHistory()
+        const positionAssigns = await this.props.staffActions.getPositionAssigns()
 
-        this.setState({ staff, resignHistory, loaded: true })
+        this.setState({ staff, resignHistory, positionAssigns, loaded: true })
     }
 
     destinationOnChange = async destination => {
@@ -70,6 +72,7 @@ class Manager extends Component {
                     updateStaff={() => this.props.staffActions.updateStaff(this.state.staff)}
                     disabled={false}
                     staff={this.state.staff}
+                    positionAssigns={this.state.positionAssigns}
                     resignHistory={this.state.resignHistory}
                     jobTitles={this.props.jobTitles}
                     sourceMarkets={this.props.sourceMarkets}

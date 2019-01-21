@@ -21,7 +21,7 @@ const Form = props => {
         <div>
             {props.manager === true && props.hideResignation !== true && (
                 <Resignation
-                    updateResignHistory={props.updateResignHistory}
+                    resignStaff={props.resignStaff}
                     staff={props.staff}
                     resignHistory={props.resignHistory}
                     handleResignHistoryField={props.handleResignHistoryField}
@@ -44,12 +44,33 @@ const Form = props => {
                 disabled={props.disabled}
             />
 
-            <Placement
-                handleStaffField={props.handleStaffField}
-                handleStaffSelect={props.handleStaffSelect}
-                handleStaffDatePicker={props.handleStaffDatePicker}
-                disabled={props.disabled}
-            />
+            {props.positionAssigns && (
+                <div>
+                    <Placement
+                        handleStaffField={props.handleStaffField}
+                        handleStaffSelect={props.handleStaffSelect}
+                        handleStaffDatePicker={props.handleStaffDatePicker}
+                        disabled={props.disabled}
+                        positionAssign={props.positionAssigns.currentPositionAssign}
+                    />
+
+                    <Placement
+                        handleStaffField={props.handleStaffField}
+                        handleStaffSelect={props.handleStaffSelect}
+                        handleStaffDatePicker={props.handleStaffDatePicker}
+                        disabled={props.disabled}
+                        positionAssign={props.positionAssigns.nextPositionAssign}
+                    />
+
+                    <Placement
+                        handleStaffField={props.handleStaffField}
+                        handleStaffSelect={props.handleStaffSelect}
+                        handleStaffDatePicker={props.handleStaffDatePicker}
+                        disabled={props.disabled}
+                        positionAssign={props.positionAssigns.followingPositionAssign}
+                    />
+                </div>
+            )}
 
             <Education
                 staff={props.staff}

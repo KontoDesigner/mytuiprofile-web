@@ -102,7 +102,7 @@ export function updateStaff(staff) {
     }
 }
 
-export function updateResignHistory(resignHistory) {
+export function resignStaff(resignHistory) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
@@ -123,7 +123,7 @@ export function updateResignHistory(resignHistory) {
         }
 
         try {
-            const res = await restClient.post(`${BASE}/updateresignhistory`, req)
+            const res = await restClient.post(`${BASE}/resignstaff`, req)
 
             dispatch(endAjaxCall())
 
@@ -152,6 +152,42 @@ export function getStaffs(destination) {
             dispatch(endAjaxCall())
 
             return staffs
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function getPositionAssigns() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const positionAssigns = await restClient.get(`${BASE}/getpositionassigns`)
+
+            dispatch(endAjaxCall())
+
+            return positionAssigns
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function getPositionAssignsFromEmail(email) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const positionAssigns = await restClient.get(`${BASE}/getpositionassigns/${email}`)
+
+            dispatch(endAjaxCall())
+
+            return positionAssigns
         } catch (error) {
             dispatch(ajaxCallError(error))
 

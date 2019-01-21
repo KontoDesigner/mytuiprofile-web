@@ -23,7 +23,8 @@ class Staff extends Component {
             staff: null,
             disabled: false,
             manager: false,
-            hideResignation: false
+            hideResignation: false,
+            positionAssigns: null
         }
     }
 
@@ -32,17 +33,19 @@ class Staff extends Component {
 
         if (manager === true && this.state.email) {
             const staff = await this.props.staffActions.getStaffFromEmail(this.state.email)
+            const positionAssigns = await this.props.staffActions.getPositionAssignsFromEmail(this.state.email)
             let resignHistory = await this.props.staffActions.getResignHistory(this.state.email)
             resignHistory.staffId = staff.staffId
 
             const hideResignation = this.state.email === this.props.user.email
             const disabled = this.state.email !== this.props.user.email
 
-            this.setState({ staff, resignHistory, disabled, manager, hideResignation, loaded: true })
+            this.setState({ staff, resignHistory, disabled, manager, hideResignation, positionAssigns, loaded: true })
         } else {
             const staff = await this.props.staffActions.getStaff()
+            const positionAssigns = await this.props.staffActions.getPositionAssigns()
 
-            this.setState({ staff, loaded: true })
+            this.setState({ staff, positionAssigns, loaded: true })
         }
     }
 
@@ -56,10 +59,11 @@ class Staff extends Component {
                 <MyProfile
                     hideResignation={this.state.hideResignation}
                     manager={this.state.manager}
-                    updateResignHistory={() => this.props.staffActions.updateResignHistory(this.state.resignHistory)}
+                    resignStaff={() => this.props.staffActions.resignStaff(this.state.resignHistory)}
                     updateStaff={() => this.props.staffActions.updateStaff(this.state.staff)}
                     disabled={this.state.disabled}
                     staff={this.state.staff}
+                    positionAssigns={this.state.positionAssigns}
                     resignHistory={this.state.resignHistory}
                     jobTitles={this.props.jobTitles}
                     sourceMarkets={this.props.sourceMarkets}
