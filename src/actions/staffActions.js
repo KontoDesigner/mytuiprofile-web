@@ -82,16 +82,12 @@ export function updateStaff(staff) {
             }
         }
 
-        const req = {
-            staff
-        }
-
         try {
-            const res = await restClient.post(`${BASE}/updatestaff`, req)
+            const res = await restClient.post(`${BASE}/updatestaff`, staff)
 
             dispatch(endAjaxCall())
 
-            if (res === true) {
+            if (res && res.ok === true) {
                 toastr.success('Success', 'Staff updated')
             } else {
                 toastr.error('Error', 'Could not update staff')
@@ -106,7 +102,7 @@ export function updateStaff(staff) {
     }
 }
 
-export function updateResignHistory(resignInformation) {
+export function updateResignHistory(resignHistory) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
@@ -114,16 +110,16 @@ export function updateResignHistory(resignInformation) {
         var newdatemodified = currentdate.getFullYear() + '-' + (currentdate.getMonth() + 1) + '-' + currentdate.getDate()
 
         const req = {
-            ApplicationType: resignInformation.applicationType,
-            FromDate: resignInformation.appDate,
-            AppDate: resignInformation.appDate,
-            ManagerReason: resignInformation.managerReason,
-            Signature: resignInformation.signature,
-            JobTitleWhenResigned: resignInformation.jobTitleWhenResigned,
-            ReasonForResignment: resignInformation.reasonForResignment,
-            ResignComm: resignInformation.resignComm,
+            ApplicationType: resignHistory.applicationType,
+            FromDate: resignHistory.appDate,
+            AppDate: resignHistory.appDate,
+            ManagerReason: resignHistory.managerReason,
+            Signature: resignHistory.signature,
+            JobTitleWhenResigned: resignHistory.jobTitleWhenResigned,
+            ReasonForResignment: resignHistory.reasonForResignment,
+            ResignComm: resignHistory.resignComm,
             DateModified: newdatemodified,
-            StaffID: resignInformation.staffId
+            StaffID: resignHistory.staffId
         }
 
         try {
@@ -131,7 +127,7 @@ export function updateResignHistory(resignInformation) {
 
             dispatch(endAjaxCall())
 
-            if (res === true) {
+            if (res && res.ok === true) {
                 toastr.success('Success', 'Staff updated')
             } else {
                 toastr.error('Error', 'Could not update staff')

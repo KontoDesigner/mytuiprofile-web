@@ -143,9 +143,9 @@ const Profiling = props => {
                             className="form-control"
                             options={national}
                             onChange={v => {
-                                props.handleStaffSelect('national', v, 'id')
+                                props.handleStaffSelect('nationalConcept', v, 'id')
                             }}
-                            value={props.staff.national === '' ? null : props.staff.national}
+                            value={props.staff.nationalConcept === '' ? null : props.staff.nationalConcept}
                             placeholder="Select"
                             disabled={props.disabled}
                         />

@@ -262,9 +262,9 @@ const Languages = props => {
                             className="form-control"
                             options={languages}
                             onChange={v => {
-                                props.handleStaffSelect('russia', v, 'id')
+                                props.handleStaffSelect('russian', v, 'id')
                             }}
-                            value={props.staff.russia === '' ? null : props.staff.russia}
+                            value={props.staff.russian === '' ? null : props.staff.russian}
                             placeholder="Select"
                             disabled={props.disabled}
                         />

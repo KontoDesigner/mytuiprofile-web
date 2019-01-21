@@ -62,7 +62,7 @@ const ContactInformation = props => {
                             disabled={props.disabled}
                             name="phonehome"
                             label="Phone"
-                            value={props.staff.phonehome}
+                            value={props.staff.phoneHome}
                             onChange={props.handleStaffField}
                         />
                     </Col>
