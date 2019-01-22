@@ -143,7 +143,7 @@ const EmployeeInformation = props => {
                             required
                             type="textarea"
                             maxLength="1000"
-                            name="empcontent"
+                            name="empContent"
                             id="empcontent"
                             rows={3}
                             value={props.staff.empContent}

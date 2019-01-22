@@ -43,29 +43,44 @@ const Form = props => {
 
             {props.positionAssigns && (
                 <div>
-                    <Placement
-                        handleStaffField={props.handleStaffField}
-                        handleStaffSelect={props.handleStaffSelect}
-                        handleStaffDatePicker={props.handleStaffDatePicker}
-                        disabled={props.disabled}
-                        positionAssign={props.positionAssigns.currentPositionAssign}
-                    />
+                    {props.positionAssigns.currentPositionAssign && (
+                        <div>
+                            <Placement
+                                number={1}
+                                handleStaffField={props.handleStaffField}
+                                handleStaffSelect={props.handleStaffSelect}
+                                handleStaffDatePicker={props.handleStaffDatePicker}
+                                disabled={props.disabled}
+                                positionAssign={props.positionAssigns.currentPositionAssign}
+                            />
+                        </div>
+                    )}
 
-                    <Placement
-                        handleStaffField={props.handleStaffField}
-                        handleStaffSelect={props.handleStaffSelect}
-                        handleStaffDatePicker={props.handleStaffDatePicker}
-                        disabled={props.disabled}
-                        positionAssign={props.positionAssigns.nextPositionAssign}
-                    />
+                    {props.positionAssigns.nextPositionAssign && (
+                        <div>
+                            <Placement
+                                number={2}
+                                handleStaffField={props.handleStaffField}
+                                handleStaffSelect={props.handleStaffSelect}
+                                handleStaffDatePicker={props.handleStaffDatePicker}
+                                disabled={props.disabled}
+                                positionAssign={props.positionAssigns.nextPositionAssign}
+                            />
+                        </div>
+                    )}
 
-                    <Placement
-                        handleStaffField={props.handleStaffField}
-                        handleStaffSelect={props.handleStaffSelect}
-                        handleStaffDatePicker={props.handleStaffDatePicker}
-                        disabled={props.disabled}
-                        positionAssign={props.positionAssigns.followingPositionAssign}
-                    />
+                    {props.positionAssigns.followingPositionAssign && (
+                        <div>
+                            <Placement
+                                number={3}
+                                handleStaffField={props.handleStaffField}
+                                handleStaffSelect={props.handleStaffSelect}
+                                handleStaffDatePicker={props.handleStaffDatePicker}
+                                disabled={props.disabled}
+                                positionAssign={props.positionAssigns.followingPositionAssign}
+                            />
+                        </div>
+                    )}
                 </div>
             )}
 

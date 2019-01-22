@@ -21,7 +21,7 @@ const Placement = props => {
     } else {
         return (
             <Card>
-                <CardHeader>Placement</CardHeader>
+                <CardHeader>#{props.number} Placement</CardHeader>
 
                 <CardBody className="no-padding-bottom">
                     <div className="form-row">
@@ -60,7 +60,7 @@ const Placement = props => {
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
                                 utc={true}
-                                inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
+                                inputProps={{ placeholder: 'YYYY-MM-DD', disabled: true }}
                             />
                         </Col>
 
@@ -73,7 +73,7 @@ const Placement = props => {
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
                                 utc={true}
-                                inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
+                                inputProps={{ placeholder: 'YYYY-MM-DD', disabled: true }}
                             />
                         </Col>
                     </div>

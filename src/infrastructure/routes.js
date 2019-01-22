@@ -24,8 +24,7 @@ const Routes = props => {
         } else {
             return (
                 <Switch>
-                    <Route path="/" exact component={() => <Redirect to={`/staff/${props.user.email}`} />} />
-                    <Route path="/staff" component={Staff} />
+                    <Route path="/" exact component={Staff} />
                     <Route component={NotFound} />
                 </Switch>
             )
