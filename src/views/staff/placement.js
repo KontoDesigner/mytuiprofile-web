@@ -55,7 +55,7 @@ const Placement = props => {
                             <label htmlFor="StaffStartDate">Start Date</label>
 
                             <Datetime
-                                value={props.positionAssign !== null ? props.positionAssign.positionStartDate : ''}
+                                value={props.positionAssign !== null ? props.positionAssign.staffStartDate : ''}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
@@ -68,7 +68,7 @@ const Placement = props => {
                             <label htmlFor="StaffEndDate">End Date</label>
 
                             <Datetime
-                                value={props.positionAssign !== null ? props.positionAssign.positionEndDate : ''}
+                                value={props.positionAssign !== null ? props.positionAssign.staffEndDate : ''}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
