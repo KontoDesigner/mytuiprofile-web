@@ -68,6 +68,7 @@ const Education = props => {
                                 //    placeholder="childCare"
                             />
                         </Col>
+                    </div>
                 </CardBody>
             </Card>
         </div>
