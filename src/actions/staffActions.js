@@ -73,17 +73,19 @@ export function getResignHistory(email) {
 
 export function updateStaff(staff) {
     return async function(dispatch) {
+        let copy = JSON.parse(JSON.stringify(staff))
+
         dispatch(beginAjaxCall())
 
-        for (var prop in staff) {
-            if (staff.hasOwnProperty(prop)) {
-                staff[prop.substring(0, 1).toUpperCase() + prop.substring(1)] = staff[prop]
-                delete staff[prop]
+        for (var prop in copy) {
+            if (copy.hasOwnProperty(prop)) {
+                copy[prop.substring(0, 1).toUpperCase() + prop.substring(1)] = copy[prop]
+                delete copy[prop]
             }
         }
 
         try {
-            const res = await restClient.post(`${BASE}/updatestaff`, staff)
+            const res = await restClient.post(`${BASE}/updatestaff`, copy)
 
             dispatch(endAjaxCall())
 
