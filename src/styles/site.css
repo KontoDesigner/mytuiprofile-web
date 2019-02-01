@@ -16,6 +16,8 @@
 @import './react-datetime.css';
 @import './title.css';
 
+
+
 html {
     position: relative;
     min-height: 100%;
@@ -71,8 +73,8 @@ body {
     cursor: pointer;
 }
 
-a {
-    color: #3a6d98 !important;
+a{
+    color:red!important;
 }
 
 /* .App > .container

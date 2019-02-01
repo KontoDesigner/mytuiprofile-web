@@ -70,3 +70,26 @@ export function getSourceMarkets() {
         }
     }
 }
+
+export function getF2wUrlSuccess(f2wUrl) {
+    return {
+        type: types.GET_F2WURL_SUCCESS,
+        data: { f2wUrl: f2wUrl }
+    }
+}
+
+export function getF2wUrl() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const f2wUrl = await restClient.get(`geography/getf2wurl`)
+
+            dispatch(getF2wUrlSuccess(f2wUrl))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}

@@ -64,6 +64,7 @@ class Manager extends Component {
                     staffOnChange={this.staffOnChange}
                     selectedDestination={this.state.selectedDestination}
                     selectedStaff={this.state.selectedStaff}
+                    f2wUrl={this.props.f2wUrl}
                 />
 
                 <MyProfile
@@ -92,7 +93,8 @@ function mapStateToProps(state) {
     return {
         destinations: state.geography.destinations,
         sourceMarkets: state.geography.sourceMarkets,
-        jobTitles: state.geography.jobTitles
+        jobTitles: state.geography.jobTitles,
+        f2wUrl: state.geography.f2wUrl
     }
 }
 

@@ -54,6 +54,12 @@ const ManageStaff = props => {
                         />
                     </div>
                 </Col>
+
+                <Col style={{ marginTop: '15px', textAlign: 'center', textDecoration: 'underline', fontSize: '1.4em' }}>
+                    <a href={props.f2wUrl} target="_blank">
+                        FLY2WORK
+                    </a>
+                </Col>
             </Row>
         </div>
     )
