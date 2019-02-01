@@ -68,23 +68,6 @@ const Education = props => {
                                 //    placeholder="childCare"
                             />
                         </Col>
-
-                        <Col sm="12" md="12" lg="12" xl="12" className="form-group">
-                            {/* <TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> */}
-                            <Label for="comment">childCareRemarks</Label>
-                            <Input
-                                disabled={props.disabled}
-                                required
-                                type="textarea"
-                                className="form-control"
-                                maxLength="1000"
-                                name="childCareRemarks"
-                                id="comment"
-                                rows={6}
-                                aria-multiline="true"
-                            />
-                        </Col>
-                    </div>
                 </CardBody>
             </Card>
         </div>
