@@ -59,6 +59,17 @@ const resignmentReasons = [
     }
 ]
 
+const recommend = [
+    {
+        id: 'Yes',
+        name: 'Yes'
+    },
+    {
+        id: 'No',
+        name: 'No'
+    }
+]
+
 const Resignation = props => {
     const enableResignBtn = (
         <Button
@@ -145,6 +156,24 @@ const Resignation = props => {
                             placeholder="JobTitleWhenResigned"
                             disabled={props.disabled}
                         />
+                    </Col>
+
+                    <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
+                        <label htmlFor="recommend">Do you recommend for re-employment?</label>
+
+                        <Select
+                            id="recommend"
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={recommend}
+                            onChange={v => {
+                                props.handleResignHistorySelect('recommend', v, 'id')
+                            }}
+                            value={props.resignHistory.recommend === '' ? null : props.resignHistory.recommend}
+                            placeholder="Select"
+                        />
+                        {<b className="card-text text-danger">{props.validRecommend}</b>}
                     </Col>
 
                     <Col sm="12" md="6" lg="12" xl="4" className="form-group">

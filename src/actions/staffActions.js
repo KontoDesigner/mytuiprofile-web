@@ -121,7 +121,8 @@ export function resignStaff(resignHistory) {
             ReasonForResignment: resignHistory.reasonForResignment,
             ResignComm: resignHistory.resignComm,
             DateModified: newdatemodified,
-            StaffID: resignHistory.staffId
+            StaffID: resignHistory.staffId,
+            Recommend: resignHistory.recommend
         }
 
         try {
