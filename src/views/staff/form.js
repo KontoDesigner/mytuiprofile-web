@@ -98,7 +98,7 @@ const Form = props => {
                 disabled={props.disabled}
             />
 
-            <Profiling staff={props.staff} handleStaffSelect={props.handleStaffSelect} disabled={props.disabled} />
+            <Profiling staff={props.staff} handleStaffMultiSelect={props.handleStaffMultiSelect} disabled={props.disabled} />
 
             {props.disabled !== true && (
                 <Button

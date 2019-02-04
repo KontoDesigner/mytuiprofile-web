@@ -31,6 +31,7 @@ const MyProfile = props => {
                 handleResignHistoryField={props.handleResignHistoryField}
                 handleResignHistorySelect={props.handleResignHistorySelect}
                 handleResignHistoryDatePicker={props.handleResignHistoryDatePicker}
+                handleStaffMultiSelect={props.handleStaffMultiSelect}
             />
         </div>
     )

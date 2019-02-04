@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, CardBody, CardHeader } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import Select from 'react-select'
-import { Col, Label, Input } from 'reactstrap'
+import { Col } from 'reactstrap'
 
 const childCareLevels = [
     {

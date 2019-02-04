@@ -79,6 +79,7 @@ class Manager extends Component {
                     sourceMarkets={this.props.sourceMarkets}
                     handleStaffField={(e, _this) => handleStaff.handleStaffField(e, this)}
                     handleStaffSelect={(field, val, selector, _this) => handleStaff.handleStaffSelect(field, val, selector, this)}
+                    handleStaffMultiSelect={(field, val, selector, _this) => handleStaff.handleStaffMultiSelect(field, val, selector, this)}
                     handleStaffDatePicker={(field, date, _this) => handleStaff.handleStaffDatePicker(field, date, this)}
                     handleResignHistoryField={(e, _this) => handleStaff.handleResignHistoryField(e, this)}
                     handleResignHistorySelect={(field, val, selector, _this) => handleStaff.handleResignHistorySelect(field, val, selector, this)}

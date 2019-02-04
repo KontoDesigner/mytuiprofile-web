@@ -55,6 +55,26 @@ const handleStaffSelect = (field, val, selector, _this) => {
     _this.setState({ staff })
 }
 
+const handleStaffMultiSelect = (field, val, selector, _this) => {
+    if (val) {
+        let vals = val.map(function(m) {
+            return m[selector]
+        })
+
+        let staff = Object.assign({}, _this.state.staff)
+
+        staff[field] = vals
+
+        _this.setState({ staff })
+    } else {
+        let staff = Object.assign({}, _this.state.staff)
+
+        staff[field] = null
+
+        this.setState({ staff })
+    }
+}
+
 const handleStaffDatePicker = (field, date, _this) => {
     let val = ''
 
@@ -80,5 +100,6 @@ module.exports = {
     handleResignHistoryDatePicker,
     handleStaffField,
     handleStaffSelect,
-    handleStaffDatePicker
+    handleStaffDatePicker,
+    handleStaffMultiSelect
 }

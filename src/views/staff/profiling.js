@@ -106,8 +106,9 @@ const Profiling = props => {
                             labelKey="name"
                             className="form-control"
                             options={suitable}
+                            multi
                             onChange={v => {
-                                props.handleStaffSelect('suitable', v, 'id')
+                                props.handleStaffMultiSelect('suitable', v, 'id')
                             }}
                             value={props.staff.suitable === '' ? null : props.staff.suitable}
                             placeholder="Select"
@@ -124,8 +125,9 @@ const Profiling = props => {
                             labelKey="name"
                             className="form-control"
                             options={international}
+                            multi
                             onChange={v => {
-                                props.handleStaffSelect('international', v, 'id')
+                                props.handleStaffMultiSelect('international', v, 'id')
                             }}
                             value={props.staff.international === '' ? null : props.staff.international}
                             placeholder="Select"
@@ -142,8 +144,9 @@ const Profiling = props => {
                             labelKey="name"
                             className="form-control"
                             options={national}
+                            multi
                             onChange={v => {
-                                props.handleStaffSelect('nationalConcept', v, 'id')
+                                props.handleStaffMultiSelect('nationalConcept', v, 'id')
                             }}
                             value={props.staff.nationalConcept === '' ? null : props.staff.nationalConcept}
                             placeholder="Select"
