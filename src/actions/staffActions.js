@@ -65,7 +65,8 @@ export function getResignHistory(email) {
                       reasonForResignment: null,
                       resignComm: null,
                       dateModified: null,
-                      staffId: null
+                      staffId: null,
+                      recommend: null
                   }
         } catch (error) {
             dispatch(ajaxCallError(error))
