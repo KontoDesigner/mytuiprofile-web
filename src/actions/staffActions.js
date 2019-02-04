@@ -11,6 +11,10 @@ export function getStaff() {
         try {
             const staff = await restClient.get(`${BASE}/getstaff`)
 
+            staff.suitable = staff.suitable && staff.suitable !== '' ? staff.suitable.split(',') : []
+            staff.international = staff.international && staff.international !== '' ? staff.international.split(',') : []
+            staff.nationalConcept = staff.nationalConcept && staff.nationalConcept !== '' ? staff.nationalConcept.split(',') : []
+
             dispatch(endAjaxCall())
 
             return staff
@@ -76,6 +80,10 @@ export function updateStaff(staff) {
         let copy = JSON.parse(JSON.stringify(staff))
 
         dispatch(beginAjaxCall())
+
+        copy.suitable = copy.suitable ? copy.suitable.join() : null
+        copy.international = copy.international ? copy.international.join() : null
+        copy.nationalConcept = copy.nationalConcept ? copy.nationalConcept.join() : null
 
         for (var prop in copy) {
             if (copy.hasOwnProperty(prop)) {
