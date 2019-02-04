@@ -112,6 +112,48 @@ export function updateStaff(staff) {
     }
 }
 
+function validateResignStaff(resignHistory) {
+    if (!resignHistory.FromDate || resignHistory.FromDate === '') {
+        return false
+    }
+
+    if (!resignHistory.AppDate || resignHistory.AppDate === '') {
+        return false
+    }
+
+    if (!resignHistory.ManagerReason || resignHistory.ManagerReason === '') {
+        return false
+    }
+
+    if (!resignHistory.Signature || resignHistory.Signature === '') {
+        return false
+    }
+
+    if (!resignHistory.JobTitleWhenResigned || resignHistory.JobTitleWhenResigned === '') {
+        return false
+    }
+
+    if (!resignHistory.ReasonForResignment || resignHistory.ReasonForResignment === '') {
+        return false
+    }
+
+    if (!resignHistory.ResignComm || resignHistory.ResignComm === '') {
+        return false
+    }
+
+    if (!resignHistory.DateModified || resignHistory.DateModified === '') {
+        return false
+    }
+
+    if (!resignHistory.StaffID || resignHistory.StaffID === '') {
+        return false
+    }
+
+    if (!resignHistory.Recommend || resignHistory.Recommend === '') {
+        return false
+    }
+}
+
 export function resignStaff(resignHistory) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -131,6 +173,14 @@ export function resignStaff(resignHistory) {
             DateModified: newdatemodified,
             StaffID: resignHistory.staffId,
             Recommend: resignHistory.recommend
+        }
+
+        const valid = validateResignStaff(req)
+
+        if (valid === false) {
+            dispatch(endAjaxCall())
+
+            return toastr.error('Error', 'All fields must be filled in')
         }
 
         try {
