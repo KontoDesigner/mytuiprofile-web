@@ -11,9 +11,11 @@ export function getStaff() {
         try {
             const staff = await restClient.get(`${BASE}/getstaff`)
 
-            staff.suitable = staff.suitable && staff.suitable !== '' ? staff.suitable.split(',') : []
-            staff.international = staff.international && staff.international !== '' ? staff.international.split(',') : []
-            staff.nationalConcept = staff.nationalConcept && staff.nationalConcept !== '' ? staff.nationalConcept.split(',') : []
+            if (staff) {
+                staff.suitable = staff.suitable && staff.suitable !== '' ? staff.suitable.split(',') : []
+                staff.international = staff.international && staff.international !== '' ? staff.international.split(',') : []
+                staff.nationalConcept = staff.nationalConcept && staff.nationalConcept !== '' ? staff.nationalConcept.split(',') : []
+            }
 
             dispatch(endAjaxCall())
 
