@@ -54,7 +54,7 @@ const ContactInformation = props => {
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput
                             disabled={props.disabled}
-                            name="phonehome"
+                            name="phoneHome"
                             label="Phone"
                             value={props.staff.phoneHome}
                             onChange={props.handleStaffField}
@@ -66,7 +66,7 @@ const ContactInformation = props => {
                             disabled={props.disabled}
                             name="phoneDestination"
                             label="Phone (Destination)"
-                            value={props.staff.phone}
+                            value={props.staff.phoneDestination}
                             onChange={props.handleStaffField}
                         />
                     </Col>
