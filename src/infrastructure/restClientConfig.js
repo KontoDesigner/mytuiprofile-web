@@ -11,7 +11,7 @@ else if (hostName === 'mytuiprofile-web-uat.tuinordic.net' || hostName === 'mytu
     baseUrl = 'https://mytuiprofile-api-uat.tuinordic.net'
 }
 //PROD
-else if (hostName === 'mytuiprofile-web-tuinordic.net') {
+else if (hostName === 'mytuiprofile-web.tuinordic.net') {
     baseUrl = 'https://mytuiprofile-api.tuinordic.net'
 } else {
     console.warn(`could not identify hostname: ${hostName}.`)
