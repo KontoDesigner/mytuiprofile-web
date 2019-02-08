@@ -29,7 +29,7 @@ class Staff extends Component {
     }
 
     async componentWillMount() {
-        const manager = this.props.user.roles.includes(userRoles.Manager)
+        const manager = this.props.user && this.props.user.roles ? this.props.user.roles.includes(userRoles.Manager) : false
 
         if (manager === true && this.state.email) {
             const staff = await this.props.staffActions.getStaffFromEmail(this.state.email)

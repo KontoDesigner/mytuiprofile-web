@@ -8,7 +8,7 @@ import { UserRoles as userRoles } from '../constants/userConstants'
 
 const Routes = props => {
     const authorized = props.user ? true : false
-    const manager = props.user.roles.includes(userRoles.Manager)
+    const manager = props.user && props.user.roles ? props.user.roles.includes(userRoles.Manager) : false
 
     if (authorized === true) {
         if (manager === true) {
