@@ -6,6 +6,7 @@ import store from './infrastructure/store'
 import { runWithAdal } from 'react-adal'
 import { authContext } from './infrastructure/adalConfig'
 import './styles/site.css'
+import 'core-js'
 
 runWithAdal(authContext, () => {
     ReactDOM.render(
