@@ -12,9 +12,23 @@ export function getStaff() {
             const staff = await restClient.get(`${BASE}/getstaff`)
 
             if (staff) {
-                staff.suitable = staff.suitable && staff.suitable !== '' ? staff.suitable.split(',') : []
-                staff.international = staff.international && staff.international !== '' ? staff.international.split(',') : []
-                staff.nationalConcept = staff.nationalConcept && staff.nationalConcept !== '' ? staff.nationalConcept.split(',') : []
+                const suitable = staff.suitable && staff.suitable !== '' ? staff.suitable.split(',') : []
+                staff.suitable = suitable.map(s => ({
+                    id: s,
+                    name: s
+                }))
+
+                const international = staff.international && staff.international !== '' ? staff.international.split(',') : []
+                staff.international = international.map(i => ({
+                    id: i,
+                    name: i
+                }))
+
+                const nationalConcept = staff.nationalConcept && staff.nationalConcept !== '' ? staff.nationalConcept.split(',') : []
+                staff.nationalConcept = nationalConcept.map(nc => ({
+                    id: nc,
+                    name: nc
+                }))
             }
 
             dispatch(endAjaxCall())
@@ -84,9 +98,9 @@ export function updateStaff(staff) {
 
         dispatch(beginAjaxCall())
 
-        copy.suitable = copy.suitable ? copy.suitable.join() : null
-        copy.international = copy.international ? copy.international.join() : null
-        copy.nationalConcept = copy.nationalConcept ? copy.nationalConcept.join() : null
+        copy.suitable = copy.suitable ? copy.suitable.map(s => s.id).join() : null
+        copy.international = copy.international ? copy.international.map(i => i.id).join() : null
+        copy.nationalConcept = copy.nationalConcept ? copy.nationalConcept.map(nc => nc.id).join() : null
 
         for (var prop in copy) {
             if (copy.hasOwnProperty(prop)) {

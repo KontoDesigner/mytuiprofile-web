@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardBody, CardHeader, Col } from 'reactstrap'
-import Select from 'react-select'
+import MultiSelect from '../../components/multiSelect'
 
 const suitable = [
     //not in use  delete
@@ -100,7 +100,7 @@ const Profiling = props => {
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
                         <label htmlFor="suitable">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
 
-                        <Select
+                        <MultiSelect
                             id="suitable"
                             valueKey="id"
                             labelKey="name"
@@ -119,7 +119,7 @@ const Profiling = props => {
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
                         <label htmlFor="childCare">I am interested and happy to work in following international concepts</label>
 
-                        <Select
+                        <MultiSelect
                             id="international"
                             valueKey="id"
                             labelKey="name"
@@ -138,7 +138,7 @@ const Profiling = props => {
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
                         <label htmlFor="national">I am interested and happy to work in following national concepts</label>
 
-                        <Select
+                        <MultiSelect
                             id="national"
                             valueKey="id"
                             labelKey="name"

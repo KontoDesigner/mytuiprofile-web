@@ -57,13 +57,13 @@ const handleStaffSelect = (field, val, selector, _this) => {
 
 const handleStaffMultiSelect = (field, val, selector, _this) => {
     if (val) {
-        let vals = val.map(function(m) {
-            return m[selector]
-        })
+        // let vals = val.map(function(m) {
+        //     return m[selector]
+        // })
 
         let staff = Object.assign({}, _this.state.staff)
 
-        staff[field] = vals
+        staff[field] = val
 
         _this.setState({ staff })
     } else {

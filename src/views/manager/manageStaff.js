@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
-import Select from 'react-select'
+import Select from '../../components/select'
 
 const styles = {
     formGroup: {

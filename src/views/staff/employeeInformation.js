@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardBody, CardHeader, Col, Label, Input } from 'reactstrap'
 import TextInput from '../../components/textInput'
-import Select from 'react-select'
+import Select from '../../components/select'
 import Datetime from 'react-datetime'
 
 const positionTypes = [

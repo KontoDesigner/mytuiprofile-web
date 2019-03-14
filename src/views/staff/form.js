@@ -12,7 +12,7 @@ const Form = props => {
     if (!props.staff) {
         return (
             <div>
-                <p style={{ color: '#fff' }}>Could not find staff</p>
+                <p style={{ color: '#fff', textAlign: 'center' }}>Could not find staff (primary email must be a TUI address)</p>
             </div>
         )
     }

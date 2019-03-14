@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardBody, Col, CardHeader } from 'reactstrap'
 import TextInput from '../../components/textInput'
-import Select from 'react-select'
+import Select from '../../components/select'
 
 const languages = [
     //not in use  delete

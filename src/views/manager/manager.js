@@ -11,7 +11,7 @@ class Manager extends Component {
         super(props)
 
         this.state = {
-            staffs: null,
+            staffs: [],
             staff: null,
             loaded: false,
             selectedDestination: null,
@@ -31,7 +31,7 @@ class Manager extends Component {
     destinationOnChange = async destination => {
         const selectedDestination = destination != null ? destination.value : null
 
-        let staffs = null
+        let staffs = []
 
         if (selectedDestination !== null) {
             staffs = await this.props.staffActions.getStaffs(selectedDestination)
