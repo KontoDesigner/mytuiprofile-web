@@ -3,7 +3,7 @@ import ReactSelect from 'react-select'
 
 const MultiSelect = ({ options, value, onChange, disabled, valueKey, labelKey }) => (
     <ReactSelect
-        disabled={disabled}
+        isDisabled={disabled}
         options={options}
         value={value}
         onChange={onChange}
