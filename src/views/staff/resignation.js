@@ -70,13 +70,45 @@ const recommend = [
     }
 ]
 
+const resign = props => {
+    if (!props.resignHistory.appDate || props.resignHistory.appDate === '') {
+        return
+    }
+
+    if (!props.resignHistory.managerReason || props.resignHistory.managerReason === '') {
+        return
+    }
+
+    if (!props.resignHistory.reasonForResignment || props.resignHistory.reasonForResignment === '') {
+        return
+    }
+
+    if (!props.resignHistory.jobTitleWhenResigned || props.resignHistory.jobTitleWhenResigned === '') {
+        return
+    }
+
+    if (!props.resignHistory.recommend || props.resignHistory.recommend === '') {
+        return
+    }
+
+    if (!props.resignHistory.resignComm || props.resignHistory.resignComm === '') {
+        return
+    }
+
+    if (!props.resignHistory.signature || props.resignHistory.signature === '') {
+        return
+    }
+
+    props.resignStaff()
+}
+
 const Resignation = props => {
     const enableResignBtn = (
         <Button
             size="sm"
             className="pull-right"
             onClick={() => {
-                props.resignStaff()
+                resign(props)
             }}
             color="warning">
             Enable
@@ -103,6 +135,9 @@ const Resignation = props => {
                             utc={true}
                             inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
                         />
+                        {(!props.resignHistory.appDate || props.resignHistory.appDate === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -120,6 +155,9 @@ const Resignation = props => {
                             placeholder="Select"
                             disabled={props.disabled}
                         />
+                        {(!props.resignHistory.managerReason || props.resignHistory.managerReason === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -138,6 +176,9 @@ const Resignation = props => {
                             placeholder="Select"
                             disabled={props.disabled}
                         />
+                        {(!props.resignHistory.reasonForResignment || props.resignHistory.reasonForResignment === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -156,6 +197,9 @@ const Resignation = props => {
                             placeholder="JobTitleWhenResigned"
                             disabled={props.disabled}
                         />
+                        {(!props.resignHistory.jobTitleWhenResigned || props.resignHistory.jobTitleWhenResigned === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -173,7 +217,9 @@ const Resignation = props => {
                             value={props.resignHistory.recommend === '' ? null : props.resignHistory.recommend}
                             placeholder="Select"
                         />
-                        {<b className="card-text text-danger">{props.validRecommend}</b>}
+                        {(!props.resignHistory.recommend || props.resignHistory.recommend === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="12" xl="4" className="form-group">
@@ -191,6 +237,9 @@ const Resignation = props => {
                             disabled={props.disabled}
                             value={props.resignHistory.resignComm}
                         />
+                        {props.resignHistory.recommend === 'No' && (!props.resignHistory.resignComm || props.resignHistory.resignComm === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -201,6 +250,9 @@ const Resignation = props => {
                             value={props.resignHistory.signature}
                             onChange={props.handleResignHistoryField}
                         />
+                        {(!props.resignHistory.signature || props.resignHistory.signature === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                 </div>
             </CardBody>
