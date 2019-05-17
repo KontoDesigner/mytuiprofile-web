@@ -6,6 +6,10 @@ if (hostName === 'localhost') {
     baseUrl = 'http://localhost:5000'
     // baseUrl = 'https://mytuiprofile-api-uat.tuinordic.net'
 }
+//DEV
+else if (hostName === 'mytuiprofile-web.dev.tuinordic.com') {
+    baseUrl = 'http://mytuiprofile-api.dev.tuinordic.com'
+}
 //UAT
 else if (hostName === 'mytuiprofile-web-uat.tuinordic.net' || hostName === 'mytuiprofile-web-uat.tuinordic.net') {
     baseUrl = 'https://mytuiprofile-api-uat.tuinordic.net'
