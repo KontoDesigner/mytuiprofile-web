@@ -27,7 +27,9 @@ class App extends Component {
             this.props.geographyActions.getDestinations(),
             this.props.geographyActions.getJobTitles(),
             this.props.geographyActions.getSourceMarkets(),
-            this.props.geographyActions.getF2wUrl()
+            this.props.geographyActions.getF2wUrl(),
+            this.props.geographyActions.getSettings(),
+            this.props.geographyActions.getKeywords()
         ]).then(function() {
             _this.setState({ loaded: true })
         })

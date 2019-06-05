@@ -93,3 +93,65 @@ export function getF2wUrl() {
         }
     }
 }
+
+export function getSettingsSuccess(settings) {
+    return {
+        type: types.GET_SETTINGS_SUCCESS,
+        data: { settings: settings }
+    }
+}
+
+export function getSettings() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const settings = await restClient.get(`geography/getsettings`)
+
+            dispatch(getSettingsSuccess(settings))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function getKeywordsSuccess(keywords) {
+    return {
+        type: types.GET_KEYWORDS_SUCCESS,
+        data: { keywords: keywords }
+    }
+}
+
+export function getKeywords() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const keywords = await restClient.get(`geography/getkeywords`)
+
+            dispatch(getKeywordsSuccess(keywords))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function getDestinationsBySeason(season) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const destinations = await restClient.get(`geography/getdestinationsbyseason/${season}`)
+
+            return destinations
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}

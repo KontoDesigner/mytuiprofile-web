@@ -1,24 +1,24 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
-import Form from './form'
+import ProfileForm from './profileForm'
 
-const MyProfile = props => {
+const Profile = props => {
     return (
         <div>
             <Row>
                 <Col xl="12" lg="12" md="12" sm="12" xs="12">
                     <div className="hr">
-                        <span className="hr-title">My Profile</span>
+                        <span className="hr-title">Profile</span>
                     </div>
                 </Col>
             </Row>
 
-            <Form
+            <ProfileForm
                 positionAssigns={props.positionAssigns}
                 updateStaff={props.updateStaff}
                 resignStaff={props.resignStaff}
                 handleResignation={props.handleResignation}
-                hideResignation={props.hideResignation}
+                managerIsStaff={props.managerIsStaff}
                 manager={props.manager}
                 staff={props.staff}
                 disabled={props.disabled}
@@ -37,4 +37,4 @@ const MyProfile = props => {
     )
 }
 
-export default MyProfile
+export default Profile

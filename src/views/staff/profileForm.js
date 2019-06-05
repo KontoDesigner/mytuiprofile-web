@@ -8,7 +8,7 @@ import Profiling from './profiling'
 import Resignation from './resignation'
 import { Button } from 'reactstrap'
 
-const Form = props => {
+const ProfileForm = props => {
     if (!props.staff) {
         return (
             <div>
@@ -19,7 +19,7 @@ const Form = props => {
 
     return (
         <div>
-            {props.manager === true && props.hideResignation !== true && (
+            {props.manager === true && props.managerIsStaff !== true && (
                 <Resignation
                     resignStaff={props.resignStaff}
                     resignHistory={props.resignHistory}
@@ -114,4 +114,4 @@ const Form = props => {
     )
 }
 
-export default Form
+export default ProfileForm

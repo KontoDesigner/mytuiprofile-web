@@ -156,7 +156,7 @@ const EmployeeInformation = props => {
                             name="empContent"
                             id="empcontent"
                             rows={3}
-                            value={props.staff.empContent}
+                            value={props.staff.empContent ? props.staff.empContent : ''}
                             onChange={props.handleStaffField}
                             aria-multiline="true"
                             disabled={props.disabled}

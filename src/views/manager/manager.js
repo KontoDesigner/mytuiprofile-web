@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as staffActions from '../../actions/staffActions'
 import ManageStaff from './manageStaff'
-import MyProfile from '../staff/myProfile'
-import * as handleStaff from '../../components/handleStaff'
+import Staff from '../staff/staff'
 
 class Manager extends Component {
     constructor(props) {
@@ -67,24 +66,7 @@ class Manager extends Component {
                     f2wUrl={this.props.f2wUrl}
                 />
 
-                <MyProfile
-                    hideResignation={true}
-                    manager={true}
-                    updateStaff={() => this.props.staffActions.updateStaff(this.state.staff)}
-                    disabled={false}
-                    staff={this.state.staff}
-                    positionAssigns={this.state.positionAssigns}
-                    resignHistory={this.state.resignHistory}
-                    jobTitles={this.props.jobTitles}
-                    sourceMarkets={this.props.sourceMarkets}
-                    handleStaffField={(e, _this) => handleStaff.handleStaffField(e, this)}
-                    handleStaffSelect={(field, val, selector, _this) => handleStaff.handleStaffSelect(field, val, selector, this)}
-                    handleStaffMultiSelect={(field, val, selector, _this) => handleStaff.handleStaffMultiSelect(field, val, selector, this)}
-                    handleStaffDatePicker={(field, date, _this) => handleStaff.handleStaffDatePicker(field, date, this)}
-                    handleResignHistoryField={(e, _this) => handleStaff.handleResignHistoryField(e, this)}
-                    handleResignHistorySelect={(field, val, selector, _this) => handleStaff.handleResignHistorySelect(field, val, selector, this)}
-                    handleResignHistoryDatePicker={(field, date, _this) => handleStaff.handleResignHistoryDatePicker(field, date, this)}
-                />
+                <Staff />
             </div>
         )
     }
@@ -93,8 +75,6 @@ class Manager extends Component {
 function mapStateToProps(state) {
     return {
         destinations: state.geography.destinations,
-        sourceMarkets: state.geography.sourceMarkets,
-        jobTitles: state.geography.jobTitles,
         f2wUrl: state.geography.f2wUrl
     }
 }
