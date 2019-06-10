@@ -11,7 +11,6 @@ import * as applicationActions from '../../actions/applicationActions'
 import Tabs from './tabs'
 import { TabContent, TabPane } from 'reactstrap'
 import Application from './application'
-import AssignModal from './assignModal'
 
 class Staff extends Component {
     constructor(props) {
@@ -43,7 +42,6 @@ class Staff extends Component {
         await this.getPositionAssigns(manager)
 
         if (manager === true && this.state.email) {
-            await this.getAvailableCandidates()
             staff = await this.props.staffActions.getStaffFromEmail(this.state.email)
             resignHistory = await this.props.staffActions.getResignHistory(this.state.email)
             resignHistory.staffId = staff.staffId
@@ -287,14 +285,6 @@ class Staff extends Component {
                         />
                     </TabPane>
                 </TabContent>
-
-                <AssignModal
-                    modal={this.state.assignModal}
-                    application={this.state.firstApplication}
-                    toggle={this.toggleAssignModal}
-                    assignRole={this.assign}
-                    availablePositions={this.state.availableCandidates}
-                />
             </div>
         )
     }

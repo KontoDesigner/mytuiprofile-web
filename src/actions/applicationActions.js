@@ -55,46 +55,6 @@ export function getApplicationFromEmail(email, season) {
     }
 }
 
-export function getAvailableCandidates() {
-    return async function(dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const availableCandidates = await restClient.get(`${BASE}/getavailablecandidates`)
-
-            dispatch(endAjaxCall())
-
-            return availableCandidates
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-}
-
-export function insertPositionAssign(positionAssign) {
-    return async function(dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const res = await restClient.post(`${BASE}/insertpositionassign`, positionAssign)
-
-            if (res && res.ok === true) {
-                toastr.success('Success', `Position assigned saved`)
-            } else {
-                toastr.error('Error', `Could not save position assign: ${res ? res.message : 'Error'}`)
-            }
-
-            dispatch(endAjaxCall())
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-}
-
 function buildSaveModel(application) {
     var currentdate = new Date()
 
