@@ -31,7 +31,7 @@ const Application = props => {
                 handleFirstApplicationInput={props.handleFirstApplicationInput}
                 sourceMarkets={props.sourceMarkets}
                 save={props.save}
-                toggleAssignRoleModal={props.toggleAssignRoleModal}
+                toggleAssignModal={props.toggleAssignModal}
             />
         </div>
     )

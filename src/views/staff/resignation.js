@@ -235,7 +235,7 @@ const Resignation = props => {
                             rows={6}
                             aria-multiline="true"
                             disabled={props.disabled}
-                            value={props.resignHistory.resignComm}
+                            value={props.resignHistory.resignComm ? props.resignHistory.resignComm : ''}
                         />
                         {props.resignHistory.recommend === 'No' && (!props.resignHistory.resignComm || props.resignHistory.resignComm === '') && (
                             <b className="card-text text-danger">Field is required</b>

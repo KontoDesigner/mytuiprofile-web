@@ -16,6 +16,10 @@ const ApplicationForm = props => {
         }
     ]
 
+    if (props.firstApplication.created === true && props.manager === false) {
+        return <div style={{ color: '#fff' }}>Thank you for your application!</div>
+    }
+
     return (
         <div>
             {props.manager === true && props.managerIsStaff !== true && (
@@ -62,13 +66,13 @@ const ApplicationForm = props => {
                 yesNo={yesNo}
             />
 
-            {props.manager === true && props.managerIsStaff !== true ? (
-                <Button size="sm" onClick={props.toggleAssignRoleModal()} color="success">
+            <Button size="sm" onClick={props.save} color="success">
+                Submit
+            </Button>
+
+            {props.manager === true && props.managerIsStaff !== true && (
+                <Button style={{ marginLeft: '5px' }} size="sm" onClick={props.toggleAssignModal} color="success">
                     Assign Applicant To Position
-                </Button>
-            ) : (
-                <Button size="sm" onClick={props.save} color="success">
-                    Submit
                 </Button>
             )}
         </div>

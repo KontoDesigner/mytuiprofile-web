@@ -11,6 +11,7 @@ import * as applicationActions from '../../actions/applicationActions'
 import Tabs from './tabs'
 import { TabContent, TabPane } from 'reactstrap'
 import Application from './application'
+import AssignModal from './assignModal'
 
 class Staff extends Component {
     constructor(props) {
@@ -26,7 +27,8 @@ class Staff extends Component {
             positionAssigns: null,
             activeTab: 'profile',
             firstApplication: {},
-            secondApplication: {}
+            secondApplication: {},
+            assignModal: false
         }
     }
 
@@ -36,13 +38,13 @@ class Staff extends Component {
         let resignHistory = null
         let disabled = false
         let managerIsStaff = false
-        let positionAssigns = null
         let firstApplication = null
         let secondApplication = null
+        await this.getPositionAssigns(manager)
 
         if (manager === true && this.state.email) {
+            await this.getAvailableCandidates()
             staff = await this.props.staffActions.getStaffFromEmail(this.state.email)
-            positionAssigns = await this.props.staffActions.getPositionAssignsFromEmail(this.state.email)
             resignHistory = await this.props.staffActions.getResignHistory(this.state.email)
             resignHistory.staffId = staff.staffId
 
@@ -53,7 +55,6 @@ class Staff extends Component {
             disabled = this.state.email !== this.props.user.email
         } else {
             staff = await this.props.staffActions.getStaff()
-            positionAssigns = await this.props.staffActions.getPositionAssigns()
             managerIsStaff = true
 
             firstApplication = await this.props.applicationActions.getApplication(this.props.settings.nextSeason)
@@ -61,9 +62,42 @@ class Staff extends Component {
         }
 
         firstApplication.season = this.props.settings.nextSeason.trim()
+        firstApplication.staffID = staff.staffId
         secondApplication.season = this.props.settings.nextNextSeason.trim()
+        secondApplication.staffID = staff.staffId
 
-        this.setState({ staff, resignHistory, disabled, manager, managerIsStaff, positionAssigns, firstApplication, secondApplication, loaded: true })
+        this.setState({
+            staff,
+            resignHistory,
+            disabled,
+            manager,
+            managerIsStaff,
+            firstApplication,
+            secondApplication,
+            loaded: true
+        })
+    }
+
+    getPositionAssigns = async manager => {
+        let positionAssigns = null
+
+        if (manager === true && this.state.email) {
+            positionAssigns = await this.props.staffActions.getPositionAssignsFromEmail(this.state.email)
+        } else {
+            positionAssigns = await this.props.staffActions.getPositionAssigns()
+        }
+
+        this.setState({
+            positionAssigns
+        })
+    }
+
+    getAvailableCandidates = async () => {
+        const availableCandidates = await this.props.applicationActions.getAvailableCandidates()
+
+        this.setState({
+            availableCandidates
+        })
     }
 
     handleActiveTab = activeTab => {
@@ -77,8 +111,7 @@ class Staff extends Component {
     buildSaveModel = application => {
         let preferToWork = []
 
-        if (application.preferToWork) {
-            console.log('XXXXX', application.preferToWork)
+        if (application.preferToWork && application.preferToWork !== '') {
             preferToWork = application.preferToWork.map(function(m) {
                 return m.id
             })
@@ -141,7 +174,32 @@ class Staff extends Component {
         await this.props.applicationActions.save(firstApplication, secondApplication, this.state.manager)
     }
 
-    toggleAssignRoleModal = () => {}
+    toggleAssignModal = () => {
+        this.setState({
+            assignModal: !this.state.assignModal
+        })
+    }
+
+    assign = role => {
+        const positionAssign = {
+            MPLID: role.mplid,
+            StaffID: this.state.staff.staffId,
+            FirstName: this.state.staff.firstName,
+            LastName: this.state.staff.lastName,
+            Season: role.season,
+            FullName: this.state.staff.lastName,
+            StartDate: role.startDate,
+            EndDate: role.endDate,
+            DateModified: role.dateModified
+        }
+
+        const _this = this
+
+        this.props.applicationActions.insertPositionAssign(positionAssign).then(async function() {
+            await _this.getAvailableCandidates()
+            await _this.getPositionAssigns(_this.state.manager)
+        })
+    }
 
     render() {
         if (this.state.loaded === false) {
@@ -160,12 +218,15 @@ class Staff extends Component {
             this.state.positionAssigns.nextPositionAssign !== null &&
             (jobFamiliesWork.length === 0 || jobFamiliesWork.includes(this.state.positionAssigns.nextPositionAssign.jobFamily))
 
+        const managerAndNotCreated =
+            this.state.manager && this.state.managerIsStaff !== true && this.state.firstApplication.created === false ? true : false
+
         return (
             <div>
                 <Tabs
                     activeTab={this.state.activeTab}
                     handleActiveTab={this.handleActiveTab}
-                    applicationVisible={firstApplicationVisible === true || secondApplicationVisible === true}
+                    applicationVisible={(firstApplicationVisible === true || secondApplicationVisible === true) && !managerAndNotCreated}
                 />
 
                 <TabContent activeTab={this.state.activeTab}>
@@ -222,10 +283,18 @@ class Staff extends Component {
                             }
                             sourceMarkets={this.props.sourceMarkets}
                             save={this.save}
-                            toggleAssignRoleModal={this.toggleAssignRoleModal}
+                            toggleAssignModal={this.toggleAssignModal}
                         />
                     </TabPane>
                 </TabContent>
+
+                <AssignModal
+                    modal={this.state.assignModal}
+                    application={this.state.firstApplication}
+                    toggle={this.toggleAssignModal}
+                    assignRole={this.assign}
+                    availablePositions={this.state.availableCandidates}
+                />
             </div>
         )
     }

@@ -47,3 +47,12 @@ body.modal-open
 {
   overflow-y: auto; 
 }
+
+.modal label
+{
+    color:#333;
+}
+
+.modal-dialog {
+    max-width: 900px;
+}

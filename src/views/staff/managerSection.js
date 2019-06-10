@@ -89,7 +89,7 @@ const ManagerSection = props => {
                             name="supportChange"
                             id="supportChange"
                             rows={10}
-                            value={props.application.supportChange}
+                            value={props.application.supportChange ? props.application.supportChange : ''}
                             onChange={v => props.handleInputField('supportChange', v)}
                             aria-multiline="true"
                         />
@@ -103,7 +103,7 @@ const ManagerSection = props => {
                             name="topStrengths"
                             id="topStrengths"
                             rows={10}
-                            value={props.application.topStrengths}
+                            value={props.application.topStrengths ? props.application.topStrengths : ''}
                             onChange={v => props.handleInputField('topStrengths', v)}
                             aria-multiline="true"
                         />
@@ -117,7 +117,7 @@ const ManagerSection = props => {
                             name="developmentAreas"
                             id="developmentAreas"
                             rows={10}
-                            value={props.application.developmentAreas}
+                            value={props.application.developmentAreas ? props.application.developmentAreas : ''}
                             onChange={v => props.handleInputField('developmentAreas', v)}
                             aria-multiline="true"
                         />
@@ -233,7 +233,7 @@ const ManagerSection = props => {
                             name="supportRequestComment"
                             id="supportRequestComment"
                             rows={4}
-                            value={props.application.supportRequestComment}
+                            value={props.application.supportRequestComment ? props.application.supportRequestComment : ''}
                             onChange={v => props.handleInputField('supportRequestComment', v)}
                             aria-multiline="true"
                         />
