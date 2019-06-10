@@ -25,13 +25,13 @@ const Application = props => {
                 handleSecondApplicationMultiSelect={props.handleSecondApplicationMultiSelect}
                 jobTitles={props.jobTitles}
                 settings={props.settings}
-                firstApplicationVisible={props.firstApplicationVisible}
-                secondApplicationVisible={props.secondApplicationVisible}
+                applicationVisible={props.applicationVisible}
                 keywords={props.keywords}
                 handleFirstApplicationInput={props.handleFirstApplicationInput}
                 sourceMarkets={props.sourceMarkets}
                 save={props.save}
                 toggleAssignModal={props.toggleAssignModal}
+                created={props.created}
             />
         </div>
     )

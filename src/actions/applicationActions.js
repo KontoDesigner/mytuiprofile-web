@@ -62,6 +62,15 @@ function buildSaveModel(application) {
 
     let model = {}
 
+    model.EmpID = application.empId
+    model.LastName = application.lastName
+    model.FirstName = application.firstName
+    model.Title = application.title
+    model.Email = application.email
+    model.SourceMarket = application.sourceMarket
+    model.LocalSM = application.localSm
+    model.Nat = application.nat
+
     model.DateModified = newdatemodified
     model.StaffID = application.staffID
     model.Status = application.status
@@ -133,16 +142,14 @@ export function save(firstApplication, secondApplication, manager) {
 
             dispatch(endAjaxCall())
 
-            if (firstRes && secondRes) {
+            if (firstRes.ok === true && secondRes.ok === true) {
                 toastr.success('Success', `Application was saved`)
-            } else {
-                if (!firstRes) {
-                    toastr.error('Error', `Could not save application: ${firstRes ? firstRes.message : 'Error'}`)
-                }
 
-                if (!secondRes) {
-                    toastr.error('Error', `Could not save application: ${secondRes ? secondRes.message : 'Error'}`)
-                }
+                return true
+            } else {
+                toastr.error('Error', `Could not save application: Error`)
+
+                return false
             }
         } catch (error) {
             dispatch(ajaxCallError(error))

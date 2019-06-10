@@ -16,7 +16,7 @@ const ApplicationForm = props => {
         }
     ]
 
-    if (props.firstApplication.created === true && props.manager === false) {
+    if (props.created === true && props.manager === false) {
         return <div style={{ color: '#fff' }}>Thank you for your application!</div>
     }
 
@@ -32,7 +32,7 @@ const ApplicationForm = props => {
                 />
             )}
 
-            {props.firstApplicationVisible === true && (
+            {props.applicationVisible === true && (
                 <Season
                     application={props.firstApplication}
                     destinations={props.destinations}
@@ -44,7 +44,7 @@ const ApplicationForm = props => {
                 />
             )}
 
-            {props.secondApplicationVisible === true && (
+            {props.applicationVisible === true && (
                 <Season
                     application={props.secondApplication}
                     destinations={props.destinations}

@@ -27,7 +27,8 @@ class Staff extends Component {
             activeTab: 'profile',
             firstApplication: {},
             secondApplication: {},
-            assignModal: false
+            assignModal: false,
+            created: false
         }
     }
 
@@ -66,6 +67,7 @@ class Staff extends Component {
 
         this.setState({
             staff,
+            created: firstApplication.created,
             resignHistory,
             disabled,
             manager,
@@ -116,6 +118,15 @@ class Staff extends Component {
         }
 
         let model = {
+            empId: this.state.staff.empId,
+            lastName: this.state.staff.lastName,
+            firstName: this.state.staff.firstName,
+            title: this.state.staff.title,
+            email: this.state.staff.email,
+            sourceMarket: this.state.staff.sourceMarket,
+            localS: this.state.staff.localSm,
+            nat: this.state.staff.nat,
+
             preferToWork: preferToWork,
             staffID: application.staffID,
             status: application.status,
@@ -169,33 +180,18 @@ class Staff extends Component {
         const firstApplication = this.buildSaveModel(this.state.firstApplication)
         const secondApplication = this.buildSaveModel(this.state.secondApplication)
 
-        await this.props.applicationActions.save(firstApplication, secondApplication, this.state.manager)
+        const res = await this.props.applicationActions.save(firstApplication, secondApplication, this.state.manager)
+
+        if (res === true && this.state.manager === false) {
+            this.setState({
+                created: true
+            })
+        }
     }
 
     toggleAssignModal = () => {
         this.setState({
             assignModal: !this.state.assignModal
-        })
-    }
-
-    assign = role => {
-        const positionAssign = {
-            MPLID: role.mplid,
-            StaffID: this.state.staff.staffId,
-            FirstName: this.state.staff.firstName,
-            LastName: this.state.staff.lastName,
-            Season: role.season,
-            FullName: this.state.staff.lastName,
-            StartDate: role.startDate,
-            EndDate: role.endDate,
-            DateModified: role.dateModified
-        }
-
-        const _this = this
-
-        this.props.applicationActions.insertPositionAssign(positionAssign).then(async function() {
-            await _this.getAvailableCandidates()
-            await _this.getPositionAssigns(_this.state.manager)
         })
     }
 
@@ -206,25 +202,18 @@ class Staff extends Component {
 
         const jobFamiliesWork = this.props.settings.jobFamiliesWork ? this.props.settings.jobFamiliesWork.split(',') : []
 
-        const firstApplicationVisible =
+        const applicationVisible =
             this.props.settings.applyOpen === 'Yes' &&
-            this.state.positionAssigns.followingPositionAssign !== null &&
-            (jobFamiliesWork.length === 0 || jobFamiliesWork.includes(this.state.positionAssigns.followingPositionAssign.jobFamily))
+            (jobFamiliesWork.length === 0 || jobFamiliesWork.includes(this.state.positionAssigns.currentPositionAssign.jobFamily))
 
-        const secondApplicationVisible =
-            this.props.settings.applyOpen === 'Yes' &&
-            this.state.positionAssigns.nextPositionAssign !== null &&
-            (jobFamiliesWork.length === 0 || jobFamiliesWork.includes(this.state.positionAssigns.nextPositionAssign.jobFamily))
-
-        const managerAndNotCreated =
-            this.state.manager && this.state.managerIsStaff !== true && this.state.firstApplication.created === false ? true : false
+        const managerAndNotCreated = this.state.manager && this.state.managerIsStaff !== true && this.state.created === false ? true : false
 
         return (
             <div>
                 <Tabs
                     activeTab={this.state.activeTab}
                     handleActiveTab={this.handleActiveTab}
-                    applicationVisible={(firstApplicationVisible === true || secondApplicationVisible === true) && !managerAndNotCreated}
+                    applicationVisible={applicationVisible && !managerAndNotCreated}
                 />
 
                 <TabContent activeTab={this.state.activeTab}>
@@ -273,8 +262,7 @@ class Staff extends Component {
                             }
                             jobTitles={this.props.jobTitles}
                             settings={this.props.settings}
-                            firstApplicationVisible={firstApplicationVisible}
-                            secondApplicationVisible={secondApplicationVisible}
+                            applicationVisible={applicationVisible}
                             keywords={this.props.keywords}
                             handleFirstApplicationInput={(field, val, _this) =>
                                 handleApplication.handleApplicationInput('firstApplication', field, val, this)
@@ -282,6 +270,7 @@ class Staff extends Component {
                             sourceMarkets={this.props.sourceMarkets}
                             save={this.save}
                             toggleAssignModal={this.toggleAssignModal}
+                            created={this.state.created}
                         />
                     </TabPane>
                 </TabContent>
