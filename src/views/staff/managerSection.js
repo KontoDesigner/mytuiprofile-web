@@ -164,7 +164,7 @@ const ManagerSection = props => {
                             label="Overall Placements Rating"
                             placeholder="-Rating-"
                             disabled
-                            value={props.application.overallRating}
+                            value={props.application.midYearReview * props.application.midYearRating}
                         />
                     </Col>
                 </div>

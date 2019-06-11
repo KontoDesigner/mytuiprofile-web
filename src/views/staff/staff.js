@@ -162,7 +162,6 @@ class Staff extends Component {
             topStrengths: application.topStrengths,
             midYearReview: application.midYearReview,
             midYearRating: application.midYearRating,
-            overallRating: application.overallRating,
             longService: application.longService,
             disciplinary: application.disciplinary,
             supportRequest: application.supportRequest,
@@ -171,6 +170,10 @@ class Staff extends Component {
             feedBackRequest: application.feedBackRequest,
             placeDateMgr: application.placeDateMgr,
             signatureMgr: application.signatureMgr
+        }
+
+        if (application.midYearReview && application.midYearRating) {
+            model.overallRating = application.midYearReview * application.midYearRating
         }
 
         return model
