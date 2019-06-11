@@ -69,12 +69,6 @@ const ApplicationForm = props => {
             <Button size="sm" onClick={props.save} color="success">
                 Submit
             </Button>
-
-            {props.manager === true && props.managerIsStaff !== true && (
-                <Button style={{ marginLeft: '5px' }} size="sm" onClick={props.toggleAssignModal} color="success">
-                    Assign Applicant To Position
-                </Button>
-            )}
         </div>
     )
 }
