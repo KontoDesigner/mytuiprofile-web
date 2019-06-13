@@ -11,6 +11,7 @@ import * as applicationActions from '../../actions/applicationActions'
 import Tabs from './tabs'
 import { TabContent, TabPane } from 'reactstrap'
 import Application from './application'
+import RequestedPositionAssignsModal from './requestedPositionAssignsModal'
 
 class Staff extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Staff extends Component {
             activeTab: 'profile',
             firstApplication: {},
             secondApplication: {},
-            assignModal: false,
+            requestedPositionAssignsModel: false,
             created: false
         }
     }
@@ -40,6 +41,7 @@ class Staff extends Component {
         let managerIsStaff = false
         let firstApplication = null
         let secondApplication = null
+        let requestedPositionAssigns = []
         await this.getPositionAssigns(manager)
 
         if (manager === true && this.state.email) {
@@ -58,12 +60,15 @@ class Staff extends Component {
 
             firstApplication = await this.props.applicationActions.getApplication(this.props.settings.nextSeason)
             secondApplication = await this.props.applicationActions.getApplication(this.props.settings.nextNextSeason)
+            requestedPositionAssigns = await this.props.applicationActions.getRequestedPositionAssigns()
         }
 
         firstApplication.season = this.props.settings.nextSeason.trim()
         firstApplication.staffID = staff.staffId
         secondApplication.season = this.props.settings.nextNextSeason.trim()
         secondApplication.staffID = staff.staffId
+
+        const requestedPositionAssignsModel = requestedPositionAssigns.length > 0
 
         this.setState({
             staff,
@@ -74,6 +79,8 @@ class Staff extends Component {
             managerIsStaff,
             firstApplication,
             secondApplication,
+            requestedPositionAssigns,
+            requestedPositionAssignsModel,
             loaded: true
         })
     }
@@ -108,7 +115,7 @@ class Staff extends Component {
         }
     }
 
-    buildSaveModel = application => {
+    buildSaveModel = (application, firstApplication) => {
         let preferToWork = []
 
         if (application.preferToWork && application.preferToWork !== '') {
@@ -117,7 +124,14 @@ class Staff extends Component {
             })
         }
 
+        let destination = null
+
+        if (this.state.positionAssigns.currentPositionAssign) {
+            destination = this.state.positionAssigns.currentPositionAssign.destination
+        }
+
         let model = {
+            //Staff
             empId: this.state.staff.empId,
             lastName: this.state.staff.lastName,
             firstName: this.state.staff.firstName,
@@ -126,7 +140,22 @@ class Staff extends Component {
             sourceMarket: this.state.staff.sourceMarket,
             localS: this.state.staff.localSm,
             nat: this.state.staff.nat,
+            destination: destination,
 
+            //General
+            changePosition: firstApplication.changePosition,
+            nonDestinationPosition: firstApplication.nonDestinationPosition,
+            coupleName: firstApplication.coupleName,
+            couplePosition: firstApplication.couplePosition,
+            coupleSourceMarket: firstApplication.coupleSourceMarket,
+            mostImportant: firstApplication.mostImportant,
+            skiPlacement: firstApplication.skiPlacement,
+            fairs: firstApplication.fairs,
+            comments: firstApplication.comments,
+            signature: firstApplication.signature,
+            placeDate: firstApplication.placeDate,
+
+            //Season
             preferToWork: preferToWork,
             staffID: application.staffID,
             status: application.status,
@@ -138,18 +167,7 @@ class Staff extends Component {
             secondJobTitle: application.secondJobTitle,
             thirdJobTitle: application.thirdJobTitle,
             fourthJobTitle: application.fourthJobTitle,
-            couplePosition: application.couplePosition,
-            changePosition: application.changePosition,
-            coupleName: application.coupleName,
-            coupleSourceMarket: application.coupleSourceMarket,
             developmentAreas: application.developmentAreas,
-            signature: application.signature,
-            placeDate: application.placeDate,
-            mostImportant: application.mostImportant,
-            nonDestinationPosition: application.nonDestinationPosition,
-            skiPlacement: application.skiPlacement,
-            fairs: application.fairs,
-            comments: application.comments,
             season: application.season,
             remarksChoice1: application.remarksChoice1,
             remarksChoice2: application.remarksChoice2,
@@ -180,8 +198,8 @@ class Staff extends Component {
     }
 
     save = async () => {
-        const firstApplication = this.buildSaveModel(this.state.firstApplication)
-        const secondApplication = this.buildSaveModel(this.state.secondApplication)
+        const firstApplication = this.buildSaveModel(this.state.firstApplication, this.state.firstApplication)
+        const secondApplication = this.buildSaveModel(this.state.secondApplication, this.state.firstApplication)
 
         const res = await this.props.applicationActions.save(firstApplication, secondApplication, this.state.manager)
 
@@ -192,9 +210,20 @@ class Staff extends Component {
         }
     }
 
-    toggleAssignModal = () => {
+    toggleRequestedPositionAssignsModel = () => {
         this.setState({
-            assignModal: !this.state.assignModal
+            requestedPositionAssignsModel: !this.state.requestedPositionAssignsModel
+        })
+    }
+
+    acceptOrDeclinePositionAssign = async (positionAssignId, accepted) => {
+        await this.props.applicationActions.acceptOrDeclinePositionAssign(positionAssignId, accepted)
+
+        const requestedPositionAssigns = await this.props.applicationActions.getRequestedPositionAssigns()
+
+        this.setState({
+            requestedPositionAssigns,
+            requestedPositionAssignsModel: requestedPositionAssigns.length > 0
         })
     }
 
@@ -272,11 +301,17 @@ class Staff extends Component {
                             }
                             sourceMarkets={this.props.sourceMarkets}
                             save={this.save}
-                            toggleAssignModal={this.toggleAssignModal}
                             created={this.state.created}
                         />
                     </TabPane>
                 </TabContent>
+
+                <RequestedPositionAssignsModal
+                    positionAssigns={this.state.requestedPositionAssigns}
+                    modal={this.state.requestedPositionAssignsModel}
+                    toggle={this.toggleRequestedPositionAssignsModel}
+                    accept={this.acceptOrDeclinePositionAssign}
+                />
             </div>
         )
     }

@@ -5,6 +5,57 @@ import moment from 'moment'
 
 const BASE = 'application'
 
+export function getRequestedPositionAssigns() {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const positionAssigns = await restClient.get(`${BASE}/getrequestedpositionassigns`)
+
+            dispatch(endAjaxCall())
+
+            return positionAssigns
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function acceptOrDeclinePositionAssign(positionAssignId, accepted) {
+    const body = {
+        positionAssignId,
+        accepted
+    }
+
+    const accept = accepted === true ? 'Accepted' : 'Declined'
+
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const res = await restClient.post(`${BASE}/acceptordeclinepositionassign`, body)
+
+            dispatch(endAjaxCall())
+
+            if (res.ok === true) {
+                toastr.success('Success', `${accept} position`)
+
+                return true
+            } else {
+                toastr.error('Error', `Could not save choice`)
+
+                return false
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
 export function getApplication(season) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -70,6 +121,7 @@ function buildSaveModel(application) {
     model.SourceMarket = application.sourceMarket
     model.LocalSM = application.localSm
     model.Nat = application.nat
+    model.Destination = application.destination
 
     model.DateModified = newdatemodified
     model.StaffID = application.staffID
@@ -143,7 +195,7 @@ export function save(firstApplication, secondApplication, manager) {
             dispatch(endAjaxCall())
 
             if (firstRes.ok === true && secondRes.ok === true) {
-                toastr.success('Success', `Application was saved`)
+                toastr.success('Success', 'Thank you for your application')
 
                 return true
             } else {
