@@ -202,7 +202,7 @@ class Staff extends Component {
         }
 
         if (application.midYearReview && application.midYearRating) {
-            model.overallRating = application.midYearReview * application.midYearRating
+            model.overallRating = application.midYearReview + application.midYearRating
         }
 
         return model
