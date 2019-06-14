@@ -166,6 +166,25 @@ class Staff extends Component {
             signature: firstApplication.signature,
             placeDate: firstApplication.placeDate,
 
+            //Manager
+            earlyPerformanceCheck: firstApplication.earlyPerformanceCheck,
+            planToResign: firstApplication.planToResign,
+            jump: firstApplication.jump,
+            changeJobFamily: firstApplication.changeJobFamily,
+            supportChange: firstApplication.supportChange,
+            topStrengths: firstApplication.topStrengths,
+            developmentAreas: firstApplication.developmentAreas,
+            midYearReview: firstApplication.midYearReview,
+            midYearRating: firstApplication.midYearRating,
+            longService: firstApplication.longService,
+            disciplinary: firstApplication.disciplinary,
+            supportRequest: firstApplication.supportRequest,
+            supportRequestComment: firstApplication.supportRequestComment,
+            changesRequest: firstApplication.changesRequest,
+            feedBackRequest: firstApplication.feedBackRequest,
+            signatureMgr: firstApplication.signatureMgr,
+            placeDateMgr: firstApplication.placeDateMgr,
+
             //Season
             preferToWork: preferToWork,
             staffID: application.staffID,
@@ -178,31 +197,18 @@ class Staff extends Component {
             secondJobTitle: application.secondJobTitle,
             thirdJobTitle: application.thirdJobTitle,
             fourthJobTitle: application.fourthJobTitle,
-            developmentAreas: application.developmentAreas,
             season: application.season,
             remarksChoice1: application.remarksChoice1,
             remarksChoice2: application.remarksChoice2,
             remarksChoice3: application.remarksChoice3,
-            remarksChoice4: application.remarksChoice4,
-            planToResign: application.planToResign,
-            jump: application.jump,
-            changeJobFamily: application.changeJobFamily,
-            supportChange: application.supportChange,
-            topStrengths: application.topStrengths,
-            midYearReview: application.midYearReview,
-            midYearRating: application.midYearRating,
-            longService: application.longService,
-            disciplinary: application.disciplinary,
-            supportRequest: application.supportRequest,
-            supportRequestComment: application.supportRequestComment,
-            changesRequest: application.changesRequest,
-            feedBackRequest: application.feedBackRequest,
-            placeDateMgr: application.placeDateMgr,
-            signatureMgr: application.signatureMgr
+            remarksChoice4: application.remarksChoice4
         }
 
-        if (application.midYearReview && application.midYearRating) {
-            model.overallRating = application.midYearReview + application.midYearRating
+        //Manager
+        if (firstApplication.midYearReview && firstApplication.midYearRating) {
+            model.overallRating =
+                parseFloat(firstApplication.midYearReview ? firstApplication.midYearReview : 0) +
+                parseFloat(firstApplication.midYearRating ? firstApplication.midYearRating : 0)
         }
 
         return model

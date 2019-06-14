@@ -20,6 +20,14 @@ const ManagerSection = props => {
             name: s
         }))
 
+    const earlyPerformance = props.keywords
+        .filter(ap => ap.ids === 'EarlyPerformanceCheck')[0]
+        .keywordValues.split(',')
+        .map(s => ({
+            id: s,
+            name: s
+        }))
+
     return (
         <Card>
             <CardHeader className="card-header-work"> Manager Section (filled in by the manager of the applicant)</CardHeader>
@@ -164,11 +172,32 @@ const ManagerSection = props => {
                             label="Overall Placements Rating"
                             placeholder="-Rating-"
                             disabled
-                            value={props.application.midYearReview + props.application.midYearRating}
+                            value={
+                                parseFloat(props.application.midYearReview ? props.application.midYearReview : 0) +
+                                parseFloat(props.application.midYearRating ? props.application.midYearRating : 0)
+                            }
                         />
                     </Col>
                 </div>
                 <div className="form-row">
+                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                        <label htmlFor="earlyPerformanceCheck">New Recruits - Early Performance Check </label>
+
+                        <Select
+                            //  multi={true}
+                            id="earlyPerformanceCheck"
+                            valueKey="id"
+                            labelKey="name"
+                            options={earlyPerformance}
+                            onChange={v => {
+                                props.handleSelect('earlyPerformanceCheck', v, 'id')
+                            }}
+                            value={props.application.earlyPerformanceCheck}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+                    </Col>
+
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         <label htmlFor="longService">Long Service, 3rd calendar year or longer in the current job family</label>
 
