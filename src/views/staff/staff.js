@@ -302,6 +302,8 @@ class Staff extends Component {
                             sourceMarkets={this.props.sourceMarkets}
                             save={this.save}
                             created={this.state.created}
+                            toggleRequestedPositionAssignsModel={this.toggleRequestedPositionAssignsModel}
+                            pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
                         />
                     </TabPane>
                 </TabContent>
