@@ -249,8 +249,6 @@ class Staff extends Component {
             return null
         }
 
-        // const jobFamiliesWork = this.props.settings.jobFamiliesWork ? this.props.settings.jobFamiliesWork.split(',') : []
-
         const managerAndNotCreated = this.state.manager && this.state.managerIsStaff !== true && this.state.created === false ? true : false
 
         const plannedToResign = this.state.firstApplication.preferToWork.some(function(v) {
