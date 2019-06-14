@@ -41,6 +41,8 @@ const Application = props => {
                 toggleAssignModal={props.toggleAssignModal}
                 created={props.created}
                 jobFamily={props.jobFamily}
+                plannedToResign={props.plannedToResign}
+                noWinterWork={props.noWinterWork}
             />
         </div>
     )

@@ -42,6 +42,8 @@ const ApplicationForm = props => {
                     jobTitles={props.jobTitles}
                     keywords={props.keywords}
                     jobFamily={props.jobFamily}
+                    plannedToResign={props.plannedToResign}
+                    noWinterWork={props.noWinterWork}
                 />
             )}
 
@@ -55,6 +57,8 @@ const ApplicationForm = props => {
                     jobTitles={props.jobTitles}
                     keywords={props.keywords}
                     jobFamily={props.jobFamily}
+                    plannedToResign={props.plannedToResign}
+                    noWinterWork={null}
                 />
             )}
 
@@ -66,6 +70,7 @@ const ApplicationForm = props => {
                 jobTitles={props.jobTitles}
                 sourceMarkets={props.sourceMarkets}
                 yesNo={yesNo}
+                plannedToResign={props.plannedToResign}
             />
 
             <Button size="sm" onClick={props.save} color="success">

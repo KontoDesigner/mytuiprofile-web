@@ -39,26 +39,52 @@ const Season = props => {
             }))
     }
 
+    const preferToWorkSection = (
+        <Col sm="12" md="6" lg="6" xl="6" style={{ marginBottom: '15px' }}>
+            <label htmlFor="preferToWork">I would like to request to work {props.application.season}</label>
+
+            <MultiSelect
+                valueKey="id"
+                labelKey="name"
+                options={preferToWork}
+                onChange={v => {
+                    props.handleMultiSelect('preferToWork', v)
+                }}
+                value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                placeholder="Select"
+                className="form-group form-group-select"
+            />
+        </Col>
+    )
+
+    if (props.plannedToResign === true) {
+        return (
+            <Card>
+                <CardHeader className="card-header-work"> Placement {props.application.season} </CardHeader>
+                <CardBody className="no-padding-bottom">
+                    <div className="form-row">{preferToWorkSection}</div>
+                </CardBody>
+            </Card>
+        )
+    }
+
+    if (props.noWinterWork !== null && props.noWinterWork === true) {
+        return (
+            <Card>
+                <CardHeader className="card-header-work"> Placement {props.application.season} </CardHeader>
+                <CardBody className="no-padding-bottom">
+                    <div className="form-row">{preferToWorkSection}</div>
+                </CardBody>
+            </Card>
+        )
+    }
+
     return (
         <Card>
             <CardHeader className="card-header-work"> Placement {props.application.season} </CardHeader>
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
-                    <Col sm="12" md="6" lg="6" xl="6" style={{ marginBottom: '15px' }}>
-                        <label htmlFor="preferToWork">I would like to request to work {props.application.season}</label>
-
-                        <MultiSelect
-                            valueKey="id"
-                            labelKey="name"
-                            options={preferToWork}
-                            onChange={v => {
-                                props.handleMultiSelect('preferToWork', v)
-                            }}
-                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-                    </Col>
+                    {preferToWorkSection}
 
                     <Col sm="12" md="12" lg="12" xl="12">
                         <CardHeader className="card-header-subwork">

@@ -4,6 +4,10 @@ import TextInput from '../../components/textInput'
 import Select from '../../components/select'
 
 const ApplicationFormInfo = props => {
+    if (props.plannedToResign === true) {
+        return null
+    }
+
     const changePosition = props.keywords
         .filter(ap => ap.ids === 'IWantToChangePosition')[0]
         .keywordValues.split(',')

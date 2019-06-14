@@ -68,6 +68,8 @@ export function getApplication(season) {
                     id: s,
                     name: s
                 }))
+            } else {
+                application.preferToWork = []
             }
 
             dispatch(endAjaxCall())
@@ -93,6 +95,8 @@ export function getApplicationFromEmail(email, season) {
                     id: s,
                     name: s
                 }))
+            } else {
+                application.preferToWork = []
             }
 
             dispatch(endAjaxCall())
