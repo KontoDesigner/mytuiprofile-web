@@ -22,7 +22,7 @@ const ApplicationForm = props => {
 
     return (
         <div>
-            {props.manager === true && props.managerIsStaff !== true && (
+            {props.manager === true && props.managerIsStaff !== true && props.settings.managerComments === 'Yes' && (
                 <ManagerSection
                     yesNo={yesNo}
                     handleInputField={props.handleFirstApplicationInput}
