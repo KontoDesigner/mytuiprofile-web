@@ -41,6 +41,7 @@ const ApplicationForm = props => {
                     preferToWork={[]}
                     jobTitles={props.jobTitles}
                     keywords={props.keywords}
+                    jobFamily={props.jobFamily}
                 />
             )}
 
@@ -53,6 +54,7 @@ const ApplicationForm = props => {
                     preferToWork={[]}
                     jobTitles={props.jobTitles}
                     keywords={props.keywords}
+                    jobFamily={props.jobFamily}
                 />
             )}
 

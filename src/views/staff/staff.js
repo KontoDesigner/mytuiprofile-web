@@ -8,6 +8,7 @@ import * as staffActions from '../../actions/staffActions'
 import * as handleStaff from '../../components/handleStaff'
 import * as handleApplication from '../../components/handleApplication'
 import * as applicationActions from '../../actions/applicationActions'
+import * as geographyActions from '../../actions/geographyActions'
 import Tabs from './tabs'
 import { TabContent, TabPane } from 'reactstrap'
 import Application from './application'
@@ -29,6 +30,7 @@ class Staff extends Component {
             firstApplication: {},
             secondApplication: {},
             requestedPositionAssignsModel: false,
+            jobFamily: '',
             created: false
         }
     }
@@ -42,6 +44,8 @@ class Staff extends Component {
         let firstApplication = null
         let secondApplication = null
         let requestedPositionAssigns = []
+        let jobFamily = ''
+        let destinations = []
         await this.getPositionAssigns(manager)
 
         if (manager === true && this.state.email) {
@@ -68,6 +72,11 @@ class Staff extends Component {
         secondApplication.season = this.props.settings.nextNextSeason.trim()
         secondApplication.staffID = staff.staffId
 
+        if (this.state.positionAssigns.currentPositionAssign) {
+            jobFamily = this.state.positionAssigns.currentPositionAssign.jobFamily
+            destinations = await this.props.geographyActions.getDestinationsByJobFamily(jobFamily)
+        }
+
         const requestedPositionAssignsModel = requestedPositionAssigns.length > 0
 
         this.setState({
@@ -81,6 +90,8 @@ class Staff extends Component {
             secondApplication,
             requestedPositionAssigns,
             requestedPositionAssignsModel,
+            jobFamily,
+            destinations,
             loaded: true
         })
     }
@@ -232,11 +243,7 @@ class Staff extends Component {
             return null
         }
 
-        const jobFamiliesWork = this.props.settings.jobFamiliesWork ? this.props.settings.jobFamiliesWork.split(',') : []
-
-        const applicationVisible =
-            this.props.settings.applyOpen === 'Yes' &&
-            (jobFamiliesWork.length === 0 || jobFamiliesWork.includes(this.state.positionAssigns.currentPositionAssign.jobFamily))
+        // const jobFamiliesWork = this.props.settings.jobFamiliesWork ? this.props.settings.jobFamiliesWork.split(',') : []
 
         const managerAndNotCreated = this.state.manager && this.state.managerIsStaff !== true && this.state.created === false ? true : false
 
@@ -245,7 +252,7 @@ class Staff extends Component {
                 <Tabs
                     activeTab={this.state.activeTab}
                     handleActiveTab={this.handleActiveTab}
-                    applicationVisible={applicationVisible && !managerAndNotCreated}
+                    applicationVisible={this.props.settings.applyOpen === 'Yes' && !managerAndNotCreated}
                 />
 
                 <TabContent activeTab={this.state.activeTab}>
@@ -279,7 +286,7 @@ class Staff extends Component {
                             secondApplication={this.state.secondApplication}
                             managerIsStaff={this.state.managerIsStaff}
                             manager={this.state.manager}
-                            destinations={this.props.destinations}
+                            destinations={this.state.destinations}
                             handleFirstApplicationSelect={(field, val, selector, _this) =>
                                 handleApplication.handleApplicationSelect('firstApplication', field, val, selector, this)
                             }
@@ -294,7 +301,7 @@ class Staff extends Component {
                             }
                             jobTitles={this.props.jobTitles}
                             settings={this.props.settings}
-                            applicationVisible={applicationVisible}
+                            applicationVisible={this.props.settings.applyOpen === 'Yes'}
                             keywords={this.props.keywords}
                             handleFirstApplicationInput={(field, val, _this) =>
                                 handleApplication.handleApplicationInput('firstApplication', field, val, this)
@@ -304,6 +311,7 @@ class Staff extends Component {
                             created={this.state.created}
                             toggleRequestedPositionAssignsModel={this.toggleRequestedPositionAssignsModel}
                             pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
+                            jobFamily={this.state.jobFamily}
                         />
                     </TabPane>
                 </TabContent>
@@ -325,7 +333,6 @@ function mapStateToProps(state) {
         jobTitles: state.geography.jobTitles,
         user: state.user,
         settings: state.geography.settings,
-        destinations: state.geography.destinations,
         keywords: state.geography.keywords
     }
 }
@@ -334,7 +341,8 @@ function mapDispatchToProps(dispatch) {
     return {
         ajaxStatusActions: bindActionCreators(ajaxStatusActions, dispatch),
         staffActions: bindActionCreators(staffActions, dispatch),
-        applicationActions: bindActionCreators(applicationActions, dispatch)
+        applicationActions: bindActionCreators(applicationActions, dispatch),
+        geographyActions: bindActionCreators(geographyActions, dispatch)
     }
 }
 

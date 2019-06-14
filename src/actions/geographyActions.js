@@ -1,5 +1,5 @@
 import { ActionTypes as types } from '../constants/geographyConstants'
-import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions'
+import { beginAjaxCall, ajaxCallError, endAjaxCall } from './ajaxStatusActions'
 import restClient from '../infrastructure/restClient'
 
 export function getDestinationsSuccess(destinations) {
@@ -146,6 +146,24 @@ export function getDestinationsBySeason(season) {
 
         try {
             const destinations = await restClient.get(`geography/getdestinationsbyseason/${season}`)
+
+            return destinations
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function getDestinationsByJobFamily(jobfamily) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const destinations = await restClient.get(`geography/getdestinationsbyjobfamily/${jobfamily}`)
+
+            dispatch(endAjaxCall())
 
             return destinations
         } catch (error) {

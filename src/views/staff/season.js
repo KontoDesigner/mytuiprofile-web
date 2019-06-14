@@ -4,10 +4,20 @@ import Select from '../../components/select'
 import MultiSelect from '../../components/multiSelect'
 
 const Season = props => {
-    const firstJobTitles = props.jobTitles.filter(m => m.season === props.application.season && m.destination === props.application.firstDest)
-    const secondJobTitles = props.jobTitles.filter(m => m.season === props.application.season && m.destination === props.application.secondDest)
-    const thirdJobTitles = props.jobTitles.filter(m => m.season === props.application.season && m.destination === props.application.thirdDest)
-    const fourthJobTitles = props.jobTitles.filter(m => m.season === props.application.season && m.destination === props.application.fourthDest)
+    const destinations = props.destinations
+
+    const firstJobTitles = props.jobTitles.filter(
+        m => m.season === props.application.season && m.destination === props.application.firstDest && m.jobFamily === props.jobFamily
+    )
+    const secondJobTitles = props.jobTitles.filter(
+        m => m.season === props.application.season && m.destination === props.application.secondDest && m.jobFamily === props.jobFamily
+    )
+    const thirdJobTitles = props.jobTitles.filter(
+        m => m.season === props.application.season && m.destination === props.application.thirdDest && m.jobFamily === props.jobFamily
+    )
+    const fourthJobTitles = props.jobTitles.filter(
+        m => m.season === props.application.season && m.destination === props.application.fourthDest && m.jobFamily === props.jobFamily
+    )
 
     let preferToWork = []
 
@@ -63,12 +73,12 @@ const Season = props => {
                         <label htmlFor="firstDest">Destination</label>
 
                         <Select
-                            valueKey="value"
-                            labelKey="label"
-                            options={props.destinations}
+                            valueKey="id"
+                            labelKey="name"
+                            options={destinations}
                             //onChange={props.handleAppField}
                             onChange={v => {
-                                props.handleSelect('firstDest', v, 'value')
+                                props.handleSelect('firstDest', v, 'id')
                             }}
                             value={props.application.firstDest}
                             placeholder="Select"
@@ -102,11 +112,11 @@ const Season = props => {
                         <Select
                             //  multi={true}
                             id="secondDest"
-                            valueKey="value"
-                            labelKey="label"
-                            options={props.destinations}
+                            valueKey="id"
+                            labelKey="name"
+                            options={destinations}
                             onChange={v => {
-                                props.handleSelect('secondDest', v, 'value')
+                                props.handleSelect('secondDest', v, 'id')
                             }}
                             value={props.application.secondDest}
                             placeholder="Select"
@@ -141,11 +151,11 @@ const Season = props => {
                         <Select
                             //  multi={true}
                             id="thirdDest"
-                            valueKey="value"
-                            labelKey="label"
-                            options={props.destinations}
+                            valueKey="id"
+                            labelKey="name"
+                            options={destinations}
                             onChange={v => {
-                                props.handleSelect('thirdDest', v, 'value')
+                                props.handleSelect('thirdDest', v, 'id')
                             }}
                             value={props.application.thirdDest}
                             placeholder="Select"
@@ -179,11 +189,11 @@ const Season = props => {
                         <Select
                             //  multi={true}
                             id="fourthDest"
-                            valueKey="value"
-                            labelKey="label"
-                            options={props.destinations}
+                            valueKey="id"
+                            labelKey="name"
+                            options={destinations}
                             onChange={v => {
-                                props.handleSelect('fourthDest', v, 'value')
+                                props.handleSelect('fourthDest', v, 'id')
                             }}
                             value={props.application.fourthDest}
                             placeholder="Select"

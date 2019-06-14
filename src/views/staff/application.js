@@ -40,6 +40,7 @@ const Application = props => {
                 save={props.save}
                 toggleAssignModal={props.toggleAssignModal}
                 created={props.created}
+                jobFamily={props.jobFamily}
             />
         </div>
     )
