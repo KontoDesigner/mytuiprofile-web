@@ -8,16 +8,32 @@ const Season = props => {
     const destinations = props.destinations
 
     const firstJobTitles = props.jobTitles.filter(
-        m => m.season === props.application.season && m.destination === props.application.firstDest && m.jobFamily === props.jobFamily
+        m =>
+            m.season === props.application.season &&
+            m.destination === props.application.firstDest &&
+            (m.jobFamily === props.jobFamily ||
+                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
     const secondJobTitles = props.jobTitles.filter(
-        m => m.season === props.application.season && m.destination === props.application.secondDest && m.jobFamily === props.jobFamily
+        m =>
+            m.season === props.application.season &&
+            m.destination === props.application.secondDest &&
+            (m.jobFamily === props.jobFamily ||
+                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
     const thirdJobTitles = props.jobTitles.filter(
-        m => m.season === props.application.season && m.destination === props.application.thirdDest && m.jobFamily === props.jobFamily
+        m =>
+            m.season === props.application.season &&
+            m.destination === props.application.thirdDest &&
+            (m.jobFamily === props.jobFamily ||
+                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
     const fourthJobTitles = props.jobTitles.filter(
-        m => m.season === props.application.season && m.destination === props.application.fourthDest && m.jobFamily === props.jobFamily
+        m =>
+            m.season === props.application.season &&
+            m.destination === props.application.fourthDest &&
+            (m.jobFamily === props.jobFamily ||
+                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
 
     let preferToWork = []
