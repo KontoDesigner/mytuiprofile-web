@@ -187,6 +187,8 @@ class Staff extends Component {
 
             //Season
             preferToWork: preferToWork,
+            workPeriodStart: application.workPeriodStart,
+            workPeriodEnd: application.workPeriodEnd,
             staffID: application.staffID,
             status: application.status,
             firstDest: application.firstDest,
@@ -259,6 +261,10 @@ class Staff extends Component {
             return v.id.toLowerCase().indexOf('no winter work') >= 0
         })
 
+        const aFewWeeksOnly = this.state.secondApplication.preferToWork.some(function(v) {
+            return v.id.toLowerCase().indexOf('a few weeks only') >= 0
+        })
+
         return (
             <div>
                 <Tabs
@@ -326,6 +332,10 @@ class Staff extends Component {
                             jobFamily={this.state.jobFamily}
                             plannedToResign={plannedToResign}
                             noWinterWork={noWinterWork}
+                            handleSecondApplicationDatePicker={(field, val, _this) =>
+                                handleApplication.handleApplicationDatePicker('secondApplication', field, val, this)
+                            }
+                            aFewWeeksOnly={aFewWeeksOnly}
                         />
                     </TabPane>
                 </TabContent>

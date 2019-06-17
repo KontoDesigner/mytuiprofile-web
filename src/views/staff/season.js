@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import Select from '../../components/select'
 import MultiSelect from '../../components/multiSelect'
+import Datetime from 'react-datetime'
 
 const Season = props => {
     const destinations = props.destinations
@@ -85,6 +86,45 @@ const Season = props => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
                     {preferToWorkSection}
+
+                    {props.aFewWeeksOnly === true && (
+                        <React.Fragment>
+                            <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                                <label htmlFor="workPeriodStart">From</label>
+
+                                <Datetime
+                                    className={'custom-datepicker'}
+                                    id="workPeriodStart"
+                                    onChange={v => {
+                                        props.handleDate('workPeriodStart', v)
+                                    }}
+                                    value={props.application.workPeriodStart}
+                                    timeFormat={false}
+                                    dateFormat="YYYY-MM-DD"
+                                    closeOnSelect
+                                    utc={true}
+                                    inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                />
+                            </Col>
+                            <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                                <label htmlFor="workPeriodEnd">To</label>
+
+                                <Datetime
+                                    className={'custom-datepicker'}
+                                    id="workPeriodEnd"
+                                    onChange={v => {
+                                        props.handleDate('workPeriodEnd', v)
+                                    }}
+                                    value={props.application.workPeriodEnd}
+                                    timeFormat={false}
+                                    dateFormat="YYYY-MM-DD"
+                                    closeOnSelect
+                                    utc={true}
+                                    inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                />
+                            </Col>
+                        </React.Fragment>
+                    )}
 
                     <Col sm="12" md="12" lg="12" xl="12">
                         <CardHeader className="card-header-subwork">

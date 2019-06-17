@@ -48,8 +48,29 @@ const handleApplicationInput = (stateProp, field, val, _this) => {
     _this.setState({ [stateProp]: application })
 }
 
+const handleApplicationDatePicker = (stateProp, field, date, _this) => {
+    let val = ''
+
+    //Picker
+    if (date._d) {
+        val = date._d
+    }
+
+    //Manual
+    if (!date._d) {
+        val = date
+    }
+
+    let application = Object.assign({}, _this.state[stateProp])
+
+    application[field] = val
+
+    _this.setState({ [stateProp]: application })
+}
+
 module.exports = {
     handleApplicationSelect,
     handleApplicationMultiSelect,
-    handleApplicationInput
+    handleApplicationInput,
+    handleApplicationDatePicker
 }

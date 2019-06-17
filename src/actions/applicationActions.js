@@ -173,6 +173,8 @@ function buildSaveModel(application) {
     model.PlaceDateMgr = application.placeDateMgr
     model.SignatureMgr = application.signatureMgr
     model.PreferToWork = application.preferToWork ? application.preferToWork.join() : null
+    model.WorkPeriodStart = application.workPeriodStart
+    model.WorkPeriodEnd = application.workPeriodEnd
     model.EarlyPerformanceCheck = application.earlyPerformanceCheck
 
     return model

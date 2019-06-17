@@ -43,6 +43,8 @@ const Application = props => {
                 jobFamily={props.jobFamily}
                 plannedToResign={props.plannedToResign}
                 noWinterWork={props.noWinterWork}
+                handleSecondApplicationDatePicker={props.handleSecondApplicationDatePicker}
+                aFewWeeksOnly={props.aFewWeeksOnly}
             />
         </div>
     )
