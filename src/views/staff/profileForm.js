@@ -19,7 +19,7 @@ const ProfileForm = props => {
 
     return (
         <div>
-            {props.manager === true && props.managerIsStaff !== true && (
+            {props.manager === true && props.managerIsStaff !== null && props.managerIsStaff !== true && (
                 <Resignation
                     resignStaff={props.resignStaff}
                     resignHistory={props.resignHistory}

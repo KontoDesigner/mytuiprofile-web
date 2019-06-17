@@ -16,7 +16,7 @@ const ApplicationForm = props => {
         }
     ]
 
-    if (props.created === true && props.manager === false) {
+    if (props.created === true && (props.manager === false || props.managerIsStaff === true)) {
         return <div style={{ color: '#fff' }}>Thank you for your application!</div>
     }
 

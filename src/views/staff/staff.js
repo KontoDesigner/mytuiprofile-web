@@ -40,7 +40,7 @@ class Staff extends Component {
         let staff = null
         let resignHistory = null
         let disabled = false
-        let managerIsStaff = false
+        let managerIsStaff = null
         let firstApplication = null
         let secondApplication = null
         let requestedPositionAssigns = []
@@ -60,7 +60,6 @@ class Staff extends Component {
             disabled = this.state.email !== this.props.user.email
         } else {
             staff = await this.props.staffActions.getStaff()
-            managerIsStaff = true
 
             firstApplication = await this.props.applicationActions.getApplication(this.props.settings.nextSeason)
             secondApplication = await this.props.applicationActions.getApplication(this.props.settings.nextNextSeason)
@@ -222,7 +221,7 @@ class Staff extends Component {
 
         const res = await this.props.applicationActions.save(firstApplication, secondApplication, this.state.manager)
 
-        if (res === true && this.state.manager === false) {
+        if (res === true && (this.state.manager === false || this.state.managerIsStaff === true)) {
             this.setState({
                 created: true
             })
