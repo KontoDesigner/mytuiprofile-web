@@ -3,6 +3,12 @@ import { Card, CardBody, CardHeader, Col, Input, Label } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import Select from '../../components/select'
 
+function removeDuplicates(myArr, prop) {
+    return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos
+    })
+}
+
 const ApplicationFormInfo = props => {
     if (props.plannedToResign === true) {
         return null
@@ -23,6 +29,8 @@ const ApplicationFormInfo = props => {
             id: s,
             name: s
         }))
+
+    const jobTitles = removeDuplicates(props.jobTitles, 'id')
 
     return (
         <Card>
@@ -81,7 +89,7 @@ const ApplicationFormInfo = props => {
                             id="couplePosition"
                             valueKey="id"
                             labelKey="name"
-                            options={props.jobTitles}
+                            options={jobTitles}
                             onChange={v => {
                                 props.handleSelect('couplePosition', v, 'id')
                             }}
