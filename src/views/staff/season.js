@@ -190,6 +190,17 @@ const Season = props => {
                             (!props.application.firstJobTitle || props.application.firstJobTitle === '') && (
                                 <b className="card-text text-danger">Field is required</b>
                             )}
+
+                        {props.application.firstJobTitle &&
+                            props.application.firstJobTitle !== '' &&
+                            ((props.application.firstDest === props.application.secondDest &&
+                                props.application.firstJobTitle === props.application.secondJobTitle) ||
+                                (props.application.firstDest === props.application.thirdDest &&
+                                    props.application.firstJobTitle === props.application.thirdJobTitle) ||
+                                (props.application.firstDest === props.application.fourthDest &&
+                                    props.application.firstJobTitle === props.application.fourthJobTitle)) && (
+                                <b className="card-text text-danger">Job title must be unique for destination</b>
+                            )}
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="1" className="form-group">
                         <label htmlFor="Choice">Choice</label>
@@ -233,6 +244,17 @@ const Season = props => {
                             props.application.secondDest !== '' &&
                             (!props.application.secondJobTitle || props.application.secondJobTitle === '') && (
                                 <b className="card-text text-danger">Field is required</b>
+                            )}
+
+                        {props.application.secondJobTitle &&
+                            props.application.secondJobTitle !== '' &&
+                            ((props.application.secondDest === props.application.firstDest &&
+                                props.application.secondJobTitle === props.application.firstJobTitle) ||
+                                (props.application.secondDest === props.application.thirdDest &&
+                                    props.application.secondJobTitle === props.application.thirdJobTitle) ||
+                                (props.application.secondDest === props.application.fourthDest &&
+                                    props.application.secondJobTitle === props.application.fourthJobTitle)) && (
+                                <b className="card-text text-danger">Job title must be unique for destination</b>
                             )}
                     </Col>
 
@@ -279,6 +301,17 @@ const Season = props => {
                             (!props.application.thirdJobTitle || props.application.thirdJobTitle === '') && (
                                 <b className="card-text text-danger">Field is required</b>
                             )}
+
+                        {props.application.thirdJobTitle &&
+                            props.application.thirdJobTitle !== '' &&
+                            ((props.application.thirdDest === props.application.firstDest &&
+                                props.application.thirdJobTitle === props.application.firstJobTitle) ||
+                                (props.application.thirdDest === props.application.secondDest &&
+                                    props.application.thirdJobTitle === props.application.secondJobTitle) ||
+                                (props.application.thirdDest === props.application.fourthDest &&
+                                    props.application.thirdJobTitle === props.application.fourthJobTitle)) && (
+                                <b className="card-text text-danger">Job title must be unique for destination</b>
+                            )}
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="1" className="form-group">
                         <label htmlFor="Choice">Choice</label>
@@ -322,6 +355,17 @@ const Season = props => {
                             props.application.fourthDest !== '' &&
                             (!props.application.fourthJobTitle || props.application.fourthJobTitle === '') && (
                                 <b className="card-text text-danger">Field is required</b>
+                            )}
+
+                        {props.application.fourthJobTitle &&
+                            props.application.fourthJobTitle !== '' &&
+                            ((props.application.fourthDest === props.application.firstDest &&
+                                props.application.fourthJobTitle === props.application.firstJobTitle) ||
+                                (props.application.fourthDest === props.application.secondDest &&
+                                    props.application.fourthJobTitle === props.application.secondJobTitle) ||
+                                (props.application.fourthDest === props.application.thirdDest &&
+                                    props.application.fourthJobTitle === props.application.thirdJobTitle)) && (
+                                <b className="card-text text-danger">Job title must be unique for destination</b>
                             )}
                     </Col>
                 </div>
