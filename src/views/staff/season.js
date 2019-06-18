@@ -5,7 +5,7 @@ import MultiSelect from '../../components/multiSelect'
 import Datetime from 'react-datetime'
 
 const Season = props => {
-    const destinations = props.destinations
+    const destinations = props.destinations.filter(m => m.season === props.application.season)
 
     const firstJobTitles = props.jobTitles.filter(
         m =>
