@@ -31,23 +31,11 @@ const EmployeeInformation = props => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput
-                            disabled={props.disabled}
-                            name="nat"
-                            label="Nationality"
-                            value={props.staff.nat}
-                            onChange={props.handleStaffField}
-                        />
+                        <TextInput disabled={true} name="nat" label="Nationality" value={props.staff.nat} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput
-                            disabled={props.disabled}
-                            name="nat2"
-                            label="Dual Nationality"
-                            value={props.staff.nat2}
-                            onChange={props.handleStaffField}
-                        />
+                        <TextInput disabled={true} name="nat2" label="Dual Nationality" value={props.staff.nat2} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -64,7 +52,7 @@ const EmployeeInformation = props => {
                             }}
                             value={props.staff.sourceMarket === '' ? null : props.staff.sourceMarket}
                             placeholder="Source Market"
-                            disabled={props.disabled}
+                            disabled={true}
                         />
                     </Col>
 
@@ -82,13 +70,13 @@ const EmployeeInformation = props => {
                             }}
                             value={props.staff.positionType === '' ? null : props.staff.positionType}
                             placeholder="Position Type"
-                            disabled={props.disabled}
+                            disabled={true}
                         />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput
-                            disabled={props.disabled}
+                            disabled={true}
                             name="costCenter"
                             label="Cost Center"
                             value={props.staff.costCenter}
@@ -124,7 +112,7 @@ const EmployeeInformation = props => {
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
                             utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: props.disabled }}
+                            inputProps={{ placeholder: 'YYYY-MM-DD', disabled: true }}
                         />
                     </Col>
 
