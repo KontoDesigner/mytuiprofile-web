@@ -68,9 +68,48 @@ const handleApplicationDatePicker = (stateProp, field, date, _this) => {
     _this.setState({ [stateProp]: application })
 }
 
+const validSave = (fApplication, sApplication) => {
+    //f
+    if (fApplication.firstDest && fApplication.firstDest !== '' && (!fApplication.firstJobTitle || fApplication.firstJobTitle === '')) {
+        return false
+    }
+
+    if (fApplication.secondDest && fApplication.secondDest !== '' && (!fApplication.secondJobTitle || fApplication.secondJobTitle === '')) {
+        return false
+    }
+
+    if (fApplication.thirdDest && fApplication.thirdDest !== '' && (!fApplication.thirdJobTitle || fApplication.thirdJobTitle === '')) {
+        return false
+    }
+
+    if (fApplication.fourthDest && fApplication.fourthDest !== '' && (!fApplication.fourthJobTitle || fApplication.fourthJobTitle === '')) {
+        return false
+    }
+
+    //s
+    if (sApplication.firstDest && sApplication.firstDest !== '' && (!sApplication.firstJobTitle || sApplication.firstJobTitle === '')) {
+        return false
+    }
+
+    if (sApplication.secondDest && sApplication.secondDest !== '' && (!sApplication.secondJobTitle || sApplication.secondJobTitle === '')) {
+        return false
+    }
+
+    if (sApplication.thirdDest && sApplication.thirdDest !== '' && (!sApplication.thirdJobTitle || sApplication.thirdJobTitle === '')) {
+        return false
+    }
+
+    if (sApplication.fourthDest && sApplication.fourthDest !== '' && (!sApplication.fourthJobTitle || sApplication.fourthJobTitle === '')) {
+        return false
+    }
+
+    return true
+}
+
 module.exports = {
     handleApplicationSelect,
     handleApplicationMultiSelect,
     handleApplicationInput,
-    handleApplicationDatePicker
+    handleApplicationDatePicker,
+    validSave
 }

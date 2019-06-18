@@ -184,6 +184,12 @@ const Season = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+
+                        {props.application.firstDest &&
+                            props.application.firstDest !== '' &&
+                            (!props.application.firstJobTitle || props.application.firstJobTitle === '') && (
+                                <b className="card-text text-danger">Field is required</b>
+                            )}
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="1" className="form-group">
                         <label htmlFor="Choice">Choice</label>
@@ -222,6 +228,12 @@ const Season = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+
+                        {props.application.secondDest &&
+                            props.application.secondDest !== '' &&
+                            (!props.application.secondJobTitle || props.application.secondJobTitle === '') && (
+                                <b className="card-text text-danger">Field is required</b>
+                            )}
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="1" className="form-group">
@@ -261,6 +273,12 @@ const Season = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+
+                        {props.application.thirdDest &&
+                            props.application.thirdDest !== '' &&
+                            (!props.application.thirdJobTitle || props.application.thirdJobTitle === '') && (
+                                <b className="card-text text-danger">Field is required</b>
+                            )}
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="1" className="form-group">
                         <label htmlFor="Choice">Choice</label>
@@ -299,6 +317,12 @@ const Season = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+
+                        {props.application.fourthDest &&
+                            props.application.fourthDest !== '' &&
+                            (!props.application.fourthJobTitle || props.application.fourthJobTitle === '') && (
+                                <b className="card-text text-danger">Field is required</b>
+                            )}
                     </Col>
                 </div>
             </CardBody>
