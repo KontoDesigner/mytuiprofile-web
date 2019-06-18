@@ -33,7 +33,7 @@ const Education = props => {
                     <div className="form-row">
                         <Col sm="12" md="6" lg="6" xl="6" className="form-group">
                             <TextInput
-                                disabled={props.disabled}
+                                disabled={true}
                                 name="education"
                                 label="Education"
                                 value={props.staff.education}
@@ -53,7 +53,7 @@ const Education = props => {
                                 onChange={v => {
                                     props.handleStaffSelect('childCare', v, 'id')
                                 }}
-                                disabled={props.disabled}
+                                disabled={true}
                                 value={props.staff.childCare === '' ? null : props.staff.childCare}
                                 placeholder="Select"
 
