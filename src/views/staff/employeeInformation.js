@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, CardHeader, Col, Label, Input } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import Select from '../../components/select'
 import Datetime from 'react-datetime'
@@ -145,21 +145,6 @@ const EmployeeInformation = props => {
                             label="Driving Year"
                             value={props.staff.drivingYear}
                             onChange={props.handleStaffField}
-                        />
-                    </Col>
-                    <Col sm="12" md="12" lg="12" xl="12" className="form-group">
-                        <Label for="empcontent">Remarks</Label>
-                        <Input
-                            required
-                            type="textarea"
-                            maxLength="1000"
-                            name="empContent"
-                            id="empcontent"
-                            rows={3}
-                            value={props.staff.empContent ? props.staff.empContent : ''}
-                            onChange={props.handleStaffField}
-                            aria-multiline="true"
-                            disabled={props.disabled}
                         />
                     </Col>
                 </div>

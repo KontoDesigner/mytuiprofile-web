@@ -11,7 +11,7 @@ const ContactInformation = props => {
                 <div className="form-row">
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput
-                            disabled={props.disabled}
+                            disabled={true}
                             name="firstName"
                             label="First Name"
                             value={props.staff.firstName}
@@ -20,13 +20,7 @@ const ContactInformation = props => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput
-                            disabled={props.disabled}
-                            name="lastName"
-                            label="Sur Name"
-                            value={props.staff.lastName}
-                            onChange={props.handleStaffField}
-                        />
+                        <TextInput disabled={true} name="lastName" label="Sur Name" value={props.staff.lastName} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -34,7 +28,7 @@ const ContactInformation = props => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput disabled={props.disabled} name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} />
+                        <TextInput disabled={true} name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
