@@ -269,7 +269,9 @@ class Staff extends Component {
                 <Tabs
                     activeTab={this.state.activeTab}
                     handleActiveTab={this.handleActiveTab}
-                    applicationVisible={this.props.settings.applyOpen === 'Yes' && !managerAndNotCreated}
+                    applicationVisible={
+                        this.props.settings.applyOpen === 'Yes' && this.state.positionAssigns.currentPositionAssign !== null && !managerAndNotCreated
+                    }
                 />
 
                 <TabContent activeTab={this.state.activeTab}>
