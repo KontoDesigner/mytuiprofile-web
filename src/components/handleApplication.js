@@ -105,82 +105,82 @@ const validSave = (fApplication, sApplication) => {
 
     //f
     if (
-        fApplication.firstJobTitle &&
-        fApplication.firstJobTitle !== '' &&
-        ((fApplication.firstDest === fApplication.secondDest && fApplication.firstJobTitle === fApplication.secondJobTitle) ||
-            (fApplication.firstDest === fApplication.thirdDest && fApplication.firstJobTitle === fApplication.thirdJobTitle) ||
-            (fApplication.firstDest === fApplication.fourthDest && fApplication.firstJobTitle === fApplication.fourthJobTitle))
+        fApplication.firstDest &&
+        fApplication.firstDest !== '' &&
+        (fApplication.firstDest === fApplication.secondDest ||
+            fApplication.firstDest === fApplication.thirdDest ||
+            fApplication.firstDest === fApplication.fourthDest)
     ) {
         return false
     }
 
     if (
-        fApplication.secondJobTitle &&
-        fApplication.secondJobTitle !== '' &&
-        ((fApplication.secondDest === fApplication.firstDest && fApplication.secondJobTitle === fApplication.firstJobTitle) ||
-            (fApplication.secondDest === fApplication.thirdDest && fApplication.secondJobTitle === fApplication.thirdJobTitle) ||
-            (fApplication.secondDest === fApplication.fourthDest && fApplication.secondJobTitle === fApplication.fourthJobTitle))
+        fApplication.secondDest &&
+        fApplication.secondDest !== '' &&
+        (fApplication.secondDest === fApplication.firstDest ||
+            fApplication.secondDest === fApplication.thirdDest ||
+            fApplication.secondDest === fApplication.fourthDest)
     ) {
         return false
     }
 
     if (
-        fApplication.thirdJobTitle &&
-        fApplication.thirdJobTitle !== '' &&
-        ((fApplication.thirdDest === fApplication.firstDest && fApplication.thirdJobTitle === fApplication.firstJobTitle) ||
-            (fApplication.thirdDest === fApplication.secondDest && fApplication.thirdJobTitle === fApplication.secondJobTitle) ||
-            (fApplication.thirdDest === fApplication.fourthDest && fApplication.thirdJobTitle === fApplication.fourthJobTitle))
+        fApplication.thirdDest &&
+        fApplication.thirdDest !== '' &&
+        (fApplication.thirdDest === fApplication.firstDest ||
+            fApplication.thirdDest === fApplication.secondDest ||
+            fApplication.thirdDest === fApplication.fourthDest)
     ) {
         return false
     }
 
     if (
-        fApplication.fourthJobTitle &&
-        fApplication.fourthJobTitle !== '' &&
-        ((fApplication.fourthDest === fApplication.firstDest && fApplication.fourthJobTitle === fApplication.firstJobTitle) ||
-            (fApplication.fourthDest === fApplication.secondDest && fApplication.fourthJobTitle === fApplication.secondJobTitle) ||
-            (fApplication.fourthDest === fApplication.thirdDest && fApplication.fourthJobTitle === fApplication.thirdJobTitle))
+        fApplication.fourthDest &&
+        fApplication.fourthDest !== '' &&
+        (fApplication.fourthDest === fApplication.firstDest ||
+            fApplication.fourthDest === fApplication.secondDest ||
+            fApplication.fourthDest === fApplication.thirdDest)
     ) {
         return false
     }
 
     //s
     if (
-        sApplication.firstJobTitle &&
-        sApplication.firstJobTitle !== '' &&
-        ((sApplication.firstDest === sApplication.secondDest && sApplication.firstJobTitle === sApplication.secondJobTitle) ||
-            (sApplication.firstDest === sApplication.thirdDest && sApplication.firstJobTitle === sApplication.thirdJobTitle) ||
-            (sApplication.firstDest === sApplication.fourthDest && sApplication.firstJobTitle === sApplication.fourthJobTitle))
+        sApplication.firstDest &&
+        sApplication.firstDest !== '' &&
+        (sApplication.firstDest === sApplication.secondDest ||
+            sApplication.firstDest === sApplication.thirdDest ||
+            sApplication.firstDest === sApplication.fourthDest)
     ) {
         return false
     }
 
     if (
-        sApplication.secondJobTitle &&
-        sApplication.secondJobTitle !== '' &&
-        ((sApplication.secondDest === sApplication.firstDest && sApplication.secondJobTitle === sApplication.firstJobTitle) ||
-            (sApplication.secondDest === sApplication.thirdDest && sApplication.secondJobTitle === sApplication.thirdJobTitle) ||
-            (sApplication.secondDest === sApplication.fourthDest && sApplication.secondJobTitle === sApplication.fourthJobTitle))
+        sApplication.secondDest &&
+        sApplication.secondDest !== '' &&
+        (sApplication.secondDest === sApplication.firstDest ||
+            sApplication.secondDest === sApplication.thirdDest ||
+            sApplication.secondDest === sApplication.fourthDest)
     ) {
         return false
     }
 
     if (
-        sApplication.thirdJobTitle &&
-        sApplication.thirdJobTitle !== '' &&
-        ((sApplication.thirdDest === sApplication.firstDest && sApplication.thirdJobTitle === sApplication.firstJobTitle) ||
-            (sApplication.thirdDest === sApplication.secondDest && sApplication.thirdJobTitle === sApplication.secondJobTitle) ||
-            (sApplication.thirdDest === sApplication.fourthDest && sApplication.thirdJobTitle === sApplication.fourthJobTitle))
+        sApplication.thirdDest &&
+        sApplication.thirdDest !== '' &&
+        (sApplication.thirdDest === sApplication.firstDest ||
+            sApplication.thirdDest === sApplication.secondDest ||
+            sApplication.thirdDest === sApplication.fourthDest)
     ) {
         return false
     }
 
     if (
-        sApplication.fourthJobTitle &&
-        sApplication.fourthJobTitle !== '' &&
-        ((sApplication.fourthDest === sApplication.firstDest && sApplication.fourthJobTitle === sApplication.firstJobTitle) ||
-            (sApplication.fourthDest === sApplication.secondDest && sApplication.fourthJobTitle === sApplication.secondJobTitle) ||
-            (sApplication.fourthDest === sApplication.thirdDest && sApplication.fourthJobTitle === sApplication.thirdJobTitle))
+        sApplication.fourthDest &&
+        sApplication.fourthDest !== '' &&
+        (sApplication.fourthDest === sApplication.firstDest ||
+            sApplication.fourthDest === sApplication.secondDest ||
+            sApplication.fourthDest === sApplication.thirdDest)
     ) {
         return false
     }
