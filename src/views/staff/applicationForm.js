@@ -44,6 +44,7 @@ const ApplicationForm = props => {
                     jobFamily={props.jobFamily}
                     plannedToResign={props.plannedToResign}
                     noWinterWork={props.noWinterWork}
+                    sourceMarket={props.sourceMarket}
                 />
             )}
 
@@ -61,6 +62,7 @@ const ApplicationForm = props => {
                     noWinterWork={null}
                     handleDate={props.handleSecondApplicationDatePicker}
                     aFewWeeksOnly={props.aFewWeeksOnly}
+                    sourceMarket={props.sourceMarket}
                 />
             )}
 

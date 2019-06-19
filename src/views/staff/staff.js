@@ -31,7 +31,8 @@ class Staff extends Component {
             secondApplication: {},
             requestedPositionAssignsModel: false,
             jobFamily: '',
-            created: false
+            created: false,
+            sourceMarket: null
         }
     }
 
@@ -46,6 +47,7 @@ class Staff extends Component {
         let requestedPositionAssigns = []
         let jobFamily = ''
         let destinations = []
+
         await this.getPositionAssigns(manager)
 
         if (manager === true && this.state.email) {
@@ -76,6 +78,8 @@ class Staff extends Component {
             destinations = await this.props.geographyActions.getDestinationsByJobFamily(jobFamily)
         }
 
+        const sourceMarket = staff.sourceMarket
+
         const requestedPositionAssignsModel = requestedPositionAssigns.length > 0
 
         this.setState({
@@ -91,6 +95,7 @@ class Staff extends Component {
             requestedPositionAssignsModel,
             jobFamily,
             destinations,
+            sourceMarket,
             loaded: true
         })
     }
@@ -343,6 +348,7 @@ class Staff extends Component {
                                 handleApplication.handleApplicationDatePicker('secondApplication', field, val, this)
                             }
                             aFewWeeksOnly={aFewWeeksOnly}
+                            sourceMarket={this.state.sourceMarket}
                         />
                     </TabPane>
                 </TabContent>

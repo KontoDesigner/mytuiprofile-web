@@ -4,37 +4,60 @@ import Select from '../../components/select'
 import MultiSelect from '../../components/multiSelect'
 import Datetime from 'react-datetime'
 
-const Season = props => {
-    const destinations = props.destinations.filter(m => m.season === props.application.season)
+function removeDuplicates(myArr, prop) {
+    return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos
+    })
+}
 
-    const firstJobTitles = props.jobTitles.filter(
+const Season = props => {
+    const destinationsAll = props.destinations.filter(m => m.season === props.application.season && m.mplSourceMarket === props.sourceMarket)
+
+    const destinations = removeDuplicates(destinationsAll, 'id')
+
+    const firstJobTitlesAll = props.jobTitles.filter(
         m =>
             (m.season === props.application.season || m.season === 'YR') &&
+            m.mplSourceMarket === props.sourceMarket &&
             m.destination === props.application.firstDest &&
             (m.jobFamily === props.jobFamily ||
                 (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
-    const secondJobTitles = props.jobTitles.filter(
+
+    const firstJobTitles = removeDuplicates(firstJobTitlesAll, 'id')
+
+    const secondJobTitlesAll = props.jobTitles.filter(
         m =>
             (m.season === props.application.season || m.season === 'YR') &&
+            m.mplSourceMarket === props.sourceMarket &&
             m.destination === props.application.secondDest &&
             (m.jobFamily === props.jobFamily ||
                 (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
-    const thirdJobTitles = props.jobTitles.filter(
+
+    const secondJobTitles = removeDuplicates(secondJobTitlesAll, 'id')
+
+    const thirdJobTitlesAll = props.jobTitles.filter(
         m =>
             (m.season === props.application.season || m.season === 'YR') &&
+            m.mplSourceMarket === props.sourceMarket &&
             m.destination === props.application.thirdDest &&
             (m.jobFamily === props.jobFamily ||
                 (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
-    const fourthJobTitles = props.jobTitles.filter(
+
+    const thirdJobTitles = removeDuplicates(thirdJobTitlesAll, 'id')
+
+    const fourthJobTitlesAll = props.jobTitles.filter(
         m =>
             (m.season === props.application.season || m.season === 'YR') &&
+            m.mplSourceMarket === props.sourceMarket &&
             m.destination === props.application.fourthDest &&
             (m.jobFamily === props.jobFamily ||
                 (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
     )
+
+    const fourthJobTitles = removeDuplicates(fourthJobTitlesAll, 'id')
 
     let preferToWork = []
 
