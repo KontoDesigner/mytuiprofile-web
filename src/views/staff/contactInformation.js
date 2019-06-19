@@ -39,7 +39,7 @@ const ContactInformation = props => {
                         <TextInput
                             disabled={props.disabled}
                             name="emailWork"
-                            label="E-Mail (Work)"
+                            label="E-Mail (Private)"
                             value={props.staff.emailWork}
                             onChange={props.handleStaffField}
                         />
