@@ -63,6 +63,7 @@ const ApplicationForm = props => {
                     handleDate={props.handleSecondApplicationDatePicker}
                     aFewWeeksOnly={props.aFewWeeksOnly}
                     sourceMarket={props.sourceMarket}
+                    planToNotReturn={props.planToNotReturn}
                 />
             )}
 

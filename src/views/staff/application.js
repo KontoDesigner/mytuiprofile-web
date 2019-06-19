@@ -46,6 +46,7 @@ const Application = props => {
                 handleSecondApplicationDatePicker={props.handleSecondApplicationDatePicker}
                 aFewWeeksOnly={props.aFewWeeksOnly}
                 sourceMarket={props.sourceMarket}
+                planToNotReturn={props.planToNotReturn}
             />
         </div>
     )

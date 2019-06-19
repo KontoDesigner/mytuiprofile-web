@@ -275,6 +275,10 @@ class Staff extends Component {
             return v.id.toLowerCase().indexOf('a few weeks only') >= 0
         })
 
+        const planToNotReturn = this.state.secondApplication.preferToWork.some(function(v) {
+            return v.id.toLowerCase().indexOf('plan to not return') >= 0
+        })
+
         return (
             <div>
                 <Tabs
@@ -349,6 +353,7 @@ class Staff extends Component {
                             }
                             aFewWeeksOnly={aFewWeeksOnly}
                             sourceMarket={this.state.sourceMarket}
+                            planToNotReturn={planToNotReturn}
                         />
                     </TabPane>
                 </TabContent>
