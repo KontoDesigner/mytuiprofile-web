@@ -101,7 +101,7 @@ const Season = props => {
         </Col>
     )
 
-    if (props.plannedToResign === true || props.planToNotReturn === true) {
+    if (props.noWinterWorkResign === true || props.planToNotReturn === true) {
         return (
             <Card>
                 <CardHeader className="card-header-work"> Placement {props.application.season} </CardHeader>
@@ -112,7 +112,7 @@ const Season = props => {
         )
     }
 
-    if (props.noWinterWork !== null && props.noWinterWork === true) {
+    if (props.noWinterWorkReturn !== null && props.noWinterWorkReturn === true) {
         return (
             <Card>
                 <CardHeader className="card-header-work"> Placement {props.application.season} </CardHeader>

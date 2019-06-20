@@ -10,7 +10,7 @@ function removeDuplicates(myArr, prop) {
 }
 
 const ApplicationFormInfo = props => {
-    if (props.plannedToResign === true) {
+    if (props.noWinterWorkResign === true) {
         return null
     }
 

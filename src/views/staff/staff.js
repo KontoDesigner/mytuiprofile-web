@@ -263,12 +263,8 @@ class Staff extends Component {
 
         const managerAndNotCreated = this.state.manager && this.state.managerIsStaff !== true && this.state.created === false ? true : false
 
-        const plannedToResign = this.state.firstApplication.preferToWork.some(function(v) {
-            return v.id.toLowerCase().indexOf('planned to resign') >= 0
-        })
-
-        const noWinterWork = this.state.firstApplication.preferToWork.some(function(v) {
-            return v.id.toLowerCase().indexOf('no winter work') >= 0
+        const noWinterWorkReturn = this.state.firstApplication.preferToWork.some(function(v) {
+            return v.id.toLowerCase().indexOf('no winter work but would like to return') >= 0
         })
 
         const aFewWeeksOnly = this.state.secondApplication.preferToWork.some(function(v) {
@@ -277,6 +273,10 @@ class Staff extends Component {
 
         const planToNotReturn = this.state.secondApplication.preferToWork.some(function(v) {
             return v.id.toLowerCase().indexOf('plan to not return') >= 0
+        })
+
+        const noWinterWorkResign = this.state.firstApplication.preferToWork.some(function(v) {
+            return v.id.toLowerCase().indexOf('no winter work plan to resign') >= 0
         })
 
         return (
@@ -346,8 +346,8 @@ class Staff extends Component {
                             toggleRequestedPositionAssignsModel={this.toggleRequestedPositionAssignsModel}
                             pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
                             jobFamily={this.state.jobFamily}
-                            plannedToResign={plannedToResign}
-                            noWinterWork={noWinterWork}
+                            noWinterWorkReturn={noWinterWorkReturn}
+                            noWinterWorkResign={noWinterWorkResign}
                             handleSecondApplicationDatePicker={(field, val, _this) =>
                                 handleApplication.handleApplicationDatePicker('secondApplication', field, val, this)
                             }
