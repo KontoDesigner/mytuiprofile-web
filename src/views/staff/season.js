@@ -11,6 +11,10 @@ function removeDuplicates(myArr, prop) {
 }
 
 const Season = props => {
+    if (props.hideForm === true) {
+        return null
+    }
+
     const destinationsAll = props.destinations.filter(m => m.season === props.application.season && m.mplSourceMarket === props.sourceMarket)
 
     const destinations = removeDuplicates(destinationsAll, 'id')
