@@ -49,6 +49,9 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.planToResign || props.application.planToResign === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
@@ -67,6 +70,7 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.jump || props.application.jump === '') && <b className="card-text text-danger">Field is required</b>}
                     </Col>
 
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
@@ -85,6 +89,9 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.changeJobFamily || props.application.changeJobFamily === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                 </div>
                 <div className="form-row">
@@ -115,6 +122,9 @@ const ManagerSection = props => {
                             onChange={v => props.handleInputField('topStrengths', v)}
                             aria-multiline="true"
                         />
+                        {(!props.application.topStrengths || props.application.topStrengths === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         <Label for="developmentAreas">Any areas of development?</Label>
@@ -129,6 +139,9 @@ const ManagerSection = props => {
                             onChange={v => props.handleInputField('developmentAreas', v)}
                             aria-multiline="true"
                         />
+                        {(!props.application.developmentAreas || props.application.developmentAreas === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                 </div>
                 <div className="form-row">
@@ -214,6 +227,9 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.longService || props.application.longService === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
@@ -232,6 +248,9 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.disciplinary || props.application.disciplinary === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
 
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
@@ -250,6 +269,9 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.supportRequest || props.application.supportRequest === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                 </div>
                 <div className="form-row">
@@ -266,7 +288,10 @@ const ManagerSection = props => {
                             onChange={v => props.handleInputField('supportRequestComment', v)}
                             aria-multiline="true"
                         />
+                        {(!props.application.supportRequestComment || props.application.supportRequestComment === '') &&
+                            props.application.supportRequest === 'No' && <b className="card-text text-danger">Field is required</b>}
                     </Col>
+
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         <label htmlFor="changesRequest">In agreement with the employee have you made any changes to their application form? </label>
 
@@ -283,11 +308,13 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.changesRequest || props.application.changesRequest === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                 </div>
             </CardBody>
             <CardHeader className="card-header-work">
-                {' '}
                 Confirm - Please Note! Make sure that you print these comments. Once you have informed the employee and pressed the 'Save & Close'
                 button, you cannot go back and modify or read these comments again.
             </CardHeader>
@@ -309,6 +336,7 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {props.application.feedBackRequest === 'No' && <b className="card-text text-danger">Employee must be informed</b>}
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         <TextInput
@@ -318,6 +346,9 @@ const ManagerSection = props => {
                             value={props.application.signatureMgr}
                             onChange={v => props.handleInputField('signatureMgr', v)}
                         />
+                        {(!props.application.signatureMgr || props.application.signatureMgr === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         <TextInput
@@ -327,6 +358,9 @@ const ManagerSection = props => {
                             value={props.application.placeDateMgr}
                             onChange={v => props.handleInputField('placeDateMgr', v)}
                         />
+                        {(!props.application.placeDateMgr || props.application.placeDateMgr === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                     </Col>
                 </div>
             </CardBody>
