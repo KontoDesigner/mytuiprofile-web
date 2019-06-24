@@ -50,6 +50,9 @@ const Application = props => {
                 changePosition={props.changePosition}
                 mostImportant={props.mostImportant}
                 generalJobTitles={props.generalJobTitles}
+                midYearReview={props.midYearReview}
+                midYearTui={props.midYearTui}
+                earlyPerformance={props.earlyPerformance}
             />
         </div>
     )

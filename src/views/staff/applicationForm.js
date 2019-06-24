@@ -29,6 +29,9 @@ const ApplicationForm = props => {
                     handleSelect={props.handleFirstApplicationSelect}
                     application={props.firstApplication}
                     keywords={props.keywords}
+                    midYearReview={props.midYearReview}
+                    midYearTui={props.midYearTui}
+                    earlyPerformance={props.earlyPerformance}
                 />
             )}
 

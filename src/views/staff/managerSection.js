@@ -4,30 +4,6 @@ import Select from '../../components/select'
 import TextInput from '../../components/textInput'
 
 const ManagerSection = props => {
-    const midYearReview = props.keywords
-        .filter(ap => ap.ids === 'MidYearReview')[0]
-        .keywordValues.split(',')
-        .map(s => ({
-            id: s,
-            name: s
-        }))
-
-    const midYearTui = props.keywords
-        .filter(ap => ap.ids === 'MidYearTuiValuesRating')[0]
-        .keywordValues.split(',')
-        .map(s => ({
-            id: s,
-            name: s
-        }))
-
-    const earlyPerformance = props.keywords
-        .filter(ap => ap.ids === 'EarlyPerformanceCheck')[0]
-        .keywordValues.split(',')
-        .map(s => ({
-            id: s,
-            name: s
-        }))
-
     return (
         <Card>
             <CardHeader className="card-header-work"> Manager Section (filled in by the manager of the applicant)</CardHeader>
@@ -153,7 +129,7 @@ const ManagerSection = props => {
                             id="midYearReview"
                             valueKey="id"
                             labelKey="name"
-                            options={midYearReview}
+                            options={props.midYearReview}
                             onChange={v => {
                                 props.handleSelect('midYearReview', v, 'id')
                             }}
@@ -170,7 +146,7 @@ const ManagerSection = props => {
                             id="midYearRating"
                             valueKey="id"
                             labelKey="name"
-                            options={midYearTui}
+                            options={props.midYearTui}
                             onChange={v => {
                                 props.handleSelect('midYearRating', v, 'id')
                             }}
@@ -201,7 +177,7 @@ const ManagerSection = props => {
                             id="earlyPerformanceCheck"
                             valueKey="id"
                             labelKey="name"
-                            options={earlyPerformance}
+                            options={props.earlyPerformance}
                             onChange={v => {
                                 props.handleSelect('earlyPerformanceCheck', v, 'id')
                             }}

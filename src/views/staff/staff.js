@@ -41,7 +41,10 @@ class Staff extends Component {
             sourceMarket: null,
             generalJobTitles: [],
             mostImportant: [],
-            changePosition: []
+            changePosition: [],
+            midYearReview: [],
+            midYearTui: [],
+            earlyPerformance: []
         }
     }
 
@@ -109,6 +112,30 @@ class Staff extends Component {
                 name: s
             }))
 
+        const midYearReview = this.props.keywords
+            .filter(ap => ap.ids === 'MidYearReview')[0]
+            .keywordValues.split(',')
+            .map(s => ({
+                id: s,
+                name: s
+            }))
+
+        const midYearTui = this.props.keywords
+            .filter(ap => ap.ids === 'MidYearTuiValuesRating')[0]
+            .keywordValues.split(',')
+            .map(s => ({
+                id: s,
+                name: s
+            }))
+
+        const earlyPerformance = this.props.keywords
+            .filter(ap => ap.ids === 'EarlyPerformanceCheck')[0]
+            .keywordValues.split(',')
+            .map(s => ({
+                id: s,
+                name: s
+            }))
+
         this.setState({
             staff,
             created: firstApplication.created,
@@ -126,6 +153,9 @@ class Staff extends Component {
             generalJobTitles,
             mostImportant,
             changePosition,
+            midYearReview,
+            midYearTui,
+            earlyPerformance,
             loaded: true
         })
     }
@@ -387,6 +417,9 @@ class Staff extends Component {
                             changePosition={this.state.changePosition}
                             mostImportant={this.state.mostImportant}
                             generalJobTitles={this.state.generalJobTitles}
+                            midYearReview={this.state.midYearReview}
+                            midYearTui={this.state.midYearTui}
+                            earlyPerformance={this.state.earlyPerformance}
                         />
                     </TabPane>
                 </TabContent>
