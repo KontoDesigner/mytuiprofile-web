@@ -221,7 +221,7 @@ class Staff extends Component {
     }
 
     save = async () => {
-        const valid = handleApplication.validSave(this.state.firstApplication, this.state.secondApplication)
+        const valid = handleApplication.validSave(this.state.firstApplication, this.state.secondApplication, this.state.manager)
 
         if (!valid) {
             return
