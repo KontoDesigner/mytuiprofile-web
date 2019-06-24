@@ -41,12 +41,8 @@ const Application = props => {
                 toggleAssignModal={props.toggleAssignModal}
                 created={props.created}
                 jobFamily={props.jobFamily}
-                noWinterWorkReturn={props.noWinterWorkReturn}
-                noWinterWorkResign={props.noWinterWorkResign}
                 handleSecondApplicationDatePicker={props.handleSecondApplicationDatePicker}
-                aFewWeeksOnly={props.aFewWeeksOnly}
                 sourceMarket={props.sourceMarket}
-                planToNotReturn={props.planToNotReturn}
                 changePosition={props.changePosition}
                 mostImportant={props.mostImportant}
                 generalJobTitles={props.generalJobTitles}

@@ -20,6 +20,10 @@ const ApplicationForm = props => {
         return <div style={{ color: '#fff' }}>Thank you for your application!</div>
     }
 
+    const noWinterWorkResign = props.firstApplication.preferToWork.some(function(v) {
+        return v.id.toLowerCase().indexOf('no winter work plan to resign') >= 0
+    })
+
     return (
         <div>
             {props.manager === true && props.managerIsStaff !== true && props.settings.managerComments === 'Yes' && (
@@ -37,6 +41,7 @@ const ApplicationForm = props => {
 
             {props.applicationVisible === true && (
                 <Season
+                    firstApplication={true}
                     application={props.firstApplication}
                     destinations={props.destinations}
                     handleMultiSelect={props.handleFirstApplicationMultiSelect}
@@ -45,14 +50,14 @@ const ApplicationForm = props => {
                     jobTitles={props.jobTitles}
                     keywords={props.keywords}
                     jobFamily={props.jobFamily}
-                    noWinterWorkResign={props.noWinterWorkResign}
-                    noWinterWorkReturn={props.noWinterWorkReturn}
                     sourceMarket={props.sourceMarket}
+                    noWinterWorkResign={noWinterWorkResign}
                 />
             )}
 
             {props.applicationVisible === true && (
                 <Season
+                    firstApplication={false}
                     application={props.secondApplication}
                     destinations={props.destinations}
                     handleMultiSelect={props.handleSecondApplicationMultiSelect}
@@ -61,13 +66,9 @@ const ApplicationForm = props => {
                     jobTitles={props.jobTitles}
                     keywords={props.keywords}
                     jobFamily={props.jobFamily}
-                    noWinterWorkResign={props.noWinterWorkResign}
-                    noWinterWorkReturn={null}
                     handleDate={props.handleSecondApplicationDatePicker}
-                    aFewWeeksOnly={props.aFewWeeksOnly}
                     sourceMarket={props.sourceMarket}
-                    hideForm={props.noWinterWorkResign}
-                    planToNotReturn={props.planToNotReturn}
+                    noWinterWorkResign={noWinterWorkResign}
                 />
             )}
 
@@ -78,9 +79,9 @@ const ApplicationForm = props => {
                 jobTitles={props.generalJobTitles}
                 sourceMarkets={props.sourceMarkets}
                 yesNo={yesNo}
-                noWinterWorkResign={props.noWinterWorkResign}
                 changePosition={props.changePosition}
                 mostImportant={props.mostImportant}
+                noWinterWorkResign={noWinterWorkResign}
             />
 
             <Button size="sm" onClick={props.save} color="success">

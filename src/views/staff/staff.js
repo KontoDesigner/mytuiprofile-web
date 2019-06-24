@@ -323,22 +323,6 @@ class Staff extends Component {
 
         const managerAndNotCreated = this.state.manager && this.state.managerIsStaff !== true && this.state.created === false ? true : false
 
-        const noWinterWorkReturn = this.state.firstApplication.preferToWork.some(function(v) {
-            return v.id.toLowerCase().indexOf('no winter work but would like to return') >= 0
-        })
-
-        const aFewWeeksOnly = this.state.secondApplication.preferToWork.some(function(v) {
-            return v.id.toLowerCase().indexOf('a few weeks only') >= 0
-        })
-
-        const planToNotReturn = this.state.secondApplication.preferToWork.some(function(v) {
-            return v.id.toLowerCase().indexOf('plan to not return') >= 0
-        })
-
-        const noWinterWorkResign = this.state.firstApplication.preferToWork.some(function(v) {
-            return v.id.toLowerCase().indexOf('no winter work plan to resign') >= 0
-        })
-
         return (
             <div>
                 <Tabs
@@ -406,14 +390,10 @@ class Staff extends Component {
                             toggleRequestedPositionAssignsModel={this.toggleRequestedPositionAssignsModel}
                             pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
                             jobFamily={this.state.jobFamily}
-                            noWinterWorkReturn={noWinterWorkReturn}
-                            noWinterWorkResign={noWinterWorkResign}
                             handleSecondApplicationDatePicker={(field, val, _this) =>
                                 handleApplication.handleApplicationDatePicker('secondApplication', field, val, this)
                             }
-                            aFewWeeksOnly={aFewWeeksOnly}
                             sourceMarket={this.state.sourceMarket}
-                            planToNotReturn={planToNotReturn}
                             changePosition={this.state.changePosition}
                             mostImportant={this.state.mostImportant}
                             generalJobTitles={this.state.generalJobTitles}

@@ -11,8 +11,25 @@ function removeDuplicates(myArr, prop) {
 }
 
 const Season = props => {
-    if (props.hideForm === true) {
-        return null
+    let noWinterWorkReturn = null
+
+    if (props.firstApplication === true) {
+        noWinterWorkReturn = props.application.preferToWork.some(function(v) {
+            return v.id.toLowerCase().indexOf('no winter work but would like to return') >= 0
+        })
+    }
+
+    let aFewWeeksOnly = null
+    let planToNotReturn = null
+
+    if (props.firstApplication === false) {
+        aFewWeeksOnly = props.application.preferToWork.some(function(v) {
+            return v.id.toLowerCase().indexOf('a few weeks only') >= 0
+        })
+
+        planToNotReturn = props.application.preferToWork.some(function(v) {
+            return v.id.toLowerCase().indexOf('plan to not return') >= 0
+        })
     }
 
     const destinationsAll = props.destinations.filter(m => m.season === props.application.season && m.mplSourceMarket === props.sourceMarket)
@@ -83,6 +100,10 @@ const Season = props => {
             }))
     }
 
+    if (props.firstApplication === false && props.noWinterWorkResign === true) {
+        return null
+    }
+
     const preferToWorkSection = (
         <Col sm="12" md="6" lg="6" xl="6" style={{ marginBottom: '15px' }}>
             <label htmlFor="preferToWork">I would like to request to work {props.application.season}</label>
@@ -101,7 +122,7 @@ const Season = props => {
         </Col>
     )
 
-    if (props.noWinterWorkResign === true || props.planToNotReturn === true) {
+    if (props.noWinterWorkResign === true || planToNotReturn === true) {
         return (
             <Card>
                 <CardHeader className="card-header-work"> Placement {props.application.season} </CardHeader>
@@ -112,7 +133,7 @@ const Season = props => {
         )
     }
 
-    if (props.noWinterWorkReturn !== null && props.noWinterWorkReturn === true) {
+    if (noWinterWorkReturn !== null && noWinterWorkReturn === true) {
         return (
             <Card>
                 <CardHeader className="card-header-work"> Placement {props.application.season} </CardHeader>
@@ -130,7 +151,7 @@ const Season = props => {
                 <div className="form-row">
                     {preferToWorkSection}
 
-                    {props.aFewWeeksOnly === true && (
+                    {aFewWeeksOnly === true && (
                         <React.Fragment>
                             <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                                 <label htmlFor="workPeriodStart">From</label>
