@@ -72,11 +72,12 @@ const ApplicationForm = props => {
                 application={props.firstApplication}
                 handleSelect={props.handleFirstApplicationSelect}
                 handleInputField={props.handleFirstApplicationInput}
-                keywords={props.keywords}
-                jobTitles={props.jobTitles}
+                jobTitles={props.generalJobTitles}
                 sourceMarkets={props.sourceMarkets}
                 yesNo={yesNo}
                 noWinterWorkResign={props.noWinterWorkResign}
+                changePosition={props.changePosition}
+                mostImportant={props.mostImportant}
             />
 
             <Button size="sm" onClick={props.save} color="success">

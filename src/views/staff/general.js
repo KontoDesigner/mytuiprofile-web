@@ -3,34 +3,10 @@ import { Card, CardBody, CardHeader, Col, Input, Label } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import Select from '../../components/select'
 
-function removeDuplicates(myArr, prop) {
-    return myArr.filter((obj, pos, arr) => {
-        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos
-    })
-}
-
 const ApplicationFormInfo = props => {
     if (props.noWinterWorkResign === true) {
         return null
     }
-
-    const changePosition = props.keywords
-        .filter(ap => ap.ids === 'IWantToChangePosition')[0]
-        .keywordValues.split(',')
-        .map(s => ({
-            id: s,
-            name: s
-        }))
-
-    const mostImportant = props.keywords
-        .filter(ap => ap.ids === 'MostImportant')[0]
-        .keywordValues.split(',')
-        .map(s => ({
-            id: s,
-            name: s
-        }))
-
-    const jobTitles = removeDuplicates(props.jobTitles, 'id')
 
     return (
         <Card>
@@ -45,7 +21,7 @@ const ApplicationFormInfo = props => {
                             id="changePosition"
                             valueKey="id"
                             labelKey="name"
-                            options={changePosition}
+                            options={props.changePosition}
                             onChange={v => {
                                 props.handleSelect('changePosition', v, 'id')
                             }}
@@ -89,7 +65,7 @@ const ApplicationFormInfo = props => {
                             id="couplePosition"
                             valueKey="id"
                             labelKey="name"
-                            options={jobTitles}
+                            options={props.jobTitles}
                             onChange={v => {
                                 props.handleSelect('couplePosition', v, 'id')
                             }}
@@ -123,7 +99,7 @@ const ApplicationFormInfo = props => {
                             id="mostImportant"
                             valueKey="id"
                             labelKey="name"
-                            options={mostImportant}
+                            options={props.mostImportant}
                             onChange={v => {
                                 props.handleSelect('mostImportant', v, 'id')
                             }}

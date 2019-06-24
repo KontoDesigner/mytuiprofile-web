@@ -47,6 +47,9 @@ const Application = props => {
                 aFewWeeksOnly={props.aFewWeeksOnly}
                 sourceMarket={props.sourceMarket}
                 planToNotReturn={props.planToNotReturn}
+                changePosition={props.changePosition}
+                mostImportant={props.mostImportant}
+                generalJobTitles={props.generalJobTitles}
             />
         </div>
     )

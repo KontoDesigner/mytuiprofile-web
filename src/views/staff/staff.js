@@ -14,6 +14,12 @@ import { TabContent, TabPane } from 'reactstrap'
 import Application from './application'
 import RequestedPositionAssignsModal from './requestedPositionAssignsModal'
 
+function removeDuplicates(myArr, prop) {
+    return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos
+    })
+}
+
 class Staff extends Component {
     constructor(props) {
         super(props)
@@ -32,7 +38,10 @@ class Staff extends Component {
             requestedPositionAssignsModel: false,
             jobFamily: '',
             created: false,
-            sourceMarket: null
+            sourceMarket: null,
+            generalJobTitles: [],
+            mostImportant: [],
+            changePosition: []
         }
     }
 
@@ -82,6 +91,24 @@ class Staff extends Component {
 
         const requestedPositionAssignsModel = requestedPositionAssigns.length > 0
 
+        const generalJobTitles = removeDuplicates(this.props.jobTitles, 'id')
+
+        const mostImportant = this.props.keywords
+            .filter(ap => ap.ids === 'MostImportant')[0]
+            .keywordValues.split(',')
+            .map(s => ({
+                id: s,
+                name: s
+            }))
+
+        const changePosition = this.props.keywords
+            .filter(ap => ap.ids === 'IWantToChangePosition')[0]
+            .keywordValues.split(',')
+            .map(s => ({
+                id: s,
+                name: s
+            }))
+
         this.setState({
             staff,
             created: firstApplication.created,
@@ -96,6 +123,9 @@ class Staff extends Component {
             jobFamily,
             destinations,
             sourceMarket,
+            generalJobTitles,
+            mostImportant,
+            changePosition,
             loaded: true
         })
     }
@@ -354,6 +384,9 @@ class Staff extends Component {
                             aFewWeeksOnly={aFewWeeksOnly}
                             sourceMarket={this.state.sourceMarket}
                             planToNotReturn={planToNotReturn}
+                            changePosition={this.state.changePosition}
+                            mostImportant={this.state.mostImportant}
+                            generalJobTitles={this.state.generalJobTitles}
                         />
                     </TabPane>
                 </TabContent>
