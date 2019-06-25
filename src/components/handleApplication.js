@@ -71,7 +71,7 @@ const handleApplicationDatePicker = (stateProp, field, date, _this) => {
 const validSave = (fApplication, sApplication, manager) => {
     //manager
     if (manager === true) {
-        if ((!fApplication.supportRequestComment || fApplication.supportRequestComment === '') && fApplication.supportRequest === 'No') {
+        if (!fApplication.planToResign || fApplication.planToResign === '') {
             return false
         }
 
@@ -83,48 +83,50 @@ const validSave = (fApplication, sApplication, manager) => {
             return false
         }
 
-        if (!fApplication.planToResign || fApplication.planToResign === '') {
-            return false
-        }
-
-        if (!fApplication.jump || fApplication.jump === '') {
-            return false
-        }
-
-        if (!fApplication.changeJobFamily || fApplication.changeJobFamily === '') {
-            return false
-        }
-
-        if (!fApplication.topStrengths || fApplication.topStrengths === '') {
-            return false
-        }
-
-        if (!fApplication.developmentAreas || fApplication.developmentAreas === '') {
-            return false
-        }
-
-        if (!fApplication.longService || fApplication.longService === '') {
-            return false
-        }
-
-        if (!fApplication.disciplinary || fApplication.disciplinary === '') {
-            return false
-        }
-
-        if (!fApplication.supportRequest || fApplication.supportRequest === '') {
-            return false
-        }
-
-        if (!fApplication.changesRequest || fApplication.changesRequest === '') {
-            return false
-        }
-
         if (!fApplication.signatureMgr || fApplication.signatureMgr === '') {
             return false
         }
 
         if (!fApplication.placeDateMgr || fApplication.placeDateMgr === '') {
             return false
+        }
+
+        if (fApplication.planToResign !== 'Yes') {
+            if ((!fApplication.supportRequestComment || fApplication.supportRequestComment === '') && fApplication.supportRequest === 'No') {
+                return false
+            }
+
+            if (!fApplication.jump || fApplication.jump === '') {
+                return false
+            }
+
+            if (!fApplication.changeJobFamily || fApplication.changeJobFamily === '') {
+                return false
+            }
+
+            if (!fApplication.topStrengths || fApplication.topStrengths === '') {
+                return false
+            }
+
+            if (!fApplication.developmentAreas || fApplication.developmentAreas === '') {
+                return false
+            }
+
+            if (!fApplication.longService || fApplication.longService === '') {
+                return false
+            }
+
+            if (!fApplication.disciplinary || fApplication.disciplinary === '') {
+                return false
+            }
+
+            if (!fApplication.supportRequest || fApplication.supportRequest === '') {
+                return false
+            }
+
+            if (!fApplication.changesRequest || fApplication.changesRequest === '') {
+                return false
+            }
         }
     }
 
