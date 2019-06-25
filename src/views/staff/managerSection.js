@@ -312,6 +312,9 @@ const ManagerSection = props => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
+                        {(!props.application.feedBackRequest || props.application.feedBackRequest === '') && (
+                            <b className="card-text text-danger">Field is required</b>
+                        )}
                         {props.application.feedBackRequest === 'No' && <b className="card-text text-danger">Employee must be informed</b>}
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
