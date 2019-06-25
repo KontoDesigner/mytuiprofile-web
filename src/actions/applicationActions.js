@@ -180,7 +180,7 @@ function buildSaveModel(application) {
     return model
 }
 
-export function save(firstApplication, secondApplication, manager) {
+export function save(firstApplication, secondApplication, manager, managerIsStaff) {
     const firstModel = buildSaveModel(firstApplication)
     const secondModel = buildSaveModel(secondApplication)
 
@@ -202,7 +202,11 @@ export function save(firstApplication, secondApplication, manager) {
             dispatch(endAjaxCall())
 
             if (firstRes.ok === true && secondRes.ok === true) {
-                toastr.success('Success', 'Thank you for your application')
+                if (manager === true && managerIsStaff !== true) {
+                    toastr.success('Success', 'Manager comments saved')
+                } else {
+                    toastr.success('Success', 'Thank you for your application')
+                }
 
                 return true
             } else {

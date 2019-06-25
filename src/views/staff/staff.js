@@ -75,6 +75,10 @@ class Staff extends Component {
             managerIsStaff = this.state.email === this.props.user.email
             disabled = this.state.email !== this.props.user.email
         } else {
+            if (manager === true) {
+                managerIsStaff = true
+            }
+
             staff = await this.props.staffActions.getStaff()
 
             firstApplication = await this.props.applicationActions.getApplication(this.props.settings.nextSeason)
@@ -296,7 +300,7 @@ class Staff extends Component {
         const firstApplication = this.buildSaveModel(this.state.firstApplication, this.state.firstApplication)
         const secondApplication = this.buildSaveModel(this.state.secondApplication, this.state.firstApplication)
 
-        const res = await this.props.applicationActions.save(firstApplication, secondApplication, this.state.manager)
+        const res = await this.props.applicationActions.save(firstApplication, secondApplication, this.state.manager, this.state.managerIsStaff)
 
         if (res === true && (this.state.manager === false || this.state.managerIsStaff === true)) {
             this.setState({
@@ -327,7 +331,13 @@ class Staff extends Component {
             return null
         }
 
-        const managerAndNotCreated = this.state.manager && this.state.managerIsStaff !== true && this.state.created === false ? true : false
+        let applicationVisible = true
+
+        if (this.state.manager) {
+            if (this.state.created === false && this.state.managerIsStaff === false) {
+                applicationVisible = false
+            }
+        }
 
         return (
             <div>
@@ -335,7 +345,7 @@ class Staff extends Component {
                     activeTab={this.state.activeTab}
                     handleActiveTab={this.handleActiveTab}
                     applicationVisible={
-                        this.props.settings.applyOpen === 'Yes' && this.state.positionAssigns.currentPositionAssign !== null && !managerAndNotCreated
+                        this.props.settings.applyOpen === 'Yes' && this.state.positionAssigns.currentPositionAssign !== null && applicationVisible
                     }
                 />
 
