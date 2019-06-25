@@ -31,7 +31,6 @@ const Application = props => {
                 handleFirstApplicationMultiSelect={props.handleFirstApplicationMultiSelect}
                 handleSecondApplicationSelect={props.handleSecondApplicationSelect}
                 handleSecondApplicationMultiSelect={props.handleSecondApplicationMultiSelect}
-                jobTitles={props.jobTitles}
                 settings={props.settings}
                 applicationVisible={props.applicationVisible}
                 keywords={props.keywords}
@@ -49,6 +48,7 @@ const Application = props => {
                 midYearReview={props.midYearReview}
                 midYearTui={props.midYearTui}
                 earlyPerformance={props.earlyPerformance}
+                seasonJobTitles={props.seasonJobTitles}
             />
         </div>
     )

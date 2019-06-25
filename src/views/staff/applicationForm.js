@@ -47,7 +47,7 @@ const ApplicationForm = props => {
                     handleMultiSelect={props.handleFirstApplicationMultiSelect}
                     handleSelect={props.handleFirstApplicationSelect}
                     preferToWork={[]}
-                    jobTitles={props.jobTitles}
+                    jobTitles={props.seasonJobTitles}
                     keywords={props.keywords}
                     jobFamily={props.jobFamily}
                     sourceMarket={props.sourceMarket}
@@ -63,7 +63,7 @@ const ApplicationForm = props => {
                     handleMultiSelect={props.handleSecondApplicationMultiSelect}
                     handleSelect={props.handleSecondApplicationSelect}
                     preferToWork={[]}
-                    jobTitles={props.jobTitles}
+                    jobTitles={props.seasonJobTitles}
                     keywords={props.keywords}
                     jobFamily={props.jobFamily}
                     handleDate={props.handleSecondApplicationDatePicker}

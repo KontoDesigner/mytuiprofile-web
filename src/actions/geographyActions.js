@@ -173,3 +173,21 @@ export function getDestinationsByJobFamily(jobfamily) {
         }
     }
 }
+
+export function getJobTitlesByJobFamily(jobFamily) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const jobTitles = await restClient.get(`geography/getjobtitles/${jobFamily}`)
+
+            dispatch(endAjaxCall())
+
+            return jobTitles
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}

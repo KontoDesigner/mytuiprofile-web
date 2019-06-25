@@ -32,50 +32,32 @@ const Season = props => {
         })
     }
 
-    const destinationsAll = props.destinations.filter(m => m.season === props.application.season && m.mplSourceMarket === props.sourceMarket)
+    const destinationsAll = props.destinations.filter(
+        m => (m.season === props.application.season || m.season === 'YR') && m.mplSourceMarket === props.sourceMarket
+    )
 
     const destinations = removeDuplicates(destinationsAll, 'id')
 
     const firstJobTitlesAll = props.jobTitles.filter(
-        m =>
-            (m.season === props.application.season || m.season === 'YR') &&
-            m.mplSourceMarket === props.sourceMarket &&
-            m.destination === props.application.firstDest &&
-            (m.jobFamily === props.jobFamily ||
-                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
+        m => (m.season === props.application.season || m.season === 'YR') && m.destination === props.application.firstDest
     )
 
     const firstJobTitles = removeDuplicates(firstJobTitlesAll, 'id')
 
     const secondJobTitlesAll = props.jobTitles.filter(
-        m =>
-            (m.season === props.application.season || m.season === 'YR') &&
-            m.mplSourceMarket === props.sourceMarket &&
-            m.destination === props.application.secondDest &&
-            (m.jobFamily === props.jobFamily ||
-                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
+        m => (m.season === props.application.season || m.season === 'YR') && m.destination === props.application.secondDest
     )
 
     const secondJobTitles = removeDuplicates(secondJobTitlesAll, 'id')
 
     const thirdJobTitlesAll = props.jobTitles.filter(
-        m =>
-            (m.season === props.application.season || m.season === 'YR') &&
-            m.mplSourceMarket === props.sourceMarket &&
-            m.destination === props.application.thirdDest &&
-            (m.jobFamily === props.jobFamily ||
-                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
+        m => (m.season === props.application.season || m.season === 'YR') && m.destination === props.application.thirdDest
     )
 
     const thirdJobTitles = removeDuplicates(thirdJobTitlesAll, 'id')
 
     const fourthJobTitlesAll = props.jobTitles.filter(
-        m =>
-            (m.season === props.application.season || m.season === 'YR') &&
-            m.mplSourceMarket === props.sourceMarket &&
-            m.destination === props.application.fourthDest &&
-            (m.jobFamily === props.jobFamily ||
-                (props.jobFamily.toLowerCase().indexOf('team manager') >= 0 && m.jobFamily.toLowerCase().indexOf('team manager') >= 0))
+        m => (m.season === props.application.season || m.season === 'YR') && m.destination === props.application.fourthDest
     )
 
     const fourthJobTitles = removeDuplicates(fourthJobTitlesAll, 'id')

@@ -44,7 +44,8 @@ class Staff extends Component {
             changePosition: [],
             midYearReview: [],
             midYearTui: [],
-            earlyPerformance: []
+            earlyPerformance: [],
+            seasonJobTitles: []
         }
     }
 
@@ -59,6 +60,7 @@ class Staff extends Component {
         let requestedPositionAssigns = []
         let jobFamily = ''
         let destinations = []
+        let seasonJobTitles = []
 
         await this.getPositionAssigns(manager)
 
@@ -88,6 +90,7 @@ class Staff extends Component {
         if (this.state.positionAssigns.currentPositionAssign) {
             jobFamily = this.state.positionAssigns.currentPositionAssign.jobFamily
             destinations = await this.props.geographyActions.getDestinationsByJobFamily(jobFamily)
+            seasonJobTitles = await this.props.geographyActions.getJobTitlesByJobFamily(jobFamily)
         }
 
         const sourceMarket = staff.sourceMarket
@@ -156,6 +159,7 @@ class Staff extends Component {
             midYearReview,
             midYearTui,
             earlyPerformance,
+            seasonJobTitles,
             loaded: true
         })
     }
@@ -379,7 +383,6 @@ class Staff extends Component {
                             handleSecondApplicationMultiSelect={(field, val, _this) =>
                                 handleApplication.handleApplicationMultiSelect('secondApplication', field, val, this)
                             }
-                            jobTitles={this.props.jobTitles}
                             settings={this.props.settings}
                             applicationVisible={this.props.settings.applyOpen === 'Yes'}
                             keywords={this.props.keywords}
@@ -402,6 +405,7 @@ class Staff extends Component {
                             midYearReview={this.state.midYearReview}
                             midYearTui={this.state.midYearTui}
                             earlyPerformance={this.state.earlyPerformance}
+                            seasonJobTitles={this.state.seasonJobTitles}
                         />
                     </TabPane>
                 </TabContent>
