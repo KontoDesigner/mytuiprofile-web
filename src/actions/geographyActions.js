@@ -174,12 +174,12 @@ export function getDestinationsByJobFamily(jobfamily) {
     }
 }
 
-export function getJobTitlesByJobFamily(jobFamily) {
+export function getJobTitlesByJobFamilyAndSourceMarket(jobFamily, sourceMarket) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const jobTitles = await restClient.get(`geography/getjobtitles/${jobFamily}`)
+            const jobTitles = await restClient.get(`geography/getjobtitles/${jobFamily}/${sourceMarket}`)
 
             dispatch(endAjaxCall())
 

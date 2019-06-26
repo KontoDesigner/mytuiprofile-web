@@ -91,13 +91,13 @@ class Staff extends Component {
         secondApplication.season = this.props.settings.nextNextSeason.trim()
         secondApplication.staffID = staff.staffId
 
+        const sourceMarket = staff.sourceMarket
+
         if (this.state.positionAssigns.currentPositionAssign) {
             jobFamily = this.state.positionAssigns.currentPositionAssign.jobFamily
             destinations = await this.props.geographyActions.getDestinationsByJobFamily(jobFamily)
-            seasonJobTitles = await this.props.geographyActions.getJobTitlesByJobFamily(jobFamily)
+            seasonJobTitles = await this.props.geographyActions.getJobTitlesByJobFamilyAndSourceMarket(jobFamily, sourceMarket)
         }
-
-        const sourceMarket = staff.sourceMarket
 
         const requestedPositionAssignsModel = requestedPositionAssigns.length > 0
 
