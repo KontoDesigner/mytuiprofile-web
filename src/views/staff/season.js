@@ -185,6 +185,7 @@ const Season = props => {
                         <label htmlFor="firstDest">Destination</label>
 
                         <Select
+                            isClearable={true}
                             valueKey="id"
                             labelKey="name"
                             options={destinations}
@@ -210,6 +211,7 @@ const Season = props => {
                         <label htmlFor="firstJobTitle">JobTitle</label>
 
                         <Select
+                            isClearable={true}
                             //  multi={true}
                             id="firstJobTitle"
                             valueKey="id"
@@ -236,6 +238,7 @@ const Season = props => {
                         <label htmlFor="secondDest">Destination</label>
 
                         <Select
+                            isClearable={true}
                             //  multi={true}
                             id="secondDest"
                             valueKey="id"
@@ -262,6 +265,7 @@ const Season = props => {
                         <label htmlFor="secondJobTitle">JobTitle</label>
 
                         <Select
+                            isClearable={true}
                             //  multi={true}
                             id="secondJobTitle"
                             valueKey="id"
@@ -289,6 +293,7 @@ const Season = props => {
                         <label htmlFor="thirdDest">Destination</label>
 
                         <Select
+                            isClearable={true}
                             //  multi={true}
                             id="thirdDest"
                             valueKey="id"
@@ -315,6 +320,7 @@ const Season = props => {
                         <label htmlFor="thirdJobTitle">JobTitle</label>
 
                         <Select
+                            isClearable={true}
                             //  multi={true}
                             id="thirdJobTitle"
                             valueKey="id"
@@ -341,6 +347,7 @@ const Season = props => {
                         <label htmlFor="fourthDest">Destination</label>
 
                         <Select
+                            isClearable={true}
                             //  multi={true}
                             id="fourthDest"
                             valueKey="id"
@@ -367,6 +374,7 @@ const Season = props => {
                         <label htmlFor="fourthJobTitle">JobTitle</label>
 
                         <Select
+                            isClearable={true}
                             //  multi={true}
                             id="fourthJobTitle"
                             valueKey="id"
