@@ -3,6 +3,21 @@ import { Card, CardBody, CardHeader, Col, Input, Label } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import Select from '../../components/select'
 
+const yesNoRetailPosition = [
+    {
+        id: 'Yes',
+        name: 'Yes'
+    },
+    {
+        id: 'No',
+        name: 'No'
+    },
+    {
+        id: 'Yes - Retail position',
+        name: 'Yes - Retail position'
+    }
+]
+
 const ApplicationFormInfo = props => {
     if (props.noWinterWorkResign === true) {
         return null
@@ -39,7 +54,7 @@ const ApplicationFormInfo = props => {
                             id="nonDestinationPosition"
                             valueKey="id"
                             labelKey="name"
-                            options={props.yesNo}
+                            options={yesNoRetailPosition}
                             onChange={v => {
                                 props.handleSelect('nonDestinationPosition', v, 'id')
                             }}
@@ -104,23 +119,6 @@ const ApplicationFormInfo = props => {
                                 props.handleSelect('mostImportant', v, 'id')
                             }}
                             value={props.application.mostImportant}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-                    </Col>
-                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                        <label htmlFor="skiPlacement">UK only – I already have a confirmed Ski Placement</label>
-
-                        <Select
-                            //  multi={true}
-                            id="skiPlacement"
-                            valueKey="id"
-                            labelKey="name"
-                            options={props.yesNo}
-                            onChange={v => {
-                                props.handleSelect('skiPlacement', v, 'id')
-                            }}
-                            value={props.application.skiPlacement}
                             placeholder="Select"
                             className="form-group form-group-select"
                         />

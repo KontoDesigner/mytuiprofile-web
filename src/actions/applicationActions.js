@@ -147,7 +147,6 @@ function buildSaveModel(application) {
     model.MostImportant = application.mostImportant
     model.NonDestinationPosition = application.nonDestinationPosition
     model.CoupleName = application.coupleName
-    model.SkiPlacement = application.skiPlacement
     model.Fairs = application.fairs
     model.Comments = application.comments
     model.Season = application.season

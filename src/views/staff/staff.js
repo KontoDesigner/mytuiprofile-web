@@ -232,7 +232,6 @@ class Staff extends Component {
             couplePosition: firstApplication.couplePosition,
             coupleSourceMarket: firstApplication.coupleSourceMarket,
             mostImportant: firstApplication.mostImportant,
-            skiPlacement: firstApplication.skiPlacement,
             fairs: firstApplication.fairs,
             comments: firstApplication.comments,
             signature: firstApplication.signature,
