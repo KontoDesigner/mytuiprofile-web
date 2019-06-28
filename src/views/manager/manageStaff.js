@@ -14,7 +14,9 @@ const ManageStaff = props => {
             <Row>
                 <Col xl="12" lg="12" md="12" sm="12" xs="12">
                     <div className="hr">
-                        <span className="hr-title">Manage Staff</span>
+                        <span className="hr-title">
+                            Please choose the relevant destination, and then the staff member you want to act on (Manager)
+                        </span>
                     </div>
                 </Col>
             </Row>

@@ -11,7 +11,7 @@ const Tabs = props => {
                     onClick={() => {
                         props.handleActiveTab('profile')
                     }}>
-                    Profile
+                    My Profile
                 </NavLink>
             </NavItem>
 
@@ -22,7 +22,7 @@ const Tabs = props => {
                         onClick={() => {
                             props.handleActiveTab('application')
                         }}>
-                        Application
+                        Apply For Upcoming Seasons
                     </NavLink>
                 </NavItem>
             )}
