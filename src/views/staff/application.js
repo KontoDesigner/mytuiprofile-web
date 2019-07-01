@@ -15,7 +15,7 @@ const Application = props => {
 
             {props.pendingPositionAssigns && (
                 <div style={{ marginBottom: '15px', textDecoration: 'underline' }}>
-                    <a style={{ cursor: 'pointer' }} href={null} onClick={props.toggleRequestedPositionAssignsModel}>
+                    <a style={{ cursor: 'pointer' }} href={null} onClick={props.toggleRequestedPositionAssignsModal}>
                         Pending Applications
                     </a>
                 </div>
@@ -36,7 +36,7 @@ const Application = props => {
                 keywords={props.keywords}
                 handleFirstApplicationInput={props.handleFirstApplicationInput}
                 sourceMarkets={props.sourceMarkets}
-                save={props.save}
+                toggleConfirmModal={props.toggleConfirmModal}
                 toggleAssignModal={props.toggleAssignModal}
                 created={props.created}
                 jobFamily={props.jobFamily}

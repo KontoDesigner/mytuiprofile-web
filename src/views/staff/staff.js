@@ -13,6 +13,7 @@ import Tabs from './tabs'
 import { TabContent, TabPane } from 'reactstrap'
 import Application from './application'
 import RequestedPositionAssignsModal from './requestedPositionAssignsModal'
+import ConfirmModal from './confirmModal'
 
 function removeDuplicates(myArr, prop) {
     return myArr.filter((obj, pos, arr) => {
@@ -35,7 +36,8 @@ class Staff extends Component {
             activeTab: 'profile',
             firstApplication: {},
             secondApplication: {},
-            requestedPositionAssignsModel: false,
+            requestedPositionAssignsModal: false,
+            confirmModal: false,
             jobFamily: '',
             created: false,
             sourceMarket: null,
@@ -99,7 +101,7 @@ class Staff extends Component {
             seasonJobTitles = await this.props.geographyActions.getJobTitlesByJobFamilyAndSourceMarket(jobFamily, sourceMarket)
         }
 
-        const requestedPositionAssignsModel = requestedPositionAssigns.length > 0
+        const requestedPositionAssignsModal = requestedPositionAssigns.length > 0
 
         const generalJobTitles = removeDuplicates(this.props.jobTitles, 'id')
 
@@ -153,7 +155,7 @@ class Staff extends Component {
             firstApplication,
             secondApplication,
             requestedPositionAssigns,
-            requestedPositionAssignsModel,
+            requestedPositionAssignsModal,
             jobFamily,
             destinations,
             sourceMarket,
@@ -288,6 +290,8 @@ class Staff extends Component {
     }
 
     save = async () => {
+        this.setState({ confirmModal: false })
+
         const manager = this.state.manager && this.state.managerIsStaff !== true
 
         const valid = handleApplication.validSave(this.state.firstApplication, this.state.secondApplication, manager)
@@ -308,9 +312,15 @@ class Staff extends Component {
         }
     }
 
-    toggleRequestedPositionAssignsModel = () => {
+    toggleRequestedPositionAssignsModal = () => {
         this.setState({
-            requestedPositionAssignsModel: !this.state.requestedPositionAssignsModel
+            requestedPositionAssignsModal: !this.state.requestedPositionAssignsModal
+        })
+    }
+
+    toggleConfirmModal = () => {
+        this.setState({
+            confirmModal: !this.state.confirmModal
         })
     }
 
@@ -321,7 +331,7 @@ class Staff extends Component {
 
         this.setState({
             requestedPositionAssigns,
-            requestedPositionAssignsModel: requestedPositionAssigns.length > 0
+            requestedPositionAssignsModal: requestedPositionAssigns.length > 0
         })
     }
 
@@ -399,9 +409,9 @@ class Staff extends Component {
                                 handleApplication.handleApplicationInput('firstApplication', field, val, this)
                             }
                             sourceMarkets={this.props.sourceMarkets}
-                            save={this.save}
+                            toggleConfirmModal={this.toggleConfirmModal}
                             created={this.state.created}
-                            toggleRequestedPositionAssignsModel={this.toggleRequestedPositionAssignsModel}
+                            toggleRequestedPositionAssignsModal={this.toggleRequestedPositionAssignsModal}
                             pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
                             jobFamily={this.state.jobFamily}
                             handleSecondApplicationDatePicker={(field, val, _this) =>
@@ -421,10 +431,12 @@ class Staff extends Component {
 
                 <RequestedPositionAssignsModal
                     positionAssigns={this.state.requestedPositionAssigns}
-                    modal={this.state.requestedPositionAssignsModel}
-                    toggle={this.toggleRequestedPositionAssignsModel}
+                    modal={this.state.requestedPositionAssignsModal}
+                    toggle={this.toggleRequestedPositionAssignsModal}
                     accept={this.acceptOrDeclinePositionAssign}
                 />
+
+                <ConfirmModal modal={this.state.confirmModal} toggle={this.toggleConfirmModal} save={this.save} />
             </div>
         )
     }

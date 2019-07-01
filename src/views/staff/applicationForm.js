@@ -88,8 +88,8 @@ const ApplicationForm = props => {
                 Please Note! Once you have pressed the 'Send' button below, you cannot go back and update this application form!
             </Alert>
 
-            <Button size="sm" onClick={props.save} color="success">
-                Submit
+            <Button size="sm" onClick={props.toggleConfirmModal} color="success">
+                Send
             </Button>
         </div>
     )
