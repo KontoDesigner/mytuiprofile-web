@@ -410,6 +410,7 @@ class Staff extends Component {
                             }
                             sourceMarkets={this.props.sourceMarkets}
                             toggleConfirmModal={this.toggleConfirmModal}
+                            save={this.save}
                             created={this.state.created}
                             toggleRequestedPositionAssignsModal={this.toggleRequestedPositionAssignsModal}
                             pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
