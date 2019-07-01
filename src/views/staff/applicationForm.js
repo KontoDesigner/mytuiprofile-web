@@ -2,7 +2,7 @@ import React from 'react'
 import ManagerSection from './managerSection'
 import Season from './season'
 import General from './general'
-import { Button } from 'reactstrap'
+import { Button, Alert } from 'reactstrap'
 
 const ApplicationForm = props => {
     const yesNo = [
@@ -83,6 +83,10 @@ const ApplicationForm = props => {
                 mostImportant={props.mostImportant}
                 noWinterWorkResign={noWinterWorkResign}
             />
+
+            <Alert style={{ marginBottom: '15px' }} color="danger">
+                Please Note! Once you have pressed the 'Send' button below, you cannot go back and update this application form!
+            </Alert>
 
             <Button size="sm" onClick={props.save} color="success">
                 Submit
