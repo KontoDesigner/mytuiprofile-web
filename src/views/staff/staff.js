@@ -97,7 +97,7 @@ class Staff extends Component {
 
         if (this.state.positionAssigns.currentPositionAssign) {
             jobFamily = this.state.positionAssigns.currentPositionAssign.jobFamily
-            destinations = await this.props.geographyActions.getDestinationsByJobFamily(jobFamily)
+            destinations = await this.props.geographyActions.getDestinationsByJobFamily(null)
             seasonJobTitles = await this.props.geographyActions.getJobTitlesByJobFamilyAndSourceMarket(jobFamily, sourceMarket)
         }
 
