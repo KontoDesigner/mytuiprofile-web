@@ -8,7 +8,7 @@ const Application = props => {
             <Row>
                 <Col xl="12" lg="12" md="12" sm="12" xs="12">
                     <div className="hr">
-                        <span className="hr-title">Application</span>
+                        <span className="hr-title">Apply For Upcoming Seasons</span>
                     </div>
                 </Col>
             </Row>

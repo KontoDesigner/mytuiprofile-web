@@ -8,7 +8,7 @@ const Profile = props => {
             <Row>
                 <Col xl="12" lg="12" md="12" sm="12" xs="12">
                     <div className="hr">
-                        <span className="hr-title">Profile</span>
+                        <span className="hr-title">My Profile</span>
                     </div>
                 </Col>
             </Row>
