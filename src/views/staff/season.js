@@ -35,9 +35,9 @@ const Season = props => {
     const destinationsAll = props.destinations.filter(
         m =>
             (m.season === props.application.season || m.season === 'YR') &&
-            // m.mplSourceMarket === props.sourceMarket &&
+            //Source market is filtered on jobtitle
             props.jobTitles.some(function(v) {
-                return v.destination.indexOf(m.id) >= 0
+                return v.destination.indexOf(m.id) >= 0 && (v.season === props.application.season || v.season === 'YR')
             })
     )
 
