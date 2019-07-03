@@ -23,13 +23,13 @@ export function getRequestedPositionAssigns() {
     }
 }
 
-export function acceptOrDeclinePositionAssign(positionAssignId, accepted) {
+export function acceptOrDeclinePositionAssign(item) {
     const body = {
-        positionAssignId,
-        accepted
+        positionAssignId: item.positionAssign.positionAssignId,
+        accept: item.accept === 'Accepted' ? true : false,
+        declineReason: item.declineReason,
+        declineComment: item.declineComment
     }
-
-    const accept = accepted === true ? 'Accepted' : 'Declined'
 
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -40,7 +40,7 @@ export function acceptOrDeclinePositionAssign(positionAssignId, accepted) {
             dispatch(endAjaxCall())
 
             if (res.ok === true) {
-                toastr.success('Success', `${accept} position`)
+                toastr.success('Success', `${item.accept} position`)
 
                 return true
             } else {

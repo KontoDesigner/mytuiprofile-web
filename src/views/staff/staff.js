@@ -324,8 +324,8 @@ class Staff extends Component {
         })
     }
 
-    acceptOrDeclinePositionAssign = async (positionAssignId, accepted) => {
-        await this.props.applicationActions.acceptOrDeclinePositionAssign(positionAssignId, accepted)
+    acceptOrDeclinePositionAssign = async item => {
+        const res = await this.props.applicationActions.acceptOrDeclinePositionAssign(item)
 
         const requestedPositionAssigns = await this.props.applicationActions.getRequestedPositionAssigns()
 
@@ -333,6 +333,8 @@ class Staff extends Component {
             requestedPositionAssigns,
             requestedPositionAssignsModal: requestedPositionAssigns.length > 0
         })
+
+        return res
     }
 
     render() {

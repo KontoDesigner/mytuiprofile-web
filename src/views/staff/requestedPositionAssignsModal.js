@@ -40,11 +40,13 @@ class RequestedPositionAssignsModal extends React.Component {
         super(props)
 
         this.state = {
-            forms: props.positionAssigns.map(positionAssign => ({
+            forms: props.positionAssigns.map((positionAssign, index) => ({
                 accept: null,
                 positionAssign,
                 declineReason: null,
-                declineComment: ''
+                declineComment: '',
+                hidden: false,
+                index
             }))
         }
     }
@@ -92,6 +94,18 @@ class RequestedPositionAssignsModal extends React.Component {
         return false
     }
 
+    accept = async item => {
+        const res = await this.props.accept(item)
+
+        if (res === true) {
+            let forms = Object.assign([], this.state.forms)
+
+            forms[item.index].hidden = true
+
+            this.setState({ forms })
+        }
+    }
+
     render() {
         return (
             <div>
@@ -112,90 +126,92 @@ class RequestedPositionAssignsModal extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.forms.map((item, index) => (
-                                    <React.Fragment key={index}>
-                                        <tr>
-                                            <td style={styles.destination}>{item.positionAssign.destination}</td>
+                                {this.state.forms
+                                    .filter(m => m.hidden !== true)
+                                    .map(item => (
+                                        <React.Fragment key={item.index}>
+                                            <tr>
+                                                <td style={styles.destination}>{item.positionAssign.destination}</td>
 
-                                            <td style={styles.td}>{item.positionAssign.jobTitle}</td>
+                                                <td style={styles.td}>{item.positionAssign.jobTitle}</td>
 
-                                            <td style={styles.td}>{moment(item.positionAssign.startDate).format('YYYY-MM-DD')}</td>
+                                                <td style={styles.td}>{moment(item.positionAssign.startDate).format('YYYY-MM-DD')}</td>
 
-                                            <td style={styles.td}>{moment(item.positionAssign.endDate).format('YYYY-MM-DD')}</td>
+                                                <td style={styles.td}>{moment(item.positionAssign.endDate).format('YYYY-MM-DD')}</td>
 
-                                            <td style={styles.td}>{item.positionAssign.resort}</td>
+                                                <td style={styles.td}>{item.positionAssign.resort}</td>
 
-                                            <td style={styles.td}>{item.positionAssign.hotel}</td>
+                                                <td style={styles.td}>{item.positionAssign.hotel}</td>
 
-                                            <td style={{ minWidth: '250px' }}>
-                                                <Select
-                                                    isClearable={true}
-                                                    valueKey="id"
-                                                    labelKey="name"
-                                                    options={acceptOptions}
-                                                    onChange={v => {
-                                                        this.handleFormSelect('accept', v, 'id', index)
-                                                    }}
-                                                    value={item.accept}
-                                                    placeholder="Select"
-                                                    className="form-group form-group-select"
-                                                />
-                                            </td>
-                                        </tr>
-                                        {item.accept === 'Decline' && (
-                                            <React.Fragment>
-                                                <tr>
-                                                    <td colSpan="6">
-                                                        We are sorry to hear that you wish to decline this Placement offer. We would like to
-                                                        understand the reasons for your wish to decline, so that we can begin to proceed with planning
-                                                        your second review. Please can you select a reason from the following options
-                                                    </td>
-
-                                                    <td colSpan="1" style={{ minWidth: '250px' }}>
-                                                        <Select
-                                                            isClearable={true}
-                                                            valueKey="id"
-                                                            labelKey="name"
-                                                            options={declineReasons}
-                                                            onChange={v => {
-                                                                this.handleFormSelect('declineReason', v, 'id', index)
-                                                            }}
-                                                            value={item.declineReason}
-                                                            placeholder="Select"
-                                                            className="form-group form-group-select"
-                                                        />
-                                                    </td>
-                                                </tr>
-
-                                                {item.declineReason === 'Want a second offer' && (
+                                                <td style={{ minWidth: '250px' }}>
+                                                    <Select
+                                                        isClearable={true}
+                                                        valueKey="id"
+                                                        labelKey="name"
+                                                        options={acceptOptions}
+                                                        onChange={v => {
+                                                            this.handleFormSelect('accept', v, 'id', item.index)
+                                                        }}
+                                                        value={item.accept}
+                                                        placeholder="Select"
+                                                        className="form-group form-group-select"
+                                                    />
+                                                </td>
+                                            </tr>
+                                            {item.accept === 'Decline' && (
+                                                <React.Fragment>
                                                     <tr>
-                                                        <td colSpan="7">
-                                                            <Label for={`declineComment[${index}]`}>Comment</Label>
-                                                            <Input
-                                                                required
-                                                                type="textarea"
-                                                                name={`declineComment[${index}]`}
-                                                                id={`declineComment[${index}]`}
-                                                                rows={4}
-                                                                value={item.declineComment}
-                                                                onChange={v => this.handleFormField('declineComment', v, index)}
-                                                                aria-multiline="true"
+                                                        <td colSpan="6">
+                                                            We are sorry to hear that you wish to decline this Placement offer. We would like to
+                                                            understand the reasons for your wish to decline, so that we can begin to proceed with
+                                                            planning your second review. Please can you select a reason from the following options
+                                                        </td>
+
+                                                        <td colSpan="1" style={{ minWidth: '250px' }}>
+                                                            <Select
+                                                                isClearable={true}
+                                                                valueKey="id"
+                                                                labelKey="name"
+                                                                options={declineReasons}
+                                                                onChange={v => {
+                                                                    this.handleFormSelect('declineReason', v, 'id', item.index)
+                                                                }}
+                                                                value={item.declineReason}
+                                                                placeholder="Select"
+                                                                className="form-group form-group-select"
                                                             />
                                                         </td>
                                                     </tr>
-                                                )}
-                                            </React.Fragment>
-                                        )}
 
-                                        <tr>
-                                            <td style={{ textAlign: 'center' }} colSpan="7">
-                                                <Button disabled={this.disabled(item)} onClick={() => this.props.accept(item)} color="success">
-                                                    Send
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                    </React.Fragment>
-                                ))}
+                                                    {item.declineReason === 'Want a second offer' && (
+                                                        <tr>
+                                                            <td colSpan="7">
+                                                                <Label for={`declineComment[${item.index}]`}>Comment</Label>
+                                                                <Input
+                                                                    required
+                                                                    type="textarea"
+                                                                    name={`declineComment[${item.index}]`}
+                                                                    id={`declineComment[${item.index}]`}
+                                                                    rows={4}
+                                                                    value={item.declineComment}
+                                                                    onChange={v => this.handleFormField('declineComment', v, item.index)}
+                                                                    aria-multiline="true"
+                                                                />
+                                                            </td>
+                                                        </tr>
+                                                    )}
+                                                </React.Fragment>
+                                            )}
+
+                                            <tr>
+                                                <td style={{ textAlign: 'center' }} colSpan="7">
+                                                    <Button disabled={this.disabled(item)} onClick={() => this.accept(item)} color="success">
+                                                        Send
+                                                    </Button>
+                                                </td>
+                                            </tr>
+                                        </React.Fragment>
+                                    ))}
                             </tbody>
                         </Table>
                     </ModalBody>
