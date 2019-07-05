@@ -26,7 +26,7 @@ export function getRequestedPositionAssigns() {
 export function acceptOrDeclinePositionAssign(item) {
     const body = {
         positionAssignId: item.positionAssign.positionAssignId,
-        accept: item.accept === 'Accepted' ? true : false,
+        accept: item.accept === 'Accept' ? true : false,
         declineReason: item.declineReason,
         declineComment: item.declineComment
     }
