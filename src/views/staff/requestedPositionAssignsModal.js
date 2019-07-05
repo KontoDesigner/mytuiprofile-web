@@ -135,17 +135,13 @@ class RequestedPositionAssignsModal extends React.Component {
 
                                                 <td style={styles.td}>{item.positionAssign.jobTitle}</td>
 
-                                                <td />
+                                                <td style={styles.td}>{item.positionAssign.resort}</td>
 
-                                                <td />
+                                                <td style={styles.td}>{item.positionAssign.conceptHotel}</td>
 
                                                 <td style={styles.td}>{moment(item.positionAssign.startDate).format('YYYY-MM-DD')}</td>
 
                                                 <td style={styles.td}>{moment(item.positionAssign.endDate).format('YYYY-MM-DD')}</td>
-
-                                                <td style={styles.td}>{item.positionAssign.resort}</td>
-
-                                                <td style={styles.td}>{item.positionAssign.conceptHotel}</td>
 
                                                 <td style={{ minWidth: '250px' }}>
                                                     <Select
