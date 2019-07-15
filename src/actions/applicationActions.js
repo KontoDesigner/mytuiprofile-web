@@ -24,8 +24,11 @@ export function getRequestedPositionAssigns() {
 }
 
 export function acceptOrDeclinePositionAssign(item) {
+    debugger;
     const body = {
         positionAssignId: item.positionAssign.positionAssignId,
+       season: item.positionAssign.season,
+       jobTitle: item.positionAssign.jobTitle,
         accept: item.accept === 'Accept' ? true : false,
         declineReason: item.declineReason,
         declineComment: item.declineComment
