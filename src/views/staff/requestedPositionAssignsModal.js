@@ -205,9 +205,12 @@ class RequestedPositionAssignsModal extends React.Component {
 
                                             <tr>
                                                 <td style={{ textAlign: 'center' }} colSpan="7">
-                                                    <Button disabled={this.disabled(item)} onClick={() => this.accept(item)} color="success">
+                                                    <Button disabled={this.disabled(item)} style={{ marginRight: '10px', marginBottom: '10px' }}  onClick={() => this.accept(item)} color="success">
                                                         Send
                                                     </Button>
+                                                    <Button color="danger" style={{ marginRight: '10px', marginBottom: '10px' }} onClick={this.props.toggle}>
+                            Close   
+                        </Button>
                                                 </td>
                                             </tr>
                                         </React.Fragment>
@@ -217,9 +220,10 @@ class RequestedPositionAssignsModal extends React.Component {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button color="danger" onClick={this.props.toggle}>
+                        
+                        {/* <Button color="danger" onClick={this.props.toggle}>
                             Close
-                        </Button>
+                        </Button> */}
                     </ModalFooter>
                 </Modal>
             </div>
