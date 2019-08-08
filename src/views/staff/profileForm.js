@@ -97,6 +97,19 @@ const ProfileForm = props => {
                             />
                         </div>
                     )}
+
+{props.positionAssigns.nextFollowingPositionAssign && (
+                        <div>
+                            <Placement
+                                number={4}
+                                handleStaffField={props.handleStaffField}
+                                handleStaffSelect={props.handleStaffSelect}
+                                handleStaffDatePicker={props.handleStaffDatePicker}
+                                disabled={props.disabled}
+                                positionAssign={props.positionAssigns.nextFollowingPositionAssign}
+                            />
+                        </div>
+                    )}
                 </div>
             )}
 
