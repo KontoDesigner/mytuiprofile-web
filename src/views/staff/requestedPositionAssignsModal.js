@@ -26,12 +26,12 @@ const acceptOptions = [
 
 const declineReasons = [
     {
-        id: 'Plan to resign',
-        name: 'Plan to resign'
-    },
+        id: 'Plan to Resign',
+        name: 'Plan to Resign'
+    }, 
     {
-        id: 'Want a second offer',
-        name: 'Want a second offer'
+        id: 'Want 2nd Offer',
+        name: 'Want 2nd Offer'
     }
 ]
 
