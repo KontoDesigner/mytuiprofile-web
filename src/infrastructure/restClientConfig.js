@@ -25,4 +25,6 @@ export const restClientConfig = {
     baseUrl: baseUrl
 }
 
+console.log('config', restClientConfig)
+
 export default restClientConfig
