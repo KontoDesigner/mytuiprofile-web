@@ -13,6 +13,14 @@ const Profile = props => {
                 </Col>
             </Row>
 
+            {props.pendingPositionAssigns && (
+                <div style={{ marginBottom: '15px', textDecoration: 'underline' }}>
+                    <a style={{ cursor: 'pointer' }} href={null} onClick={props.toggleRequestedPositionAssignsModal}>
+                        Pending Applications
+                    </a>
+                </div>
+            )}
+
             <ProfileForm
                 positionAssigns={props.positionAssigns}
                 updateStaff={props.updateStaff}
