@@ -28,7 +28,7 @@ const declineReasons = [
     {
         id: 'Plan to Resign',
         name: 'Plan to Resign'
-    }, 
+    },
     {
         id: 'Want 2nd Offer',
         name: 'Want 2nd Offer'
@@ -118,8 +118,7 @@ class RequestedPositionAssignsModal extends React.Component {
                                 <tr>
                                     <th style={styles.th}>Destination</th>
                                     <th style={styles.th}>Job Title</th>
-                                    <th style={styles.th}>Resort</th>
-                                    <th style={styles.th}>Hotel</th>
+                                    <th style={styles.th}>Concept Unit</th>
                                     <th style={styles.th}>Start Date</th>
                                     <th style={styles.th}>End Date</th>
                                     <th>Action</th>
@@ -136,8 +135,6 @@ class RequestedPositionAssignsModal extends React.Component {
                                                 <td style={styles.td}>{item.positionAssign.jobTitle}</td>
 
                                                 <td style={styles.td}>{item.positionAssign.conceptHotel}</td>
-
-                                                <td style={styles.td}>{item.positionAssign.concept}</td>
 
                                                 <td style={styles.td}>{moment(item.positionAssign.startDate).format('YYYY-MM-DD')}</td>
 
@@ -205,12 +202,19 @@ class RequestedPositionAssignsModal extends React.Component {
 
                                             <tr>
                                                 <td style={{ textAlign: 'center' }} colSpan="7">
-                                                    <Button disabled={this.disabled(item)} style={{ marginRight: '10px', marginBottom: '10px' }}  onClick={() => this.accept(item)} color="success">
+                                                    <Button
+                                                        disabled={this.disabled(item)}
+                                                        style={{ marginRight: '10px', marginBottom: '10px' }}
+                                                        onClick={() => this.accept(item)}
+                                                        color="success">
                                                         Send
                                                     </Button>
-                                                    <Button color="danger" style={{ marginRight: '10px', marginBottom: '10px' }} onClick={this.props.toggle}>
-                            Close   
-                        </Button>
+                                                    <Button
+                                                        color="danger"
+                                                        style={{ marginRight: '10px', marginBottom: '10px' }}
+                                                        onClick={this.props.toggle}>
+                                                        Close
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         </React.Fragment>
@@ -220,7 +224,6 @@ class RequestedPositionAssignsModal extends React.Component {
                     </ModalBody>
 
                     <ModalFooter>
-                        
                         {/* <Button color="danger" onClick={this.props.toggle}>
                             Close
                         </Button> */}
