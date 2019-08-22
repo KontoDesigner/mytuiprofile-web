@@ -13,14 +13,6 @@ const Application = props => {
                 </Col>
             </Row>
 
-            {props.pendingPositionAssigns && (
-                <div style={{ marginBottom: '15px', textDecoration: 'underline' }}>
-                    <a style={{ cursor: 'pointer' }} href={null} onClick={props.toggleRequestedPositionAssignsModal}>
-                        Pending Applications
-                    </a>
-                </div>
-            )}
-
             <ApplicationForm
                 firstApplication={props.firstApplication}
                 secondApplication={props.secondApplication}
