@@ -87,7 +87,7 @@ class RequestedPositionAssignsModal extends React.Component {
             return true
         }
 
-        if (form.accept === 'Decline' && form.declineReason === 'Want a second offer' && (!form.declineComment || form.declineComment === '')) {
+        if (form.accept === 'Decline' && form.declineReason === 'Want 2nd Offer' && (!form.declineComment || form.declineComment === '')) {
             return true
         }
 
@@ -183,7 +183,7 @@ class RequestedPositionAssignsModal extends React.Component {
                                                         </td>
                                                     </tr>
 
-                                                    {item.declineReason === 'Want a second offer' && (
+                                                    {item.declineReason === 'Want 2nd Offer' && (
                                                         <tr>
                                                             <td colSpan="7">
                                                                 <Label for={`declineComment[${item.index}]`}>Comment</Label>
