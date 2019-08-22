@@ -372,6 +372,8 @@ class Staff extends Component {
                             positionAssigns={this.state.positionAssigns}
                             resignHistory={this.state.resignHistory}
                             jobTitles={this.props.jobTitles}
+                            toggleRequestedPositionAssignsModal={this.toggleRequestedPositionAssignsModal}
+                            pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
                             sourceMarkets={this.props.sourceMarkets}
                             handleStaffField={(e, _this) => handleStaff.handleStaffField(e, this)}
                             handleStaffSelect={(field, val, selector, _this) => handleStaff.handleStaffSelect(field, val, selector, this)}
@@ -414,8 +416,6 @@ class Staff extends Component {
                             toggleConfirmModal={this.toggleConfirmModal}
                             save={this.save}
                             created={this.state.created}
-                            toggleRequestedPositionAssignsModal={this.toggleRequestedPositionAssignsModal}
-                            pendingPositionAssigns={this.state.requestedPositionAssigns.length > 0}
                             jobFamily={this.state.jobFamily}
                             handleSecondApplicationDatePicker={(field, val, _this) =>
                                 handleApplication.handleApplicationDatePicker('secondApplication', field, val, this)
