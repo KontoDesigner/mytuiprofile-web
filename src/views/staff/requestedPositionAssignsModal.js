@@ -187,6 +187,7 @@ class RequestedPositionAssignsModal extends React.Component {
                                                                 <Input
                                                                     required
                                                                     type="textarea"
+                                                                    maxLength="30"
                                                                     name={`declineComment[${item.index}]`}
                                                                     id={`declineComment[${item.index}]`}
                                                                     rows={4}

@@ -237,7 +237,12 @@ const Resignation = props => {
                             disabled={props.disabled}
                             value={props.resignHistory.resignComm ? props.resignHistory.resignComm : ''}
                         />
-                        {props.resignHistory.recommend === 'No' && (!props.resignHistory.resignComm || props.resignHistory.resignComm === '') && (
+                       
+                        {
+                            (!props.resignHistory.resignComm || props.resignHistory.resignComm === '') && 
+                        
+                        (
+                        
                             <b className="card-text text-danger">Field is required</b>
                         )}
                     </Col>
