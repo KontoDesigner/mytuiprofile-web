@@ -17,6 +17,10 @@ else if (hostName === 'mytuiprofile-web-uat.tuinordic.net' || hostName === 'mytu
 //PROD
 else if (hostName === 'mytuiprofile-web.tuinordic.net') {
     baseUrl = 'https://mytuiprofile-api.tuinordic.net'
+}
+//AWS
+else if (hostName === 'mytuiprofile-web.tpp-project.local') {
+    baseUrl = 'https://mytuiprofile-api.tpp-project.local'
 } else {
     console.warn(`could not identify hostname: ${hostName}.`)
 }
