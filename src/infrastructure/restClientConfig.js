@@ -18,9 +18,17 @@ else if (hostName === 'mytuiprofile-web-uat.tuinordic.net' || hostName === 'mytu
 else if (hostName === 'mytuiprofile-web.tuinordic.net') {
     baseUrl = 'https://mytuiprofile-api.tuinordic.net'
 }
-//AWS
-else if (hostName === 'mytuiprofile-web.tpp-project.local') {
-    baseUrl = 'https://mytuiprofile-api.tpp-project.local'
+//DEV
+else if (hostName === 'mytuiprofileweb.test.tui-dx.com') {
+    baseUrl = 'http://mytuiprofile-api.test.tui-dx.com'
+}
+//UAT
+else if (hostName === 'mytuiprofileweb.pre.tui-dx.com') {
+    baseUrl = 'http://mytuiprofile-api.pre.tui-dx.com'
+}
+//PROD
+else if (hostName === 'mytuiprofileweb.tui-dx.com') {
+    baseUrl = 'https://mytuiprofile-api.tui-dx.com'
 } else {
     console.warn(`could not identify hostname: ${hostName}.`)
 }
