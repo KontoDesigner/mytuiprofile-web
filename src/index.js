@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // import App from './App'
+import Maintenance from './Maintenance'
 import { Provider } from 'react-redux'
 import store from './infrastructure/store'
 import { runWithAdal } from 'react-adal'
@@ -12,10 +13,7 @@ runWithAdal(authContext, () => {
     ReactDOM.render(
         <Provider store={store}>
             {/* <App /> */}
-
-            <h1>We'll be back soon!</h1>
-
-            <p>Sorry for the inconvenience</p>
+            <Maintenance />
         </Provider>,
         document.getElementById('root')
     )
